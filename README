@@ -1,0 +1,2700 @@
+
+ReadMe (user documentation) file for the sm_calculator (SM Calculator) tool.
+----------------------------------------
+
+In this document user can find necessary info about usage of this tool (sm_calculator - SM Calculator)
+and reference of all functionality of this tool.
+
+Features of the SM Calculator:
+--------------------
+
+    - Multi-platform application: there are builds for Windows 64/32 (.zip) and Linux 64/32 (.tar.gz);
+    - Various types of values (64 bits integers, 64 bits floats, strings);
+    - Various float constants (pi, exp,...);
+    - Solving of mathematical expressions, using basic arithmetic operators;
+    - Solving of mathematical expressions, using bracket delimiters
+        '(' and ')' (in one expression) and delimiters ';', '\n';
+    - Solving using suite of mathematical (including trigonometric, logarithm, exponentiation)
+        functions;
+    - Solving using bitwise functions and operators;   
+    - Various types of entering and output formats of integers (decimal, octal, hexadecimal,
+        binary formats);
+    - Various values of unit for measuring of angles (radians, degrees, gradians), which are used
+        by trigonometric functions;
+    - Support of output properties (precision) of float values;
+    - Suite of converting functions (various values of unit for measuring of angles, various
+        types of entering and output formats of integers);
+    - Suite of commands, which provide setup of configuration of SM Calculator;
+    - Several modes of execution (processing of files, processing of expressions, obtained via command line,
+        processing of expressions in interactive mode, using standard input/output devices);
+    - Help (command: help[;] or command line option: -h, --help);
+
+SM Calculator supports follow modes of execution:
+    - processing of file, that contains expression(s);
+    - processing of command line expression(s);
+    - interactive mode (user enters expression(s), using standard input device/console).
+    User can use same expressions in all these modes (processing of file,
+        processing of command line expression(s), interactive mode);
+
+Downloading the SM Calculator binary files:
+--------------------
+
+    Binary files of the sm_calculator (SM Calculator) tool can de found here:
+        http://smansoft.com/sm_calculator/
+    .
+
+Launching of SM Calculator:
+--------------------
+
+SM Calculator binary and sources distributions are deployed in follow archives:
+    Windows:
+            sm_calculator-0.0.1.1-Windows-x64.zip    - x64 binary archive package
+            sm_calculator-0.0.1.1-Windows-x86.zip    - x86 binary archive package
+            sm_calculator-0.0.1.1-Source.zip         - sources archive package.
+    Linux:            
+            sm_calculator-0.0.1.1-Linux-x64.tar.gz   - x64 binary archive package
+            sm_calculator-0.0.1.1-Linux-x86.tar.gz   - x86 binary archive package
+            sm_calculator-0.0.1.1-Source.tar.gz      - sources archive package. 
+       
+For verification install files and archives, user can use:
+    import public key (file: http://smansoft.com/gpg/smansoft.pub.asc):
+        gpg --import ./smansoft.pub.asc
+    or import public key:
+        gpg --keyserver hkp://pgp.mit.edu --recv-keys A408B0FCFD774649
+    then, verify:
+        gpg --verify ./[some_distr_file].asc ./[some_distr_file];
+
+Structure of binary archive (.zip or .tar.gz):
+
+.zip (Windows):
+
+    .\bin\
+        sm_calc.exe
+    
+    .\share\smansoft\doc\
+        HELP
+        LICENSE
+        README
+        
+.tar.gz (Linux):
+
+    ./bin/
+        sm_calc
+        
+    ./lib/
+        libgetopt_lib.so
+    
+    ./share/smansoft/doc/
+        HELP
+        LICENSE
+        README
+
+Execution 
+
+    sm_calc[.exe] 
+    
+without parameters launches SM Calculator in interactive mode (default mode):
+
+    sm_calc 0.0.1.1 Copyright (c) 2020 SManSoft
+    SM Calculator
+
+            Interactive processing:
+    Type 'help' for more information.
+    In  >>
+
+User can run
+
+    sm_calc[.exe] -h
+or    
+    sm_calc[.exe] --help
+
+to get help output - description of command line parameters:
+
+    sm_calc 0.0.1.1 Copyright (c) 2020 SManSoft
+    SM Calculator
+
+    USAGE: sm_calc [OPTION]
+
+    -h, --help                                             display this message
+    -i, --interactive                                      force interactive mode
+    -f<infile>, --in_file=<infile>                         name/path of input file
+    -o<ofile>, --out_file=<ofile>                          name/path of output file
+    -x<expression_value>, --expression=<expression_value>  expression, that should be solved
+    -p<precision_value>, --f_precision=<precision_value>   floating-point precision (after '.' ): [0-20|exp]
+                                                                by default, precision_value == '10'
+                                                                if 'precision_value' == 'exp' - exponential output will be used
+    -n<i_format_value>, --i_format=<i_format_value>        output format of integers: [dec|oct|hex|bin]
+                                                                by default, output format of integers == 'dec'
+    -a<unit_value>, --a_unit=<unit_value>                  default unit of measurement of an angle = 'rad|deg|grad' 
+
+Using these options user can launch SM Calculator in various modes of execution and tune start values of 
+current configuration of SM Calculator (command: config[;]).
+
+
+Lexems of SM Calculator expressions:
+--------------------
+
+Available keywords:
+
+    f_precision     i_format        a_unit
+    pi              exp             gamma           phi 
+    rad             deg             grad
+    grad2rad        rad2grad
+    rad2deg         deg2rad
+    grad2deg        deg2grad
+    dec             oct             hex             bin
+    dec2oct         dec2hex         dec2bin
+    oct2dec         hex2dec         bin2dec
+    sin             cos             tan
+    asin            acos            atan
+    ln              lg              log
+    inv             sqrt            rand
+    pow
+    pow_exp^        pow_10^         pow_2^          pow_^2
+    abs             mod             mod2
+    and             or              not
+    nand            nor             xor
+    config          help            echo
+    quit            exit
+
+Available operators:
+
+    +       -       *       /       =       !
+    <a<     >a>     <l<     >l>     <c<     >c>    
+
+Available delimiters:
+
+    ,       (       )       ;       \n (new line)
+    
+Commands (from available keywords):
+
+    f_precision     i_format        a_unit
+    dec             oct             hex             bin
+    rad             deg             grad
+    rand
+    config          help
+    quit            exit
+
+Constants (from available keywords):
+
+    pi              exp             gamma           phi
+
+Output functions:
+
+    echo
+
+Converting functions (from available keywords):
+
+    grad2rad        rad2grad
+    rad2deg         deg2rad
+    grad2deg        deg2grad
+    dec2oct         dec2hex         dec2bin
+    oct2dec         hex2dec         bin2dec    
+
+Trigonometric functions (from available keywords):
+
+    sin             cos             tan
+    asin            acos            atan
+    
+Logarithm functions (from available keywords):
+    
+    ln              lg              log
+
+Exponentiation functions:
+
+    pow
+    pow_exp^        pow_10^         pow_2^          pow_^2
+
+Bit functions (from available keywords):
+
+    and             or              not
+    nand            nor             xor
+
+Bit operators (from available operators):
+
+    <a<             >a>
+    <l<             >l>
+    <c<             >c> 
+
+
+Base syntax of commands:
+--------------------    
+    
+    command[;]
+    command=arg[;]
+
+Examples:
+    
+    In  >> rand
+    Out >> 0.5796685690;
+
+    In  >> rand;
+    Out >> 0.2712790307;
+
+    In  >> config;
+    Out >> Current Configuration :
+    ---------------------------------------------
+    Current double precision          : 10;
+    Current output format of integers : dec;
+    Unit of measurement of an angle   : rad;
+
+    In  >>
+    In  >>
+    In  >> i_format;
+    Out >> dec;
+
+    In  >>
+    In  >> i_format=hex;
+    Out >> hex;    
+
+
+Base syntax of functions:
+--------------------    
+
+    function (arg1[,arg2])[;]
+    
+Examples:
+
+    In  >> sin(0);
+    Out >> 0.0000000000;
+
+    In  >> sin(3.14)
+    Out >> 0.0015926529;
+
+    In  >> sin(3.14/2.0);
+    Out >> 0.9999996829;
+
+    In  >>
+    In  >> asin(sin(3.14/2.0))
+    Out >> 1.5700000000;
+
+    In  >> asin(sin(3.14));
+    Out >> 0.0015926536;
+
+    In  >> pow(4,2)
+    Out >> 16.0000000000;
+
+    In  >> pow(4.0,2.0);
+    Out >> 16.0000000000;    
+
+
+Base syntax of operators:
+--------------------
+
+    arg1 operator arg1[;]
+    operator arg[;]
+
+Operator assign ('=') can be used only in commands (f_precision, i_format, a_unit) (see below).
+
+    In  >> 10 + 7;
+    Out >> 17;
+
+    In  >> 10 * 7;
+    Out >> 70;
+
+    In  >> 10/2;
+    Out >> 5.0000000000;
+
+    In  >> 10-2;
+    Out >> 8;
+
+    In  >> 10 <a< 1;
+    Out >> 20;
+
+    In  >> 10 <a< 2;
+    Out >> 40;
+
+    In  >> 20 >a> 1;
+    Out >> 10;    
+
+
+Interactive mode (user enters expression(s), using console)
+--------------------
+
+In this mode user should enter expressions, using standard console input:
+
+    In  >> (30+20+2)*(11/2*(12-(12+22+(3*4)+56/2+(11/2+(2+3)+34)*exp)*8)*PI)
+    Out >> -1390608.9689932067;
+
+    In  >> sin(pi/2)+cos(pi/2);
+    Out >> 1.0000000000;
+
+    In  >> sin(-pi/2)+cos(pi/2);
+    Out >> -1.0000000000;    
+
+    In  >> pow_^2(sin(pi/2))+pow_^2(cos(pi/2));
+    Out >> 1.0000000000;
+
+    In  >> deg2rad(90);
+    Out >> 1.5707963268;
+
+    In  >> deg2rad(180);
+    Out >> 3.1415926536;
+
+    In  >> pi
+    Out >> 3.1415926536;
+
+    In  >> exp;
+    Out >> 2.7182818285;
+
+    In  >> sin(0); sin(pi/2); sin(pi);
+    Out >> 0.0000000000;1.0000000000;0.0000000000;
+
+Every equation (in interactive mode) should be finished using ';' and <Enter>
+or just <Enter> (without ';'):
+    
+    In  >> (20+20)*(2+2)*(45+3*(12-2)/3);
+    Out >> 8800.0000000000;
+    
+    In  >> sin(pi/2)+cos(pi/2);
+    Out >> 1.0000000000;
+
+    In  >> (((((0.01+0.02)*10)*10)*10)*(pi*exp)*10)
+    Out >> 2561.9202668021;
+
+    In  >> (30+20+2)*(11/2*(12-(12+22+(3*4)+56/2+(11/2+(2+3)+34)*exp)*8)*PI)
+    Out >> -1390608.9689932067;
+
+Every input can contain several equations, separated by ';' and last equation should 
+be finished using ';' and <Enter> or just <Enter> (without ';'):
+
+    In  >> -1.0*2;-1.+.1;.1/2;
+    Out >> -2.0000000000;-0.9000000000;0.0500000000;
+
+    In  >> sin(pi/4); cos(pi/4);
+    Out >> 0.7071067812;0.7071067812;
+
+    In  >> asin(sin(pi/4));acos(cos(pi/4))
+    Out >> 0.7853981634;0.7853981634;
+
+
+Processing of file, that contains expression(s)
+--------------------
+
+In this mode SM Calculator provides processing of input file (that contains set of equations),
+defined by command line options:
+    -f(--in_file)   - name/path of input file;
+    -o(--out_file)  - name/path of output file;
+User can define only name/path of input file (without output file). In this case
+input equations will be read from input file and results will be outputted in
+standard output mode (console). Equations in input files can be separated by ';'
+and '\n' (new line) or just '\n' (new line) (without ';').
+
+
+Processing of command line expression(s)
+--------------------
+
+In this mode equation(s) for processing can be defined by command line options:
+    -x(--expression)    - equation(s) for processing;
+In this mode SM Calculator provides processing of one or several equations, separated by ';'.
+Last equation should be finished using ';' or can be finished without ';':
+
+    --expression="(30+20+2)*(-11/2*(-12-(12+22+(-3*-4)+56/-2+(11/-2+(2+3)+34)*-exp)*-8)*-PI);(((((0.01+0.02)*10)*10)*10)*(pi*exp)*10);"
+
+    In  >> (30+20+2)*(-11/2*(-12-(12+22+(-3*-4)+56/-2+(11/-2+(2+3)+34)*-exp)*-8)*-PI);(((((0.01+0.02)*10)*10)*10)*(pi*exp)*10);
+    Out >> -535952.1428411616;2561.9202668021;
+
+    --expression="11*2; (0.1+.02+.003)*(1e-5+2.e-4+3e-3)*(345.123/34.12+(-4*(1.2-4.1999999999/(1.2+0.8)))-11.0-2+1)"
+
+    In  >> 11*2; (0.1+.02+.003)*(1e-5+2.e-4+3e-3)*(345.123/34.12+(-4*(1.2-4.1999999999/(1.2+0.8)))-11.0-2+1);
+    Out >> 22;0.0006771242;
+
+
+Using several modes together:
+--------------------
+
+User can use several modes, if defined necessary options in command line:
+
+    sm_calc --in_file=sm_calc_test.in.01.txt --out_file=sm_calc_test.out.01.txt --expression="1+2;2*999999;-1" --interactive 
+
+Output:
+            Files processing:
+    in file = sm_calc_test.in.01.txt
+    out file = sm_calc_test.out.01.txt
+
+            Command line processing:
+    In  >> 1+2;2*999999;-1;
+    Out >> 3;1999998;-1;
+
+            Interactive processing:
+    Type 'help' for more information.
+    In  >>
+
+If user uses --in_file (--out_file) and --expression options and if user doesn't define --interactive option,
+only processing of file and processing of command line expression(s) are provided:
+
+    sm_calc --in_file=sm_calc_test.in.01.txt --out_file=sm_calc_test.out.01.txt --expression="1+2;2*999999;-1"
+
+Output:
+        Files processing:
+    in file = sm_calc_test.in.01.txt
+    out file = sm_calc_test.out.01.txt
+
+        Command line processing:
+    In  >> 1+2;2*999999;-1;
+    Out >> 3;1999998;-1;    
+    
+If user launches sm_calc without options - interactive mode (user enters expression(s), using console)
+is provided by default;
+
+
+Types of values:
+--------------------
+
+    - Integer data (long long type - 64 bits);
+    - Float data (long double type - 64 bits);
+    - Strings (max length of string 1021 ASCII symbols);
+
+
+Integer data:
+--------------------
+
+Length of Integer data - 64 bits (including sign), i.e.
+    max integer value == 2^63-1;
+    min integer value == -(2^63-1);
+Integer value can be entered and output in follow formats:
+    - decimal ('dec');
+    - octal ('oct');
+    - hexadecimal ('hex');
+    - binary ('bin');
+    
+Output format of integer value can be defined by command:
+
+    i_format = <dec|hex|oct|bin>[;]
+
+After applying of this command output of all integers is provided in defined format.
+    
+Examples:
+
+    In  >> i_format = dec;
+    Out >> dec;
+
+    In  >> 100
+    Out >> 100;
+
+    In  >> -100
+    Out >> -100;
+
+    In  >> i_format = hex;
+    Out >> hex;
+
+    In  >> 100
+    Out >> 0x64;
+
+    In  >> -100
+    Out >> 0xffffffffffffff9c;
+
+    In  >>
+    In  >> i_format = oct;
+    Out >> oct;
+
+    In  >>
+    In  >> 100
+    Out >> 0144;
+
+    In  >> -100
+    Out >> 01777777777777777777634;
+
+    In  >>
+    In  >>
+    In  >> i_format = bin;
+    Out >> bin;
+
+    In  >>
+    In  >> 100
+    Out >> b01100100;
+
+    In  >> -100
+    Out >> b1111111111111111111111111111111111111111111111111111111110011100;    
+
+Also user can use shorter way for defining of output format of integer value, using commands:
+
+    dec;
+    hex;
+    oct;
+    bin;
+
+Examples:
+    
+    In  >> dec;
+    Out >> dec;
+
+    In  >> 100
+    Out >> 100;
+
+    In  >> -100
+    Out >> -100;
+
+    In  >> hex;
+    Out >> hex;
+
+    In  >> 100;
+    Out >> 0x64;
+
+    In  >> -100;
+    Out >> 0xffffffffffffff9c;
+
+    In  >> oct;
+    Out >> oct;
+
+    In  >> 100;
+    Out >> 0144;
+
+    In  >> -100;
+    Out >> 01777777777777777777634;
+
+    In  >> bin;
+    Out >> bin;
+
+    In  >> 100;
+    Out >> b01100100;
+
+    In  >> -100
+    Out >> b1111111111111111111111111111111111111111111111111111111110011100;
+
+Input format of integer is defined by follow rules:
+    - if user enters integer value in octal format, he should use as least one lead '0' symbol 
+        (for example: '0712377', '-0712377');
+    - if user enters integer value in hexadecimal format, he should use as lead '0x' symbols
+        (for example: '0x394ff', '0xfffffffffffc6b01');
+    - if user enters integer value in binary format, he should use as lead 'b' symbol
+        (for example: 
+        'b00111001010011111111', 
+        'b1111111111111111111111111111111111111111111111000110101100000001');
+    - if user enters integer value in decimal format, he shouldn't use any additional symbols
+        (for example: '129077', '-129077');
+
+User should take into account, that size of integer value is 64 bits (including sign), during
+entering value in various formats;
+
+Examples:
+
+    In  >> dec;
+    Out >> dec;
+
+    In  >> 01       :   octal value
+    Out >> 1;       :   output in decimal format
+
+    In  >> 02       :   octal value
+    Out >> 2;       :   output in decimal format
+
+    In  >> 07       :   octal value
+    Out >> 7;       :   output in decimal format
+
+                    
+    In  >> 08       :   here is an error, as 8 isn't octal digit:
+    Out >> Error: syntax error
+
+    In  >> -07      :   octal value
+    Out >> -7;      :   output in decimal format
+
+    In  >> -08      :   here is error, as 8 isn't octal value:
+    Out >> Error: syntax error
+
+    In  >> 0712377  :   octal value
+    Out >> 234751;  :   output in decimal format
+
+    In  >> 0712377; :   octal value
+    Out >> 234751;  :   output in decimal format
+
+    In  >> hex
+    Out >> hex;
+
+    In  >> 0712377; :   octal value
+    Out >> 0x394ff; :   output in hexadecimal format
+
+    In  >> bin;
+    Out >> bin;
+
+    In  >> 0712377;     :   octal value
+    Out >> b00111001010011111111;   :   output in binary format
+
+    In  >> -0712377;    :   octal value
+    Out >> b1111111111111111111111111111111111111111111111000110101100000001;    
+                        :   output in binary format
+                    
+    In  >> 01777777777777777065401; :   octal value
+    Out >> b1111111111111111111111111111111111111111111111000110101100000001;                    
+                        :   output in binary format
+                    
+    In  >> dec;
+    Out >> dec;
+
+    In  >> 0xf416d;             :   hexadecimal value
+    Out >> 999789;              :   output in decimal format
+
+    In  >> 01777777777777777065401;
+    Out >> -234751;    
+
+    In  >> hex
+    Out >> hex;
+
+    In  >> -999789;             :   decimal value
+    Out >> 0xfffffffffff0be93;  :   output in hexadecimal format
+
+    In  >> dec;
+    Out >> dec;
+
+    In  >> -0xf416d;            :   hexadecimal value
+    Out >> -999789;             :   output in decimal format
+
+    In  >> 0xfffffffffff0be93;  :   hexadecimal value
+    Out >> -999789;             :   output in decimal format
+
+    In  >> b00111001010011111111;   :   binary format
+    Out >> 234751;                  :   output in decimal format
+
+    In  >> b1111111111111111111111111111111111111111111111000110101100000001;
+                                    :   binary format
+    Out >> -234751;                 :   output in decimal format
+
+    In  >> i_format = hex;
+    Out >> hex;
+
+    In  >> b00111001010011111111;   :   binary format
+    Out >> 0x394ff;                 :   output in hexadecimal format
+
+    In  >> i_format = oct;
+    Out >> oct;
+
+    In  >> b00111001010011111111;   :   binary format
+    Out >> 0712377;                 :   output in octal format
+
+    In  >> -98119                   :   decimal format
+    Out >> 01777777777777777500271; :   output in octal format
+
+    In  >> dec
+    Out >> dec;
+
+    In  >> 01777777777777777500271; :   octal format
+    Out >> -98119;                  :   output in decimal format
+    
+    In  >> -0x394ff;                :   hexadecimal value
+    Out >> -234751;                 :   output in decimal format
+
+    In  >> 0xfffffffffffc6b01;      :   hexadecimal value
+    Out >> -234751;                 :   output in decimal format
+
+User can enter negative values (in octal and hexadecimal) using as sign '-'
+as two's complement format (also see examples above):
+
+    -0712377 (oct) or 01777777777777777065401 (oct) == -234751 (dec) 
+    -0x394ff (hex) or 0xfffffffffffc6b01 (hex)  == -234751 (dec)
+
+If user need to get current output format of integer values, he needs to use command: 
+
+    i_format[;]
+
+For Examples:
+
+    In  >> i_format;
+    Out >> dec;                 :   current output format is decimal 
+
+    In  >> i_format = hex;      :   setup current output format as hexadecimal
+    Out >> hex;                 :   current output format is hexadecimal
+
+    In  >> i_format;
+    Out >> hex;                 :   current output format is hexadecimal
+
+    In  >> 0777777;             :   octal format
+    Out >> 0x3ffff;             :   output in hexadecimal format
+
+SM Calculator supports suite of functions, which provide converting of various formats
+of integer values, whatever defined current output format of integer values:
+    
+    dec2oct         dec2hex         dec2bin
+    oct2dec         hex2dec         bin2dec.
+
+
+Float data (long double - 64 bits):
+--------------------
+
+Output format of float values always defined in decimal format. User can tune precision of
+float value output, using command:
+
+    f_precision = N[;]
+
+, where N = [0,20]|exp, i.e. maximum precision of output of float value is '20'. 
+Also N can be defined as 'exp'. In this case float value will be printed in exponential format.
+
+Examples:
+
+    In  >> f_precision = 5;
+    Out >> 5;               :   current precision of float is 5 digits (after floating point)
+
+    In  >> exp
+    Out >> 2.71828;
+
+    In  >> pi
+    Out >> 3.14159;
+
+    In  >> f_precision = 10;
+    Out >> 10;              :   current precision of float is 10 digits (after floating point)
+
+    In  >> exp;
+    Out >> 2.7182818285;
+
+    In  >> pi;
+    Out >> 3.1415926536;
+
+    In  >>
+    In  >> f_precision = 15;
+    Out >> 15;              :   current precision of float is 15 digits (after floating point)
+    
+    In  >> exp;
+    Out >> 2.718281828459045;
+
+    In  >> pi;
+    Out >> 3.141592653589793;
+
+    In  >> f_precision = 20;
+    Out >> 20;              :   current precision of float is 20 digits (after floating point)
+
+    In  >> exp;
+    Out >> 2.71828182845904509080;
+
+    In  >> pi;
+    Out >> 3.14159265358979311600;
+
+    In  >> f_precision = exp;
+    Out >> exp;             :   exponential format current precision of float is 20 digits (after floating point)
+
+    In  >> exp
+    Out >> 2.718282e+00;
+
+    In  >> pi
+    Out >> 3.141593e+00;
+
+Input format of integer always defined in decimal format. User can enter values as in floating form format as in 
+exponential format.
+
+Examples:
+
+    In  >> f_precision = 10;
+    Out >> 10;                  :   current precision of float is 10 digits (after floating point)
+
+    In  >> 999.777777777777     :   floating point format
+    Out >> 999.7777777778;
+
+    In  >> -78.12222222222;     :   floating point format
+    Out >> -78.1222222222;
+
+    In  >> .12345678912345      :   floating point format
+    Out >> 0.1234567891;
+
+    In  >> .1                   :   floating point format
+    Out >> 0.1000000000;
+
+    In  >> 1.                   :   floating point format
+    Out >> 1.0000000000;
+
+    In  >> -1.0                 :   floating point format
+    Out >> -1.0000000000;
+
+    In  >> 999.1e-2         :   exponential format
+    Out >> 9.9910000000;
+
+    In  >> 999.1e2          :   exponential format
+    Out >> 99910.0000000000;
+
+    In  >> 999.1e-10        :   exponential format
+    Out >> 0.0000000999;
+
+    In  >> -999.11e-2       :   exponential format
+    Out >> -9.9911000000;
+    
+If user need to get current output current precision of float, he needs to use command:
+
+    f_precision[;]
+
+Examples:    
+    
+    In  >> f_precision;
+    Out >> 10;
+
+    In  >> f_precision=exp;
+    Out >> exp;
+
+    In  >> f_precision;
+    Out >> exp;    
+
+
+Strings:
+--------------------
+
+User should enter string value, using follow format:
+
+        "string_value" | 'string_value'.
+
+Max length of string - 1023 ASCII symbols with quotes(' or ")
+or 1021 ASCII symbols without quotes(' or ").
+
+String values don't use by calculations, but should be used  for formatting of outputs
+in file processing, using commands:
+
+Examples:
+    In  >> echo("config ------------------------------------------");
+    Out >> config ------------------------------------------;
+
+    In  >> "config ------------------------------------------";
+    Out >> config ------------------------------------------;
+    
+
+Default angle unit configuration:
+--------------------
+
+SM calculator supports some suite of trigonometrical functions:
+
+    sin     cos     tan
+    asin    acos    atan.
+
+Also SM calculator supports follow units for measuring of angles:
+
+    radians ('rad')
+    degrees('deg')
+    gradians('grad').
+
+SM Calculator contains current configuration of unit for measuring of angles. This parameter defines,
+which unit for measuring of angles will be used by trigonometric functions, i.e.
+if  current configuration of unit for measuring of angles is radians, user should use radians as parameters
+of trigonometric functions: sin(3.1415926536) or sin(pi), cos(1.5707963268) or cos(pi/2.0),
+if current configuration of unit for measuring of angles is degrees, user should use degrees as parameters 
+of  trigonometric functions: sin(180.0), cos(90),
+same issue with usage of gradians.
+
+Current configuration of unit for measuring of angles can be defined by follow command:
+
+    a_unit=<deg|rad|grad>[;]
+
+Also use can setup current configuration of unit for measuring of angles, just using follow commands:
+    
+    deg[;]
+    rad[;]
+    grad[;]
+
+Examples:
+
+    In  >> a_unit=rad;    : current unit for measuring of angles is radians
+    Out >> rad;
+
+    In  >> sin(pi);
+    Out >> 0.0000000000;
+
+    In  >> sin(pi/2);
+    Out >> 1.0000000000;
+
+    In  >> cos(pi/2);
+    Out >> 0.0000000000;
+
+    In  >> cos(pi/4);
+    Out >> 0.7071067812;
+
+    In  >> a_unit=deg;    : current unit for measuring of angles is degrees
+    Out >> deg;
+
+    In  >> sin(180)
+    Out >> 0.0000000000;
+
+    In  >> sin(180.0)
+    Out >> 0.0000000000;
+
+    In  >> sin(90.0)
+    Out >> 1.0000000000;
+
+    In  >> cos(90.0);
+    Out >> 0.0000000000;
+
+    In  >> cos(180/4);
+    Out >> 0.7071067812;
+
+    In  >> a_unit=grad;    : current unit for measuring of angles is gradians (200 grads == 180 degrees)
+    Out >> grad;
+
+    In  >> cos(200);
+    Out >> -1.0000000000;
+
+    In  >> sin(200);
+    Out >> -0.0000000000;
+
+    In  >> sin(200/2);
+    Out >> 1.0000000000;
+
+    In  >> sin(200/4);
+    Out >> 0.7071067812;
+
+    In  >> cos(200/4);
+    Out >> 0.7071067812;
+
+    In  >> rad;            : current unit for measuring of angles is radians
+    Out >> rad;
+
+    In  >> sin(pi);
+    Out >> 0.0000000000;
+
+    In  >> deg;            : current unit for measuring of angles is degrees
+    Out >> deg;
+
+    In  >> sin(180);
+    Out >> 0.0000000000;
+
+    In  >> grad;        : current unit for measuring of angles is gradians (200 grads == 180 degrees)
+    Out >> grad;
+
+    In  >> sin(200);
+    Out >> -0.0000000000;
+
+User can get current configuration of unit for measuring of angles using command:
+
+    a_unit[;]
+
+Examples:
+
+    In  >> rad;
+    Out >> rad;
+
+    In  >> a_unit;
+    Out >> rad;
+
+    In  >> deg;
+    Out >> deg;
+
+    In  >> a_unit;
+    Out >> deg;
+
+SM Calculator supports suite of functions, which provide converting of various unit for measuring of angles,
+whatever defined current configuration of unit for measuring:
+
+    grad2rad        rad2grad
+    rad2deg         deg2rad
+    grad2deg        deg2grad.
+
+
+Current configuration:
+--------------------
+
+User always can get current configuration, using command:
+
+    config;
+    
+Examples:
+
+    In  >> config;
+    Out >> Current Configuration :
+    ---------------------------------------------
+    Current double precision          : EXPONENTIAL;
+    Current output format of integers : dec;
+    Unit of measurement of an angle   : rad;
+
+    In  >> f_precision=10
+    Out >> 10;
+
+    In  >> config;
+    Out >> Current Configuration :
+    ---------------------------------------------
+    Current double precision          : 10;
+    Current output format of integers : dec;
+    Unit of measurement of an angle   : rad;    
+
+
+Constants:
+--------------------
+
+SM Calculator supports follow float (64 bits) constants:
+
+    pi
+    exp
+    gamma
+    phi
+    
+Constants return float values. They can be used in expressions as arguments of functions and operators.
+
+Examples:
+
+    In  >> pi;
+    Out >> 3.1415926536;
+
+    In  >> exp;
+    Out >> 2.7182818285;
+
+    In  >> gamma;
+    Out >> 0.5772156649;
+
+    In  >> phi;
+    Out >> 1.6180339887;
+
+    In  >> sin(pi);
+    Out >> 0.0000000000;
+
+    In  >> cos(pi);
+    Out >> -1.0000000000;
+
+    In  >> tan(pi);
+    Out >> -0.0000000000;
+
+    In  >> sin(pi/2.0);
+    Out >> 1.0000000000;
+
+    In  >> pow(exp,10);
+    Out >> 22026.4657948067;
+
+    In  >>  pow_^2(sin(pi/4.0));
+    Out >> 0.5000000000;
+
+    In  >>  pow_^2(sin(pi/5.0));
+    Out >> 0.3454915028;
+
+    In  >>  pow_^2(sin(pi/5.0)) + pow_^2(sin(pi/5.0));
+    Out >> 0.6909830056;
+
+    In  >>  pow_^2(sin(pi/5.0)) + pow_^2(cos(pi/5.0));
+    Out >> 1.0000000000;
+
+
+Examples:
+--------------------
+
+User can find here suite of files which contain suite examples of usage of operators, functions, commands,
+constants, various types of data:
+
+    http://smansoft.com/sm_calculator/0.0.1.1/examples/
+    
+examples of expressions:
+
+    sm_calc_test.in.01.txt
+    sm_calc_test.in.02.txt
+    sm_calc_test.in.03.txt
+    sm_calc_test.in.04.txt
+    sm_calc_test.in.05.txt
+    sm_calc_test.in.06.txt
+
+results of execution of expressions:
+
+    sm_calc_test.out.01.txt
+    sm_calc_test.out.02.txt
+    sm_calc_test.out.03.txt
+    sm_calc_test.out.04.txt
+    sm_calc_test.out.05.txt
+    sm_calc_test.out.06.txt
+
+
+--------------------
+Constants Reference:
+    --------------------
+    
+--------------------
+    'pi' :
+    --------------------
+Constant returns float value 3.14159265358979323846.
+
+--------------------
+    'exp' :
+    --------------------
+Constant returns float value 2.71828182845904523536.
+
+--------------------
+    'gamma' :
+    --------------------
+Constant returns float value 0.57721566490153286060.
+
+--------------------
+    'phi' :
+    --------------------
+Constant returns float value 1.61803398874989484820.    
+
+Examples:
+
+    In  >> f_precision=15;
+    Out >> 15;
+
+    In  >> pi;
+    Out >> 3.141592653589793;
+
+    In  >> exp;
+    Out >> 2.718281828459045;
+
+    In  >> gamma;
+    Out >> 0.577215664901533;
+
+    In  >> phi;
+    Out >> 1.618033988749895;
+
+    In  >> (pi+exp+gamma)*phi;
+    Out >> 10.415430646412755;
+
+    In  >> sin(pi);
+    Out >> 0.000000000000000;
+
+    In  >> cos(pi);
+    Out >> -1.000000000000000;
+
+
+--------------------
+Operators Reference:
+    --------------------
+
+--------------------
+    '+' :
+    --------------------
+Operator, that returns sum of arguments:
+  
+    arg1 + arg2[;]
+
+, where arg1 and arg2 - integer or float value.
+
+Examples:
+
+    In  >> 1+1;
+    Out >> 2;
+
+    In  >> 2 + 2;
+    Out >> 4;
+
+    In  >> 0.2 + 2;
+    Out >> 2.2000000000;
+
+    In  >> 2 + .3;
+    Out >> 2.3000000000;
+
+    In  >> pi + exp;
+    Out >> 5.8598744820;
+
+--------------------
+    '-' :
+    --------------------
+Operator, that returns subtraction of arguments:
+
+    arg1 - arg2[;]
+
+, where arg1 and arg2 - integer or float value.
+
+Examples:
+
+    In  >> pi - exp;
+    Out >> 0.4233108251;
+
+    In  >> 2-2;
+    Out >> 0;
+
+    In  >> 567.1 - 192.05;
+    Out >> 375.0500000000;
+
+    In  >> 2 - 192.05;
+    Out >> -190.0500000000;
+
+    In  >> 22.3 - 1;
+    Out >> 21.3000000000;
+
+--------------------
+    '*' :
+    --------------------
+Operator, that returns multiplication of arguments:
+
+    arg1 * arg2[;]
+
+, where arg1 and arg2 - integer or float value.
+
+Examples:
+
+    In  >> pi*exp;
+    Out >> 8.5397342227;
+
+    In  >> 12*.1;
+    Out >> 1.2000000000;
+
+    In  >> 12.1*2;
+    Out >> 24.2000000000;
+
+    In  >> 2*2;
+    Out >> 4;
+
+--------------------
+    '/' :
+    --------------------
+Operator, that returns division of arguments:
+
+    arg1 / arg2[;]
+
+, where arg1 and arg2 - integer or float value. arg2 should be != 0.
+
+Examples:
+
+    In  >> pi/exp;
+    Out >> 1.1557273498;
+
+    In  >> 12/.1;
+    Out >> 120.0000000000;
+
+    In  >> .1/2;
+    Out >> 0.0500000000;
+
+    In  >> 4/2;
+    Out >> 2.0000000000;
+
+--------------------
+   '=' :
+    --------------------
+Assign values by commands f_precision, a_unit, i_format:
+
+    f_precision=<[0,20]|exp>[;]
+    a_unit=<rad|deg|grad>[;]    
+    i_format=<dec|hex|oct|bin>[;]
+
+Examples:
+
+    In  >> f_precision=10;
+    Out >> 10;
+
+    In  >> a_unit=rad;
+    Out >> rad;
+
+    In  >> i_format=dec;
+    Out >> dec;
+
+--------------------
+    '!' :
+    --------------------
+Operator, that returns factorial of argument:
+
+    arg!
+
+, where arg - integer value. arg should be >= 0.
+
+Examples:
+
+    In  >> 3!
+    Out >> 6;
+
+    In  >> 5!
+    Out >> 120;
+
+    In  >> 11+(5!-2!);
+    Out >> 129;
+
+    In  >> 10*(5!-2!);
+    Out >> 1180;
+    
+--------------------    
+    <a< :
+    --------------------
+Operator, that returns left arithmetic shift of argument:
+
+    arg <a< n[;]
+    
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+
+Examples:
+
+    In  >> bin;
+    Out >> bin;
+
+    In  >> 0xffff;
+    Out >> b1111111111111111;
+
+    In  >> 0xffff <a< 1;
+    Out >> b00011111111111111110;
+
+    In  >> 0xffff <a< 2;
+    Out >> b00111111111111111100;
+
+    In  >> 0xffff <a< 4;
+    Out >> b11111111111111110000;
+
+--------------------
+    >a> :
+    --------------------
+Operator, that returns right arithmetic shift of argument:
+
+    arg >a> n[;]
+    
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+This operator ('>a>') saves sign of negative value during shift.
+
+Examples:
+
+    In  >> 0xffff;
+    Out >> b1111111111111111;
+
+    In  >> 0xffff >a> 1;
+    Out >> b0111111111111111;
+
+    In  >> 0xffff >a> 2;
+    Out >> b0011111111111111;
+
+    In  >> 0xffff >a> 4;
+    Out >> b111111111111;
+
+    In  >> -0xffff;
+    Out >> b1111111111111111111111111111111111111111111111110000000000000001;
+    
+    In  >> -0xffff >a> 1;
+    Out >> b1111111111111111111111111111111111111111111111111000000000000000;    
+
+    In  >> -0xffff >a> 2;
+    Out >> b1111111111111111111111111111111111111111111111111100000000000000;
+    
+    In  >> -0xffff >a> 4;
+    Out >> b1111111111111111111111111111111111111111111111111111000000000000;
+
+--------------------
+    <l< :
+    --------------------
+Operator, that returns left logical shift of argument:
+
+    arg <l< n[;]
+
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+
+Examples:
+
+    In  >> 0xffff;
+    Out >> b1111111111111111;
+
+    In  >> 0xffff <l< 1;
+    Out >> b00011111111111111110;
+
+    In  >> 0xffff <a< 2;
+    Out >> b00111111111111111100;
+
+    In  >> 0xffff <l< 2;
+    Out >> b00111111111111111100;
+
+    In  >> 0xffff <l< 4;
+    Out >> b11111111111111110000;
+
+--------------------
+    >l> :
+    --------------------
+
+Operator, that returns right logical shift of argument:
+
+    arg >l> n[;]
+
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+This operator ('>l>') doesn't save sign of negative value during shift.
+
+Examples:
+
+    In  >> 0xffff >l> 1;
+    Out >> b0111111111111111;
+
+    In  >> 0xffff >l> 2;
+    Out >> b0011111111111111;
+
+    In  >> 0xffff >l> 4;
+    Out >> b111111111111;
+
+    In  >> -0xffff;
+    Out >> b1111111111111111111111111111111111111111111111110000000000000001;
+    
+    In  >> -0xffff >l> 1;
+    Out >> b1111111111111111111111111111111111111111111111111000000000000000;    
+
+    In  >> -0xffff >l> 2;
+    Out >> b1111111111111111111111111111111111111111111111111100000000000000;
+
+    In  >> -0xffff >l> 4;
+    Out >> b1111111111111111111111111111111111111111111111111111100000000000;
+
+--------------------
+    <c< :
+    --------------------
+Operator, that returns left circular shift of argument:
+
+    arg <c< n[;]
+
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+
+Examples:
+
+    In  >> bin
+    Out >> bin;
+
+    In  >> b1001001;
+    Out >> b01001001;
+
+    In  >> b1001001 <c< 1;
+    Out >> b10010010;
+
+    In  >> b1001001 <c< 2;
+    Out >> b000100100100;
+
+    In  >> b1001001 <c< 4;
+    Out >> b010010010000;
+
+    In  >> 0xffff000000000000 <c< 1;
+    Out >> b1111111111111110000000000000000000000000000000000000000000000001;
+
+    In  >> 0xffff000000000000 <c< 2;
+    Out >> b1111111111111100000000000000000000000000000000000000000000000011;
+
+    In  >> 0xffff000000000000 <c< 3;
+    Out >> b1111111111111000000000000000000000000000000000000000000000000111;
+
+    In  >> 0xffff000000000000 <c< 4;
+    Out >> b1111111111110000000000000000000000000000000000000000000000001111;
+    
+--------------------
+    >c> :
+    --------------------
+Operator, that returns right circular shift of argument:
+
+    arg >c> n[;]
+
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+
+Examples:
+
+    In  >> b1001001 >c> 1;
+    Out >> b1000000000000000000000000000000000000000000000000000000000100100;
+
+    In  >> b1001001 >c> 2;
+    Out >> b0100000000000000000000000000000000000000000000000000000000010010;
+
+    In  >> b1001001 >c> 4;
+    Out >> b1001000000000000000000000000000000000000000000000000000000000100;
+
+    In  >>
+    In  >> 0x0fff00000000ffff >c> 1;
+    Out >> b1000011111111111100000000000000000000000000000000111111111111111;
+
+    In  >> 0x0fff00000000ffff >c> 2;
+    Out >> b1100001111111111110000000000000000000000000000000011111111111111;
+
+    In  >> 0x0fff00000000ffff >c> 4;
+    Out >> b1111000011111111111100000000000000000000000000000000111111111111;
+
+
+--------------------
+Functions Reference:
+    --------------------
+
+--------------------
+    grad2rad :
+    --------------------
+Function, that returns converted value gradians -> radians
+(from gradians unit for measuring of angles to radians).
+
+    grad2rad(arg)[;]
+
+, where arg - integer or float argument.
+
+--------------------
+    rad2grad :
+    --------------------
+Function, that returns converted value radians -> gradians
+(from radians unit for measuring of angles to gradians).
+
+    rad2grad(arg)[;]
+
+, where arg - integer or float argument.
+
+--------------------
+    rad2deg :
+    --------------------
+Function, that returns converted value radians -> degrees
+(from radians unit for measuring of angles to degrees).
+
+    rad2deg(arg)[;]
+
+, where arg - integer or float argument.
+
+--------------------
+    deg2rad :
+    --------------------
+Function, that returns converted value degrees -> radians
+(from degrees unit for measuring of angles to radians).
+
+    deg2rad(arg)[;]
+    
+, where arg - integer or float argument.
+
+--------------------
+    grad2deg :
+    --------------------
+Function, that returns converted value gradians -> degrees
+(from gradians unit for measuring of angles to degrees).
+
+    grad2deg(arg)[;]
+
+, where arg - integer or float argument.
+
+--------------------
+    deg2grad :
+    --------------------
+Function, that returns converted value degrees -> gradians
+(from degrees unit for measuring of angles to gradians).
+
+    deg2grad(arg)[;]
+
+, where arg - integer or float argument.
+
+Examples:
+
+    In  >> rad2deg(pi);
+    Out >> 180.0000000000;
+
+    In  >> rad2deg(pi/2);
+    Out >> 90.0000000000;
+
+    In  >> rad2deg(pi/4);
+    Out >> 45.0000000000;
+
+    In  >> deg2rad(180);
+    Out >> 3.1415926536;
+
+    In  >> deg2rad(90.);
+    Out >> 1.5707963268;
+
+    In  >> deg2grad(180);
+    Out >> 200.0000000000;
+
+    In  >> deg2grad(90);
+    Out >> 100.0000000000;
+
+    In  >> grad2deg(100);
+    Out >> 90.0000000000;
+
+    In  >> grad2deg(200);
+    Out >> 180.0000000000;
+
+    In  >> grad2rad(200.);
+    Out >> 3.1415926536;
+
+    In  >>
+    In  >> grad2rad(100.);
+    Out >> 1.5707963268;
+
+    In  >>
+    In  >> rad2grad(pi);
+    Out >> 200.0000000000;
+
+    In  >> rad2grad(pi/2);
+    Out >> 100.0000000000;
+
+--------------------
+    dec2oct :
+    --------------------
+Function, that returns converted value decimal ('dec') format -> octal ('oct') format.  
+
+    dec2oct(arg)[;]
+
+, where arg - integer argument.
+
+--------------------
+    dec2hex :
+    --------------------
+Function, that returns converted value decimal ('dec') format -> hexadecimal ('hex') format.  
+
+    dec2hex(arg)[;]
+
+, where arg - integer argument.
+
+--------------------
+    dec2bin :
+    --------------------
+Function, that returns converted value decimal ('dec') format -> binary ('bin') format.  
+
+    dec2bin(arg)[;]
+
+, where arg - integer argument.
+
+--------------------
+    oct2dec :
+    --------------------
+Function, that returns converted value octal ('oct') format -> decimal ('dec') format.  
+
+    oct2dec(arg)[;]
+
+, where arg - integer argument.
+
+--------------------
+    hex2dec :
+    --------------------
+Function, that returns converted value hexadecimal ('hex') format -> decimal ('dec') format.  
+
+    hex2dec(arg)[;]
+
+, where arg - integer argument.
+
+--------------------
+    bin2dec :
+    --------------------
+Function, that returns converted value hexadecimal ('bin') format -> decimal ('dec') format.  
+
+    bin2dec(arg)[;]
+
+, where arg - integer argument.
+
+Examples:
+
+    In  >> dec2oct(1024);
+    Out >> 02000;
+
+    In  >> oct2dec(02000);
+    Out >> 1024;
+    
+    In  >> dec2oct(-1024);
+    Out >> 01777777777777777776000;
+
+    In  >> oct2dec(01777777777777777776000);
+    Out >> -1024;    
+    
+    In  >> dec2hex(1024);
+    Out >> 0x400;
+
+    In  >> hex2dec(0x400);
+    Out >> 1024;
+
+    In  >> dec2hex(-1024);
+    Out >> 0xfffffffffffffc00;
+
+    In  >> hex2dec(0xfffffffffffffc00);
+    Out >> -1024;
+
+    In  >> dec2bin(1024);
+    Out >> b010000000000;
+
+    In  >> bin2dec(b010000000000);
+    Out >> 1024;
+
+    In  >> dec2bin(-1024);
+    Out >> b1111111111111111111111111111111111111111111111111111110000000000;
+
+    In  >> bin2dec(b1111111111111111111111111111111111111111111111111111110000000000);
+    Out >> -1024;
+
+--------------------
+    sin :
+    --------------------
+Trigonometric function, that calculates and returns the sine of argument.  
+
+    sin(arg)[;]
+
+, where arg - integer or float argument. Argument should be defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    cos :
+    --------------------
+Trigonometric function, that calculates and returns the cosine of argument.  
+
+    cos(arg)[;]
+
+, where arg - integer or float argument. Argument should be defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    tan :
+    --------------------
+Trigonometric function, that calculates and returns the tangent of argument.  
+
+    tan(arg)[;]
+
+, where arg - integer or float argument. Argument should be defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    asin :
+    --------------------
+Trigonometric function, that calculates and returns the arcsine of argument.  
+
+    asin(arg)[;]
+
+, where arg - integer or float argument. Result of this function is defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    acos :
+    --------------------
+Trigonometric function, that calculates and returns the arccosine of argument.  
+
+    acos(arg)[;]
+
+, where arg - integer or float argument. Result of this function is defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    atan :
+    --------------------
+Trigonometric function, that calculates and returns the arctangent of argument.  
+
+    atan(arg)[;]
+    
+, where arg - integer or float argument. Result of this function is defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+Examples:
+
+    In  >> rad;
+    Out >> rad;
+
+    In  >> sin(pi); cos(pi); tan(pi);
+    Out >> 0.0000000000;-1.0000000000;-0.0000000000;
+
+    In  >> deg;
+    Out >> deg;
+
+    In  >> sin(180); cos(180); tan(180);
+    Out >> 0.0000000000;-1.0000000000;-0.0000000000;
+
+    In  >> grad;
+    Out >> grad;
+
+    In  >> sin(200); cos(200); tan(200);
+    Out >> -0.0000000000;-1.0000000000;0.0000000000;
+
+    In  >> rad;
+    Out >> rad;
+
+    In  >> asin(0.5);
+    Out >> 0.5235987756;
+
+    In  >> acos(0.5);
+    Out >> 1.0471975512;
+
+    In  >> atan(0.5);
+    Out >> 0.4636476090;
+
+    In  >> deg;
+    Out >> deg;
+
+    In  >> asin(0.5);
+    Out >> 30.0000000000;
+
+    In  >> acos(0.5);
+    Out >> 60.0000000000;
+
+    In  >> atan(0.5);
+    Out >> 26.5650511771;
+
+    In  >> atan(0.5);
+    Out >> 26.5650511771;
+
+    In  >> grad;
+    Out >> grad;
+
+    In  >> asin(0.5);
+    Out >> 33.3333333333;
+
+    In  >> acos(0.5);
+    Out >> 66.6666666667;
+
+    In  >> atan(0.5);
+    Out >> 29.5167235301;
+
+--------------------
+    ln :
+    --------------------
+Function, that calculates and returns the natural logarithm (base of the exp) of argument.  
+
+    ln(arg)[;]
+
+, where arg - integer or float argument. arg should be > 0.
+
+--------------------
+    lg :
+    --------------------
+Function, that calculates and returns the common logarithm (base of the 10) of argument.  
+
+    lg(arg)[;]
+    
+, where arg - integer or float argument. arg should be > 0.
+
+--------------------
+    log :
+    --------------------
+Function, that calculates and returns the logarithm (base, defied as parameter) of argument.  
+
+    log(base, arg)[;]
+
+, where base and arg - integer or float arguments. base should be > 0, arg should be > 0.
+
+Examples:
+
+    In  >> ln(exp);
+    Out >> 1.0000000000;
+
+    In  >> ln(1);
+    Out >> 0.0000000000;
+    
+    In  >> ln(1.);
+    Out >> 0.0000000000;    
+
+    In  >> lg(10);
+    Out >> 1.0000000000;
+
+    In  >> lg(1);
+    Out >> 0.0000000000;
+
+    In  >> log(2.0, 2);
+    Out >> 1.0000000000;
+
+    In  >> log(2.0, 4);
+    Out >> 2.0000000000;
+
+    In  >> log(0.1, 4);
+    Out >> -0.6020599913;
+ 
+--------------------
+    inv :
+    --------------------
+Function, that calculates and returns inverse value (1/x) of argument.
+
+    inv(arg)[;]
+
+, where arg - integer or float argument. arg should be != 0.
+
+Examples:
+
+    In  >> inv(-1)
+    Out >> -1.0000000000;
+
+    In  >> inv(-2)
+    Out >> -0.5000000000;
+
+    In  >> inv(2.5)
+    Out >> 0.4000000000;
+
+    In  >> inv(0xfffff)
+    Out >> 0.0000009537;
+
+    In  >> inv(.001);
+    Out >> 1000.0000000000;
+
+--------------------
+    sqrt :
+    --------------------
+Function, that calculates and returns inverse square root of argument.  
+
+    sqrt(arg)[;]
+
+, where arg - integer or float argument. arg should be >= 0.
+
+Examples:
+
+    In  >> sqrt(4);
+    Out >> 2.0000000000;
+
+    In  >> sqrt(4.0);
+    Out >> 2.0000000000;
+
+    In  >> sqrt(16.0);
+    Out >> 4.0000000000;
+
+    In  >> sqrt(144);
+    Out >> 12.0000000000;
+
+--------------------
+    pow :
+    --------------------
+Function, that calculates and returns arg1 raised to the power of arg2.
+
+    pow(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer or float arguments.
+
+--------------------
+    pow_exp^ :
+    --------------------
+Function, that calculates and returns constant 'exp' raised to the power of arg.
+
+    pow_exp^(arg)[;]
+
+, where arg - integer or float argument.
+
+--------------------
+    pow_10^ :
+    --------------------
+Function, that calculates and returns '10' raised to the power of arg.
+
+    pow_10^(arg)[;]
+
+, where arg - integer or float argument. arg should be >= 0.
+
+--------------------
+    pow_2^ :
+    --------------------
+Function, that calculates and returns '2' raised to the power of arg.
+
+    pow_2^(arg)[;]
+
+, where arg - integer or float argument. arg should be >= 0.
+
+--------------------
+    pow_^2 :
+    --------------------
+Function, that calculates and returns arg raised to the power of '2'.
+
+    pow_^2(arg)[;]
+
+, where arg - integer or float argument.    
+
+Examples:
+
+    In  >> dec;
+    Out >> dec;
+
+    In  >> pow(10.,2.0);
+    Out >> 100.000000000000000;
+
+    In  >> pow(100, 4);
+    Out >> 100000000.000000000000000;
+
+    In  >> pow(100, 0.5);
+    Out >> 10.000000000000000;
+
+    In  >> pow(100, -0.5);
+    Out >> 0.100000000000000;
+
+    In  >> pow(exp, 2);
+    Out >> 7.389056098930650;
+
+    In  >> pow_exp^(2.);
+    Out >> 7.389056098930650;
+
+    In  >> pow_10^(4);
+    Out >> 10000;
+
+    In  >> pow_2^(10);
+    Out >> 1024;
+
+    In  >> bin;
+    Out >> bin;
+
+    In  >> pow_2^(10);
+    Out >> b010000000000;
+
+    In  >> 0xffff;
+    Out >> b1111111111111111;
+
+    In  >> pow_^2(0xffff);
+    Out >> b11111111111111100000000000000001;
+
+    In  >> 0xff;
+    Out >> b11111111;
+
+    In  >> pow_^2(0xff);
+    Out >> b1111111000000001;
+    
+--------------------
+    abs :
+    --------------------
+Function, that calculates and returns absolute value of argument.
+
+    abs(arg)[;]
+
+, where arg - integer or float argument.  
+
+Examples:
+
+    In  >> abs(10.);
+    Out >> 10.000000000000000;
+
+    In  >> abs(-10.);
+    Out >> 10.000000000000000;
+
+    In  >> abs(100);
+    Out >> 100;
+
+    In  >> abs(-100);
+    Out >> 100;
+
+--------------------
+    mod :
+    --------------------
+Function, that calculates and returns remainder value of division arg1 / arg2 (often marked as arg1 % arg2).
+
+    mod(arg1, arg2)[;]
+
+, where arg1, arg2 - integer arguments. arg2 should be != 0.
+
+--------------------
+    mod2 :
+    --------------------
+Function, that calculates and returns remainder value of division arg / 2 (often marked as arg % 2).
+
+    mod2(arg)[;]
+    
+, where arg - integer argument.
+
+Examples:
+
+    In  >> mod(5,2);
+    Out >> 1;
+
+    In  >> mod(5,11);
+    Out >> 5;
+
+    In  >> mod(111,11);
+    Out >> 1;
+
+    In  >> mod(111,2);
+    Out >> 1;
+
+    In  >> mod2(111);
+    Out >> 1;
+
+    In  >> mod(17,5);
+    Out >> 2;
+
+    In  >> mod2(17);
+    Out >> 1;
+
+    In  >> mod(17,-5);
+    Out >> 2;
+
+    In  >> mod(-17,-5);
+    Out >> 2;
+
+    In  >> mod(-17,5);
+    Out >> 2;
+
+    In  >> mod(-17,5);
+    Out >> 2;
+
+--------------------
+    and :
+    --------------------
+Function (bitwise function), that calculates bitwise multiplication of arguments ( arg1 && arg2 ).
+
+    and(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+Examples:
+
+    In  >> hex;
+    Out >> hex;
+
+    In  >> and(0x0,0x0);
+    Out >> 0x0;
+
+    In  >> and(0x0,0xffff);
+    Out >> 0x0;
+
+    In  >> and(0xf0f0,0xffff);
+    Out >> 0xf0f0;
+
+    In  >> and(0xf0f0,0x1111);
+    Out >> 0x1010;
+
+    In  >> and(-0xf0f0,0x1111);
+    Out >> 0x110;
+    
+    In  >> -0xf0f0;
+    Out >> 0xffffffffffff0f10;
+
+    In  >> -0x1111;
+    Out >> 0xffffffffffffeeef;
+
+    In  >> and(-0xf0f0,-0x1111);
+    Out >> 0xffffffffffff0e00;
+
+    In  >> and(0xffffffffffff0f10,0xffffffffffffeeef);
+    Out >> 0xffffffffffff0e00;
+
+--------------------
+    or :
+    --------------------
+Function (bitwise function), that calculates bitwise addition of arguments ( arg1 || arg2 ).
+
+    or(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+Examples:
+
+    In  >> hex;
+    Out >> hex;
+    
+    In  >> or(0x0,0x0);
+    Out >> 0x0;
+
+    In  >> or(0x0,0xffff);
+    Out >> 0xffff;
+
+    In  >> or(0xf0f0,0xffff);
+    Out >> 0xffff;
+
+    In  >> or(0xf0f0,0x1111);
+    Out >> 0xf1f1;
+    
+    In  >> -0xf0f0;
+    Out >> 0xffffffffffff0f10;
+
+    In  >> -0x1111;
+    Out >> 0xffffffffffffeeef;
+
+    In  >> or(-0xf0f0,-0x1111);
+    Out >> 0xffffffffffffefff;
+
+    In  >> or(0xffffffffffff0f10,0xffffffffffffeeef);
+    Out >> 0xffffffffffffefff;
+
+--------------------
+    not :
+    --------------------
+Function (bitwise function), that calculates bitwise negation of argument ( !arg ).
+
+    not(arg)[;]
+
+, where arg - integer argument.
+
+Examples:
+
+    In  >> hex;
+    Out >> hex;
+
+    In  >> not(0x0);
+    Out >> 0xffffffffffffffff;
+
+    In  >> not(0xffff);
+    Out >> 0xffffffffffff0000;
+    
+    In  >> -0xffff;
+    Out >> 0xffffffffffff0001;
+
+    In  >> not(-0xffff);
+    Out >> 0xfffe;
+
+    In  >> not(0xffffffffffff0001);
+    Out >> 0xfffe;
+
+--------------------
+    nand :
+    --------------------
+Function (bitwise function), that calculates bitwise negation of bitwise multiplication of arguments ( !(arg1 && arg2) ).
+
+    nand(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+Examples:
+
+    In  >> hex;
+    Out >> hex;
+
+    In  >> nand(0x0,0x0);
+    Out >> 0xffffffffffffffff;
+
+    In  >> nand(0x0,0xffff)
+    Out >> 0xffffffffffffffff;
+
+    In  >> nand(0xf0f0,0xffff);
+    Out >> 0xffffffffffff0f0f;
+
+    In  >> nand(0xf0f0,0x1111);
+    Out >> 0xffffffffffffefef;
+
+    In  >> nand(-0xf0f0,0x1111);
+    Out >> 0xfffffffffffffeef;
+    
+    In  >> -0xf0f0;
+    Out >> 0xffffffffffff0f10;
+
+    In  >> -0x1111;
+    Out >> 0xffffffffffffeeef;    
+
+    In  >> nand(-0xf0f0,-0x1111);
+    Out >> 0xf1ff;
+
+    In  >> nand(0xffffffffffff0f10,0xffffffffffffeeef);
+    Out >> 0xf1ff;
+
+--------------------
+    nor :
+    --------------------
+Function (bitwise function), that calculates bitwise negation of bitwise addition of arguments ( !(arg1 || arg2) ).
+
+    nor(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+Examples:
+
+    In  >> nor(0x0,0x0);
+    Out >> 0xffffffffffffffff;
+
+    In  >> nor(0x0,0xffff);
+    Out >> 0xffffffffffff0000;
+
+    In  >> nor(0xf0f0,0xffff);
+    Out >> 0xffffffffffff0000;
+
+    In  >> nor(0xf0f0,0x1111);
+    Out >> 0xffffffffffff0e0e;
+    
+    In  >> -0xf0f0;
+    Out >> 0xffffffffffff0f10;
+
+    In  >> -0x1111;
+    Out >> 0xffffffffffffeeef;
+
+    In  >> nor(-0xf0f0,-0x1111);
+    Out >> 0x1000;
+
+    In  >> nor(0xffffffffffff0f10,0xffffffffffffeeef);
+    Out >> 0x1000;
+
+--------------------
+    xor :
+    --------------------
+Function (bitwise function), that calculates bitwise 'exclusive or' or 'exclusive disjunction' of arguments ( arg1 ^ arg2) ).
+
+    xor(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+Examples:
+
+    In  >> xor(0x0,0x0);
+    Out >> 0x0;
+
+    In  >> xor(0x0,0xffff);
+    Out >> 0xffff;
+
+    In  >> xor(0xf0f0,0xffff);
+    Out >> 0xf0f;
+
+    In  >> xor(0xf0f0,0x1111);
+    Out >> 0xe1e1;
+    
+    In  >> -0xf0f0;
+    Out >> 0xffffffffffff0f10;
+
+    In  >> -0x1111;
+    Out >> 0xffffffffffffeeef;    
+
+    In  >> xor(-0xf0f0,-0x1111);
+    Out >> 0xe1ff;
+
+    In  >> xor(0xffffffffffff0f10,0xffffffffffffeeef);
+    Out >> 0xe1ff;
+ 
+--------------------
+    echo :
+    --------------------
+Function prints argument in current output file device.
+
+    echo(arg)[;]
+    arg[;]
+
+, where arg - string argument ("string_value"|'string_value'). 
+User can just enter string and this string will be printed in current output file device.
+This function(ality) is useful during processing of files and allows to get formatted output.
+
+Examples:
+
+    In  >> echo('Some Message');
+    Out >> Some Message;
+
+    In  >>
+    In  >> echo("hex: ------------------------");
+    Out >> hex: ------------------------;
+
+    In  >>
+    In  >> "hex: ------------------------";
+    Out >> hex: ------------------------;
+
+
+--------------------
+Commands Reference:
+    --------------------
+
+--------------------
+    rand :
+    --------------------
+Command, that returns pseudo-random value [0,1].  
+
+    rand[;]
+   
+.
+
+Examples:
+   
+    In  >> rand;
+    Out >> 0.5270241401;
+
+    In  >> rand;
+    Out >> 0.3335978271;
+
+    In  >> rand;
+    Out >> 0.5471663564;
+
+    In  >> rand;
+    Out >> 0.1388897366;
+
+    In  >> rand;
+    Out >> 0.7693411054;
+
+    In  >> rand;
+    Out >> 0.8521378216;
+
+    In  >> rand;
+    Out >> 0.6088137455;
+
+--------------------
+    f_precision :
+    --------------------
+Command, that setup and returns current precision of float values.
+
+    f_precision = N[;]
+    f_precision[;]
+
+, where N = [0,20]|exp. Also N can be defined as 'exp'. In this case float value will be printed in exponential format.
+
+Examples:
+
+    In  >> f_precision=0;
+    Out >> 0;
+
+    In  >> pi;
+    Out >> 3;
+
+    In  >> f_precision=5;
+    Out >> 5;
+
+    In  >> pi;
+    Out >> 3.14159;
+
+    In  >> f_precision=10;
+    Out >> 10;
+
+    In  >> pi;
+    Out >> 3.1415926536;
+
+    In  >> f_precision=15;
+    Out >> 15;
+
+    In  >> pi;
+    Out >> 3.141592653589793;
+
+    In  >> f_precision=20;
+    Out >> 20;
+
+    In  >> pi;
+    Out >> 3.14159265358979311600;
+
+    In  >> f_precision;
+    Out >> 20;
+
+    In  >> f_precision=10;
+    Out >> 10;
+
+    In  >> f_precision;
+    Out >> 10;
+
+--------------------
+    i_format :
+    --------------------
+Command, that setup and returns current output format of integers.
+
+    i_format = <dec|hex|oct|bin>[;]
+    i_format[;]
+    
+After applying of this command output of all integers is provided in defined format
+(decimal 'dec', octal 'oct', hexadecimal 'hex', binary 'bin').
+
+--------------------
+    dec :
+    --------------------
+Command, that setup and returns current output format of integers as decimal ('dec').
+
+    dec[;]
+
+After applying of this command output of all integers is provided in decimal 'dec' format.
+The command 'dec[;]' does the same as 'i_format=dec[;]'.
+
+--------------------
+    oct :
+    --------------------
+Command, that setup and returns current output format of integers as octal ('oct').
+
+    oct[;]
+
+After applying of this command output of all integers is provided in octal 'oct' format.
+This command 'oct[;]' does the same as 'i_format=oct[;]'.
+
+--------------------
+    hex :
+    --------------------
+Command, that setup and returns current output format of integers as hexadecimal ('hex').
+
+    hex[;]
+
+After applying of this command output of all integers is provided in hexadecimal 'hex' format.
+The command 'hex[;]' does the same as 'i_format=hex[;]'.
+
+--------------------
+    bin :
+    --------------------
+Command, that setup and returns current output format of integers as binary ('bin').
+
+    bin[;]
+
+After applying of this command output of all integers is provided in binary 'bin' format.
+The command 'bin[;]' does the same as 'i_format=bin[;]'.
+
+Examples:
+
+    In  >> i_format=dec;
+    Out >> dec;
+
+    In  >> 100;
+    Out >> 100;
+
+    In  >> 1024*1024;
+    Out >> 1048576;
+
+    In  >> dec;
+    Out >> dec;
+
+    In  >> i_format;
+    Out >> dec;
+
+    In  >> 1024*1024;
+    Out >> 1048576;
+
+    In  >> i_format=oct;
+    Out >> oct;
+
+    In  >> 100;
+    Out >> 0144;
+
+    In  >> 1024*1024;
+    Out >> 04000000;
+
+    In  >> oct;
+    Out >> oct;
+
+    In  >> i_format;
+    Out >> oct;
+
+    In  >> 1024*1024;
+    Out >> 04000000;
+
+    In  >> i_format=hex;
+    Out >> hex;
+
+    In  >> 100;
+    Out >> 0x64;
+
+    In  >> 1024*1024;
+    Out >> 0x100000;
+
+    In  >> hex;
+    Out >> hex;
+
+    In  >> i_format;
+    Out >> hex;
+
+    In  >> 1024*1024;
+    Out >> 0x100000;
+
+    In  >> i_format=bin;
+    Out >> bin;
+
+    In  >> 100;
+    Out >> b01100100;
+
+    In  >> 1024*1024;
+    Out >> b000100000000000000000000;
+
+    In  >> bin;
+    Out >> bin;
+
+    In  >> i_format;
+    Out >> bin;
+
+    In  >> 1024*1024;
+    Out >> b000100000000000000000000;
+
+    In  >> dec;
+    Out >> dec;
+
+    In  >> 1024*1024;
+    Out >> 1048576;
+
+--------------------
+    a_unit :
+    --------------------
+Command, that setup and returns current configuration of unit for measuring of angles.
+ 
+     a_unit=<deg|rad|grad>[;]
+     a_unit[;]
+
+Current configuration of unit for measuring of angles defines, which unit of measuring should be used by arguments
+of trigonometric functions (sin, cos, tan) and which unit of measuring of execution result of 
+trigonometric functions (asin, acos, atan).
+
+--------------------
+    deg :
+    --------------------
+Command, that returns and setup current configuration of unit for measuring of angles as degrees ('deg').
+
+    deg[;]
+
+The command 'deg[;]' does the same as 'a_unit=deg[;]'.
+
+--------------------
+    rad :
+    --------------------
+Command, that returns and setup current configuration of unit for measuring of angles as radians ('deg').
+
+    rad[;]
+
+The command 'rad[;]' does the same as 'a_unit=rad[;]'.
+
+--------------------
+    grad :
+    --------------------
+Command, that returns and setup current configuration of unit for measuring of angles as gradians ('grad').
+
+    grad[;]
+    
+The command 'grad[;]' does the same as 'a_unit=grad[;]'.
+
+Examples:
+
+    In  >> a_unit=rad;
+    Out >> rad;
+
+    In  >> sin(pi/2);
+    Out >> 1.0000000000;
+
+    In  >> cos(pi/2);
+    Out >> 0.0000000000;
+
+    In  >> rad;
+    Out >> rad;
+
+    In  >> a_unit;
+    Out >> rad;
+
+    In  >> sin(pi/2.0);
+    Out >> 1.0000000000;
+
+    In  >> a_unit=deg;
+    Out >> deg;
+
+    In  >> sin(90.0);
+    Out >> 1.0000000000;
+
+    In  >> cos(90.0);
+    Out >> 0.0000000000;
+
+    In  >> a_unit;
+    Out >> deg;
+
+    In  >> deg;
+    Out >> deg;
+
+    In  >> a_unit;
+    Out >> deg;
+
+    In  >> cos(90.0);
+    Out >> 0.0000000000;
+
+    In  >> a_unit=grad;
+    Out >> grad;
+
+    In  >> sin(100.0);
+    Out >> 1.0000000000;
+
+    In  >> cos(100.0);
+    Out >> -0.0000000000;
+
+    In  >> a_unit;
+    Out >> grad;
+
+    In  >> grad;
+    Out >> grad;
+
+    In  >> sin(100.0);
+    Out >> 1.0000000000;
+
+    In  >> deg;
+    Out >> deg;
+
+    In  >> a_unit;
+    Out >> deg;
+
+    In  >> sin(90.0);
+    Out >> 1.0000000000;
+
+--------------------
+    config :
+    --------------------
+Command returns current configuration (current double precision, current output format of integers,
+unit of measurement of an angle):
+
+    config[;]
+
+Example:
+
+    In  >> config;
+    Out >> Current Configuration :
+    ---------------------------------------------
+    Current double precision          : 10;
+    Current output format of integers : dec;
+    Unit of measurement of an angle   : deg;
+
+    In  >> f_precision=15;
+    Out >> 15;
+
+    In  >> i_format=hex;
+    Out >> hex;
+
+    In  >> rad;
+    Out >> rad;
+
+    In  >> config;
+    Out >> Current Configuration :
+    ---------------------------------------------
+    Current double precision          : 15;
+    Current output format of integers : hex;
+    Unit of measurement of an angle   : rad;
+
+--------------------
+    help :
+    --------------------
+Command prints help, reading file: 
+"..\share\smansoft\doc\HELP" on Windows platform;
+"../share/smansoft/doc/HELP" on Linux platform.
+
+    help[;]
+
+As help is a multi-page document, user should press <Enter> key for printing all help from start till end.
+
+--------------------
+    quit :
+    --------------------
+Command provides closing/exit of SM Calculator application.
+
+    quit[;]
+
+The command 'quit[;]' does the same as 'exit[;]'.
+
+Example:
+
+    In  >> quit;
+    Out >> Exit. Good Bye!
+
+--------------------
+    exit :
+    --------------------
+Command provides closing/exit of SM Calculator application.
+
+    exit[;]
+
+The command 'exit[;]' does the same as 'quit[;]'.
+
+Example:
+
+    In  >> exit;
+    Out >> Exit. Good Bye!
+
+--------------------
+    Copyright (C) 2020 SManSoft <http://www.smansoft.com/>
+                        Sergey Manoylo <info@smansoft.com>
+

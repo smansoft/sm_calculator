@@ -1,0 +1,761 @@
+
+Help (short reference) file for the sm_calculator (SM Calculator) solution.
+----------------------------------------
+
+NAME
+        sm_calculator
+
+SYNOPSIS
+        SM Calculator
+
+Please, see README and INSTALL files for more info, examples, build instructions.
+
+
+Lexems of SM Calculator expressions:
+--------------------
+
+Available keywords:
+
+    f_precision     i_format        a_unit  
+    pi              exp             gamma           phi 
+    rad             deg             grad
+    grad2rad        rad2grad
+    rad2deg         deg2rad
+    grad2deg        deg2grad
+    dec             oct             hex             bin
+    dec2oct         dec2hex         dec2bin
+    oct2dec         hex2dec         bin2dec
+    sin             cos             tan
+    asin            acos            atan
+    ln              lg              log
+    inv             sqrt            rand
+    pow
+    pow_exp^        pow_10^         pow_2^          pow_^2
+    abs             mod             mod2
+    and             or              not
+    nand            nor             xor
+    config          help            echo
+    quit            exit
+
+Available operators:
+
+    +       -       *       /       =       !
+    <a<     >a>     <l<     >l>     <c<     >c>    
+
+Available delimiters:
+
+    ,       (       )       ;       \n (new line)
+    
+Commands (from available keywords):
+
+    f_precision     i_format        a_unit
+    dec             oct             hex             bin
+    rad             deg             grad
+    rand
+    config          help
+    quit            exit
+    
+Constants (from available keywords):
+
+    pi              exp             gamma           phi
+    
+Output functions:
+
+    echo
+    
+Converting functions (from available keywords):
+
+    grad2rad        rad2grad
+    rad2deg         deg2rad
+    grad2deg        deg2grad
+    dec2oct         dec2hex         dec2bin
+    oct2dec         hex2dec         bin2dec    
+    
+Trigonometric functions (from available keywords):
+
+    sin             cos             tan
+    asin            acos            atan
+    
+Logarithm functions (from available keywords):
+    
+    ln              lg              log
+    
+Exponentiation functions:
+
+    pow
+    pow_exp^        pow_10^         pow_2^          pow_^2
+
+Bit functions (from available keywords):
+
+    and             or              not
+    nand            nor             xor
+
+Bit operators (from available operators):
+
+    <a<             >a>
+    <l<             >l>
+    <c<             >c> 
+
+
+--------------------
+Constants Reference:
+    --------------------
+    
+--------------------
+    'pi' :
+    --------------------
+Constant returns float value 3.14159265358979323846.  
+
+--------------------
+    'exp' :
+    --------------------
+Constant returns float value 2.71828182845904523536.
+
+--------------------
+    'gamma' :
+    --------------------
+Constant returns float value 0.57721566490153286060.
+
+--------------------
+    'phi' :
+    --------------------
+Constant returns float value 1.61803398874989484820.    
+
+
+--------------------
+Operators Reference:
+    --------------------
+
+--------------------
+    '+' :
+    --------------------
+Operator, that returns sum of arguments:
+  
+    arg1 + arg2[;]
+
+, where arg1 and arg2 - integer or float value.
+
+--------------------
+    '-' :
+    --------------------
+Operator, that returns subtraction of arguments:
+
+    arg1 - arg2[;]
+
+, where arg1 and arg2 - integer or float value.
+
+--------------------
+    '*' :
+    --------------------
+Operator, that returns multiplication of arguments:
+
+    arg1 * arg2[;]
+
+, where arg1 and arg2 - integer or float value.
+
+--------------------
+    '/' :
+    --------------------
+Operator, that returns division of arguments:
+
+    arg1 / arg2[;]
+
+, where arg1 and arg2 - integer or float value. arg2 should be != 0.
+
+--------------------
+   '=' :
+    --------------------
+Assign values by commands f_precision, a_unit, i_format:
+
+    f_precision=<[0,20]|exp>[;]
+    a_unit=<rad|deg|grad>[;]    
+    i_format=<dec|hex|oct|bin>[;]
+
+--------------------
+    '!' :
+    --------------------
+Operator, that returns factorial of argument:
+
+    arg!
+    
+, where arg - integer value. arg should be >= 0;
+    
+--------------------    
+    <a< :
+    --------------------
+Operator, that returns left arithmetic shift of argument:
+
+    arg <a< n[;]
+    
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+
+--------------------
+    >a> :
+    --------------------
+Operator, that returns right arithmetic shift of argument:
+
+    arg >a> n[;]
+    
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+This operator ('>a>') saves sign of negative value during shift.
+
+--------------------
+    <l< :
+    --------------------
+Operator, that returns left logical shift of argument:
+
+    arg <l< n[;]
+    
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+
+--------------------
+    >l> :
+    --------------------
+    
+Operator, that returns right logical shift of argument:
+
+    arg >l> n[;]
+    
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+This operator ('>l>') doesn't save sign of negative value during shift.
+
+--------------------
+    <c< :
+    --------------------
+Operator, that returns left circular shift of argument:
+
+    arg <c< n[;]
+    
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+    
+--------------------
+    >c> :
+    --------------------
+Operator, that returns right circular shift of argument:
+
+    arg >c> n[;]
+    
+, where arg - integer argument, n - number bits of shift. n should be >= 0.
+
+
+--------------------
+Functions Reference:
+    --------------------
+
+--------------------
+    grad2rad :
+    --------------------
+Function, that returns converted value gradians -> radians
+(from gradians unit for measuring of angles to radians).
+
+    grad2rad(arg)[;]
+    
+, where arg - integer or float argument.
+
+--------------------
+    rad2grad :
+    --------------------
+Function, that returns converted value radians -> gradians
+(from radians unit for measuring of angles to gradians).
+
+    rad2grad(arg)[;]
+    
+, where arg - integer or float argument.
+
+--------------------
+    rad2deg :
+    --------------------
+Function, that returns converted value radians -> degrees
+(from radians unit for measuring of angles to degrees).
+
+    rad2deg(arg)[;]
+    
+, where arg - integer or float argument.
+
+--------------------
+    deg2rad :
+    --------------------
+Function, that returns converted value degrees -> radians
+(from degrees unit for measuring of angles to radians).
+
+    deg2rad(arg)[;]
+    
+, where arg - integer or float argument.
+
+--------------------
+    grad2deg :
+    --------------------
+Function, that returns converted value gradians -> degrees
+(from gradians unit for measuring of angles to degrees).
+
+    grad2deg(arg)[;]
+    
+, where arg - integer or float argument.
+
+--------------------
+    deg2grad :
+    --------------------
+Function, that returns converted value degrees -> gradians
+(from degrees unit for measuring of angles to gradians).
+
+    deg2grad(arg)[;]
+    
+, where arg - integer or float argument.
+
+--------------------
+    dec2oct :
+    --------------------
+Function, that returns converted value decimal ('dec') format -> octal ('oct') format.  
+
+    dec2oct(arg)[;]
+    
+, where arg - integer argument.
+
+--------------------
+    dec2hex :
+    --------------------
+Function, that returns converted value decimal ('dec') format -> hexadecimal ('hex') format.  
+
+    dec2hex(arg)[;]
+    
+, where arg - integer argument.
+
+--------------------
+    dec2bin :
+    --------------------
+Function, that returns converted value decimal ('dec') format -> binary ('bin') format.  
+
+    dec2bin(arg)[;]
+    
+, where arg - integer argument.
+
+--------------------
+    oct2dec :
+    --------------------
+Function, that returns converted value octal ('oct') format -> decimal ('dec') format.  
+
+    oct2dec(arg)[;]
+    
+, where arg - integer argument.
+
+--------------------
+    hex2dec :
+    --------------------
+Function, that returns converted value hexadecimal ('hex') format -> decimal ('dec') format.  
+
+    hex2dec(arg)[;]
+    
+, where arg - integer argument.
+
+--------------------
+    bin2dec :
+    --------------------
+Function, that returns converted value hexadecimal ('bin') format -> decimal ('dec') format.  
+
+    bin2dec(arg)[;]
+    
+, where arg - integer argument.
+
+--------------------
+    sin :
+    --------------------
+Trigonometric function, that calculates and returns the sine of argument.  
+
+    sin(arg)[;]
+    
+, where arg - integer or float argument. Argument should be defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    cos :
+    --------------------
+Trigonometric function, that calculates and returns the cosine of argument.  
+
+    cos(arg)[;]
+    
+, where arg - integer or float argument. Argument should be defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    tan :
+    --------------------
+Trigonometric function, that calculates and returns the tangent of argument.  
+
+    tan(arg)[;]
+    
+, where arg - integer or float argument. Argument should be defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    asin :
+    --------------------
+Trigonometric function, that calculates and returns the arcsine of argument.  
+
+    asin(arg)[;]
+    
+, where arg - integer or float argument. Result of this function is defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    acos :
+    --------------------
+Trigonometric function, that calculates and returns the arccosine of argument.  
+
+    acos(arg)[;]
+    
+, where arg - integer or float argument. Result of this function is defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    atan :
+    --------------------
+Trigonometric function, that calculates and returns the arctangent of argument.  
+
+    atan(arg)[;]
+    
+, where arg - integer or float argument. Result of this function is defined as value of
+current unit for measuring of angles (deg|rad|grad).
+
+--------------------
+    ln :
+    --------------------
+Function, that calculates and returns the natural logarithm (base of the exp) of argument.  
+
+    ln(arg)[;]
+    
+, where arg - integer or float argument. arg should be > 0.
+
+--------------------
+    lg :
+    --------------------
+Function, that calculates and returns the common logarithm (base of the 10) of argument.  
+
+    lg(arg)[;]
+    
+, where arg - integer or float argument. arg should be > 0.
+
+--------------------
+    log :
+    --------------------
+Function, that calculates and returns the logarithm (base, defied as parameter) of argument.  
+
+    log(base, arg)[;]
+    
+, where base and arg - integer or float arguments. base should be > 0, arg should be > 0.
+ 
+--------------------
+    inv :
+    --------------------
+Function, that calculates and returns inverse value (1/x) of argument.
+
+    inv(arg)[;]
+
+, where arg - integer or float argument. arg should be != 0.
+
+--------------------
+    sqrt :
+    --------------------
+Function, that calculates and returns inverse square root of argument.  
+
+    sqrt(arg)[;]
+    
+, where arg - integer or float argument. arg should be >= 0.
+
+--------------------
+    pow :
+    --------------------
+Function, that calculates and returns arg1 raised to the power of arg2.
+
+    pow(arg1, arg2)[;]
+    
+, where arg1 and arg2 - integer or float arguments.
+
+--------------------
+    pow_exp^ :
+    --------------------
+Function, that calculates and returns constant 'exp' raised to the power of arg.
+
+    pow_exp^(arg)[;]
+    
+, where arg - integer or float argument.
+
+--------------------
+    pow_10^ :
+    --------------------
+Function, that calculates and returns '10' raised to the power of arg.
+
+    pow_10^(arg)[;]
+    
+, where arg - integer or float argument. arg should be >= 0.
+
+--------------------
+    pow_2^ :
+    --------------------
+Function, that calculates and returns '2' raised to the power of arg.
+
+    pow_2^(arg)[;]
+    
+, where arg - integer or float argument. arg should be >= 0.
+
+--------------------
+    pow_^2 :
+    --------------------
+Function, that calculates and returns arg raised to the power of '2'.
+
+    pow_^2(arg)[;]
+    
+, where arg - integer or float argument.    
+    
+--------------------
+    abs :
+    --------------------
+Function, that calculates and returns absolute value of argument.
+
+    abs(arg)[;]
+    
+, where arg - integer or float argument.  
+
+--------------------
+    mod :
+    --------------------
+Function, that calculates and returns remainder value of division arg1 / arg2 (often marked as arg1 % arg2).
+
+    mod(arg1, arg2)[;]
+    
+, where arg1, arg2 - integer arguments. arg2 should be != 0.
+
+--------------------
+    mod2 :
+    --------------------
+Function, that calculates and returns remainder value of division arg / 2 (often marked as arg % 2).
+
+    mod2(arg)[;]
+    
+, where arg - integer argument.
+
+--------------------
+    and :
+    --------------------
+Function (bitwise function), that calculates bitwise multiplication of arguments ( arg1 && arg2 ).
+
+    and(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+--------------------
+    or :
+    --------------------
+Function (bitwise function), that calculates bitwise addition of arguments ( arg1 || arg2 ).
+
+    or(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+--------------------
+    not :
+    --------------------
+Function (bitwise function), that calculates bitwise negation of argument ( !arg ).
+
+    not(arg)[;]
+
+, where arg - integer argument.
+
+--------------------
+    nand :
+    --------------------
+Function (bitwise function), that calculates bitwise negation of bitwise multiplication of arguments ( !(arg1 && arg2) ).
+
+    nand(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+--------------------
+    nor :
+    --------------------
+Function (bitwise function), that calculates bitwise negation of bitwise addition of arguments ( !(arg1 || arg2) ).
+
+    nor(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+--------------------
+    xor :
+    --------------------
+Function (bitwise function), that calculates bitwise 'exclusive or' or 'exclusive disjunction' of arguments ( arg1 ^ arg2) ).
+
+    xor(arg1, arg2)[;]
+
+, where arg1 and arg2 - integer arguments.
+
+--------------------
+    echo :
+    --------------------
+Function prints argument in current output file device.
+
+    echo(arg)[;]
+    arg[;]
+   
+, where arg - string argument ("string_value"|'string_value'). 
+User can just enter string and this string will be printed in current output file device.
+This function(ality) is useful during processing of files and allows to get formatted output.
+
+
+--------------------
+Commands Reference:
+    --------------------
+
+--------------------
+    rand :
+    --------------------
+Command, that returns pseudo-random value [0,1].  
+
+    rand[;]
+
+.
+
+--------------------
+    f_precision :
+    --------------------
+Command, that setup and returns current precision of float values.
+
+    f_precision = N[;]
+    f_precision[;]
+    
+, where N = [0,20]|exp. Also N can be defined as 'exp'. In this case float value will be printed in exponential format.
+
+--------------------
+    i_format :
+    --------------------
+Command, that setup and returns current output format of integers.
+
+    i_format = <dec|hex|oct|bin>[;]
+    i_format[;]
+    
+After applying of this command output of all integers is provided in defined format
+(decimal 'dec', octal 'oct', hexadecimal 'hex', binary 'bin').
+
+--------------------
+    dec :
+    --------------------
+Command, that setup and returns current output format of integers as decimal ('dec').
+
+    dec[;]
+
+After applying of this command output of all integers is provided in decimal 'dec' format.
+The command 'dec[;]' does the same as 'i_format=dec[;]'.
+
+--------------------
+    oct :
+    --------------------
+Command, that setup and returns current output format of integers as octal ('oct').
+
+    oct[;]
+
+After applying of this command output of all integers is provided in octal 'oct' format.
+This command 'oct[;]' does the same as 'i_format=oct[;]'.
+
+--------------------
+    hex :
+    --------------------
+Command, that setup and returns current output format of integers as hexadecimal ('hex').
+
+    hex[;]
+
+After applying of this command output of all integers is provided in hexadecimal 'hex' format.
+The command 'hex[;]' does the same as 'i_format=hex[;]'.
+
+--------------------
+    bin :
+    --------------------
+Command, that setup and returns current output format of integers as binary ('bin').
+
+    bin[;]
+
+After applying of this command output of all integers is provided in binary 'bin' format.
+The command 'bin[;]' does the same as 'i_format=bin[;]'.
+
+--------------------
+    a_unit :
+    --------------------
+Command, that setup and returns current configuration of unit for measuring of angles.
+ 
+    a_unit=<deg|rad|grad>[;]
+    a_unit[;]
+  
+Current configuration of unit for measuring of angles defines, which unit of measuring should be used
+by arguments of trigonometric functions (sin, cos, tan) and which unit of measuring of execution result
+of trigonometric functions (asin, acos, atan).
+
+--------------------
+    deg :
+    --------------------
+Command, that returns and setup current configuration of unit for measuring of angles as degrees ('deg').
+
+    deg[;]
+    
+The command 'deg[;]' does the same as 'a_unit=deg[;]'.
+  
+--------------------
+    rad :
+    --------------------
+Command, that returns and setup current configuration of unit for measuring of angles as radians ('deg').
+
+    rad[;]
+    
+The command 'rad[;]' does the same as 'a_unit=rad[;]'.
+
+--------------------
+    grad :
+    --------------------
+Command, that returns and setup current configuration of unit for measuring of angles as gradians ('grad').
+
+    grad[;]
+    
+The command 'grad[;]' does the same as 'a_unit=grad[;]'.
+
+--------------------
+    config :
+    --------------------
+Command returns current configuration (current double precision, current output format of integers,
+unit of measurement of an angle):
+
+    config[;]
+
+--------------------
+    help :
+    --------------------
+Command prints help, reading file: 
+"..\share\smansoft\doc\HELP" on Windows platform;
+"../share/smansoft/doc/HELP" on Linux platform.
+
+    help[;]
+    
+As help is a multi-page document, user should press <Enter> key for printing all help from start till end.
+
+--------------------
+    quit :
+    --------------------
+Command provides closing/exit of SM Calculator application.
+    
+    quit[;]
+    
+The command 'quit[;]' does the same as 'exit[;]'.
+
+--------------------
+    exit :
+    --------------------
+Command provides closing/exit of SM Calculator application.
+
+    exit[;]
+    
+The command 'exit[;]' does the same as 'quit[;]'.
+
+
+--------------------
+
+Please, see README and INSTALL files for more info, examples, build instructions.
+
+--------------------
+    Copyright (C) 2020 SManSoft <http://www.smansoft.com/>
+                        Sergey Manoylo <info@smansoft.com>
+
