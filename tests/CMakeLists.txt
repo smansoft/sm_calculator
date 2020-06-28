@@ -9,18 +9,9 @@ cmake_minimum_required (VERSION 3.1)
 
 message (STATUS "PROJECT_NAME     	= ${PROJECT_NAME}")
 
-function(ADD_CMOCKA_TEST_ENVIRONMENT _TARGET_NAME)
-    if (WIN32 OR CYGWIN OR MINGW)
-        file(TO_NATIVE_PATH "${cmocka-library_BINARY_DIR}" CMOCKA_DLL_PATH)
-        if (TARGET_SYSTEM_EMULATOR)
-            set(DLL_PATH_ENV "WINEPATH=${CMOCKA_DLL_PATH};$ENV{WINEPATH}")
-        else()
-            set(DLL_PATH_ENV "PATH=${CMOCKA_DLL_PATH};$ENV{PATH}")
-        endif()
-        string(REPLACE ";" "\\;" DLL_PATH_ENV "${DLL_PATH_ENV}")
-        set_tests_properties(${_TARGET_NAME} PROPERTIES ENVIRONMENT "${DLL_PATH_ENV}")
-    endif()
-endfunction()
+enable_language (C)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
@@ -58,9 +49,9 @@ include_directories (${cmocka_SOURCE_DIR}/include)
 file(GLOB SM_CALC_HEADER_FILES 		${sm_calc_SOURCE_DIR}/*.h)
 file(GLOB SM_CALC_SOURCE_FILES 		${sm_calc_SOURCE_DIR}/*.c ${sm_calc_SOURCE_DIR}/*.cpp)
 file(GLOB SM_CALC_MANIFEST_FILES 	${sm_calc_SOURCE_DIR}/*.manifest)
-file(GLOB SM_CALC_TEST_PCH_FILES 	pch.c framework.h pch.h )
+file(GLOB SM_CALC_TEST_PCH_FILES 	framework.h pch.h )
 
-set_source_files_properties(sm_calc_test.c sm_calc_test_files.c sm_calc_test_expr.c pch.c
+set_source_files_properties(sm_calc_test.c sm_calc_test_files.c sm_calc_test_expr.c
 			${SM_CALC_SOURCE_FILES} ${FLEX_OUTPUT_C} ${BISON_OUTPUT_C} ${BISON_OUTPUT_H}
 			PROPERTIES COMPILE_DEFINITIONS UNIT_TESTING=1)
 
@@ -168,7 +159,26 @@ endif(UNIX)
 
 add_test(NAME sm_calc_test_expr COMMAND sm_calc_test_expr)
 
-set_tests_properties(sm_calc_test sm_calc_test_expr
+### sm_calc_test_log
+if(WIN32)
+	add_executable(sm_calc_test_log sm_calc_test_log.c "${SM_CALC_TEST_PCH_FILES}" "${SM_CALC_SOURCE_FILES}" "${SM_CALC_HEADER_FILES}"
+				"${FLEX_OUTPUT_C}" "${BISON_OUTPUT_C}" "${BISON_OUTPUT_H}" 
+				"${SM_CALC_MANIFEST_FILES}")
+	target_link_libraries(sm_calc_test_log getopt_lib log_lib sstring_lib ${CMOCKA_STATIC_LIBRARY})
+endif(WIN32)
+
+if(UNIX)
+	add_executable(sm_calc_test_log sm_calc_test_log.c "${SM_CALC_TEST_PCH_FILES}" "${SM_CALC_SOURCE_FILES}" "${SM_CALC_HEADER_FILES}"
+				"${FLEX_OUTPUT_C}" "${BISON_OUTPUT_C}" "${BISON_OUTPUT_H}" 
+				"${SM_CALC_MANIFEST_FILES}")
+	target_link_libraries(sm_calc_test_log pthread dl m getopt_lib log_lib sstring_lib ${CMOCKA_STATIC_LIBRARY})
+endif(UNIX)
+
+add_test(NAME sm_calc_test_log COMMAND sm_calc_test_log)
+
+### properties
+
+set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
 						sm_calc_test_files_01 sm_calc_test_files_02 
 						sm_calc_test_files_03 sm_calc_test_files_04
 						sm_calc_test_files_05 sm_calc_test_files_06
@@ -184,7 +194,7 @@ if(CMAKE_GENERATOR MATCHES "Visual Studio*")
 							sm_calc_test_files_07
 							PROPERTIES ENVIRONMENT "PATH=$<TARGET_FILE_DIR:getopt_lib>;$ENV{PATH}")
 else()
-	set_tests_properties(sm_calc_test sm_calc_test_expr
+	set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
 							sm_calc_test_files_01 sm_calc_test_files_02 
 							sm_calc_test_files_03 sm_calc_test_files_04
 							sm_calc_test_files_05 sm_calc_test_files_06

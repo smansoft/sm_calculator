@@ -10,7 +10,6 @@ cmake_minimum_required(VERSION 3.1)
 message (STATUS "PROJECT_NAME     	= ${PROJECT_NAME}")
 
 enable_language (C)
-#enable_language (CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -62,7 +61,7 @@ endif(WIN32)
 if(UNIX)
 	add_definitions (-D_CONSOLE)
 
-	set(CMAKE_INSTALL_RPATH "../${CMAKE_INSTALL_LIBDIR}")
+	set(CMAKE_INSTALL_RPATH $ORIGIN/../${CMAKE_INSTALL_LIBDIR})
 
 	add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES}
 		"${FLEX_OUTPUT_C}" "${BISON_OUTPUT_C}" "${BISON_OUTPUT_H}")

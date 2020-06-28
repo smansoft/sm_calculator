@@ -5,6 +5,10 @@
 
 #pragma once
 
+#if defined __cplusplus
+extern "C" {
+#endif
+
 typedef int				BOOL;			//	type BOOL definition
 typedef int				errno_t;		//	type errno_t (int) definitition
 										//	errno_t - is a basic type, returned by most calc proc functions
@@ -27,6 +31,10 @@ typedef int				errno_t;		//	type errno_t (int) definitition
 
 #if !defined MAX_PATH
 #define MAX_PATH    260
+#endif
+
+#if !defined SM_ARRAY_SIZE
+#define SM_ARRAY_SIZE(in_array) (sizeof(in_array)/sizeof(in_array[0]))	//	calc size of the array
 #endif
 
 /*	large buffer definition	*/
@@ -112,12 +120,12 @@ typedef enum _sm_i_format
 												//	(decimal, octal, hexadecimal, binary formats) - SM_I_FORMAT_MIN == SM_I_10 (decimal format)
 
 /*
-	definition the structure, that incapsulates integer value storaging in 
+	definition the structure, that incapsulates integer value storaging in
 	binary format;
 	for example:
 		original (decimal format) data == 10
 		binary format data == 1010
-		then 
+		then
 			m_data[0] = 0,
 			m_data[1] = 1,
 			m_data[2] = 0,
@@ -130,7 +138,7 @@ typedef enum _sm_i_format
 	i.e. m_data[0...SM_S_BUFF_SIZE-1] array saves decimal 0 or decimal 1.
 	Such format of data is useful for providing of some bitwise
 	operations with original data;
-	
+
 	SM_S_BUFF_SIZE == 64, i.e. maximum size of integer value (long long)
 */
 typedef struct _sm_bin
@@ -154,6 +162,8 @@ typedef struct _sm_calc_res
 */
 typedef struct _sm_calc_params
 {
+	char m_log_file_path[MAX_PATH];			//	log file path (obtained via command line params: -o, --out_file)
+
 	char m_in_file_path[MAX_PATH];			//	input file path (obtained via command line params: -f, --in_file )
 	char m_out_file_path[MAX_PATH];			//	output file path (obtained via command line params: -o, --out_file)
 	char m_expression[SM_L_BUFF_SIZE];		//	command line expression (-x, --expression)
@@ -161,6 +171,8 @@ typedef struct _sm_calc_params
 	BOOL m_interact_proc;			//	TRUE if interactive mode is initialized
 	BOOL m_cmd_line_proc;			//	TRUE if command line expression should be processed
 	BOOL m_file_proc;				//	TRUE if file processing (input file path, [output file path]) is defined
+
+	BOOL m_no_log;					//	TRUE if don't need to create/open and don't need to start log output
 
 	BOOL m_help;					//	TRUE if sm_calc should show calc usage (sm_calc_usage()): -h, --help 
 
@@ -185,4 +197,6 @@ typedef struct _sm_calc_params
 #define SM_PREC_DEF			10		//	default value of m_f_precision (current precision of float value output)
 #define SM_PREC_EXP			-1		//	value of m_f_precision (current precision of float value output) if current precision value == 'exp' 
 
-#define SM_ARRAY_SIZE(in_array) (sizeof(in_array)/sizeof(in_array[0]))	//	calc size of the array
+#if defined __cplusplus
+}
+#endif

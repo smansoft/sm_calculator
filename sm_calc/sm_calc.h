@@ -9,17 +9,23 @@
 extern "C" {
 #endif
 
-	/*	printing the current version of sm_calculator	*/
-	void sm_calc_show_version();
-
 	/*
 		if defined UNIT_TESTING, function main() is compiled with name sm_calc_main;
-		it's necessary for 
+		it's necessary for
 	*/
 #ifdef UNIT_TESTING
 	/*	redefinition of entry point */
 	int sm_calc_main(int argc, char* argv[]);
 #endif
+
+	/*	printing the current version of sm_calculator (yyout device)	*/
+	void sm_calc_show_version();
+
+	/*	printing the current version of sm_calculator (log file)	*/
+	void sm_calc_log_version();
+
+	/*  printing info about launched log	*/
+	void sm_calc_show_log_info();
 
 	/*	printing the command line help (-h,--help)	*/
 	void	sm_calc_usage();
@@ -33,7 +39,7 @@ extern "C" {
 	errno_t	sm_init_log();
 	/*	stopping and closing the log output	*/
 	errno_t	sm_close_log();
-	
+
 	/*
 		provides log out (in log file) the sm_calc_params gsm_calc_params,
 		current state of sm_calculator configuration
@@ -90,10 +96,10 @@ extern "C" {
 	/*
 		provides interactive (using stdin, stdout) processing of input of user:
 		taking expression(s):
-			In  >> 
+			In  >>
 		, printing result(s):
-			Out >> 
-		and cycle of input/output of  
+			Out >>
+		and cycle of input/output of
 	*/
 	errno_t sm_do_calc_interactive();
 	/*
@@ -112,15 +118,21 @@ extern "C" {
 		are implemented in module of lexical analyzer,
 		as they use internals of lexical analyzer*/
 
-	/*
-		provides scanning of the str(buffer),
-		calling yy_scan_string() in module of lexical analyzer
-	*/
+		/*
+			provides scanning of the str(buffer),
+			calling yy_scan_string() in module of lexical analyzer
+		*/
 	void sm_scan_string(const char* const str);
 	/*
 		provides initializing the lexical analyzer for read the in_f file
 	*/
 	void sm_scan_file(FILE* const in_f);
+
+	/*
+		provides processing of gcsm_help_fpath, making it an absolute path, result will be copied to gsm_help_fpath;
+		this gsm_help_fpath is used, during read of HELP file
+	*/
+	errno_t proc_help_fpath();
 
 #if defined __cplusplus
 }

@@ -171,7 +171,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="pch.c" />
     <ClCompile Include="sm_calc.c" />
     <ClCompile Include="sm_calc_l.c" />
     <ClCompile Include="sm_calc_proc.c" />

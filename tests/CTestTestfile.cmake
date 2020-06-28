@@ -15,7 +15,9 @@ add_test(sm_calc_test_files_07 "sm_calc_test_files" "./sm_calc_test.in.07.txt" "
 
 add_test(sm_calc_test_expr "sm_calc_test_expr")
 
-set_tests_properties(sm_calc_test sm_calc_test_expr
+add_test(sm_calc_test_log "sm_calc_test_log")
+
+set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
 						sm_calc_test_files_01 sm_calc_test_files_02 
 						sm_calc_test_files_03 sm_calc_test_files_04
 						sm_calc_test_files_05 sm_calc_test_files_06

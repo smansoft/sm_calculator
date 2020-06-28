@@ -58,7 +58,6 @@ The basic directory layout of SM Calculator solution is as follows:
         sm_calc.c
         sm_calc_proc.c          - file, that contain implementing of all processing functions
                                     (which are used by syntax parser);
-        pch.c
         
         sm_calc.manifest        - manifest file (used by Visual Studio 2019);
         
@@ -87,14 +86,19 @@ The basic directory layout of SM Calculator solution is as follows:
         pch.h
         
                     - files of unit testing projects which contain implementing code;
-        pch.c
         sm_calc_test.c          - module, that contains basic unit test, which provides testing of functionality, declared and implemented
-                                    in files sm_calc_proc.h and sm_calc_proc.c;
+                                    in files sm_calc/sm_calc_proc.h and sm_calc/sm_calc_proc.c
 
         sm_calc_test_expr.c     - unit test, that provides testing of functionality via call of main module function (from sm_calc.c), using option:
-                                    --expression=<tested expression;>
+                                    --expression=<tested expression[;]>
+                                    
+        sm_calc_test_log.c      -  module, that contains basic unit test, which provides testing of functionality, declared and implemented
+                                    in files sm_calc log_lib/sm_files_tools.h and log_lib/sm_files_tools.c
 
         sm_calc_test_files.c    - unit test, that provides testing of functionality via call of main module function (from sm_calc.c), using options:
+                                    --in_file=<in file name/path> --out_file=<out file name/path>
+                                    
+        via call of main module function (from sm_calc.c), using options:
                                     --in_file=<in file name/path> --out_file=<out file name/path>
                     
                     - files, which contain suite of expressions, which are tested by sm_calc_test_files unit test application:  
@@ -153,6 +157,11 @@ The basic directory layout of SM Calculator solution is as follows:
         sm_calc_test_files.vcxproj
         sm_calc_test_files.vcxproj.user    
         sm_calc_test_files.vcxproj.filters
+        
+                    - project files of sm_calc_test_log module, which are used by Visual Studio 2019;        
+        sm_calc_test_log.vcxproj
+        sm_calc_test_log.vcxproj.user         
+        sm_calc_test_log.vcxproj.filters
 
     CMakeLists.txt      - txt file, that is used by cmake (tool, that provides managing the build process) for generation of projects;
                             root cmake script;
@@ -161,6 +170,7 @@ The basic directory layout of SM Calculator solution is as follows:
     HELP                - short reference;
     INSTALL             - developer manual of the project (this document);
     LICENSE             - License file of the project and application (MIT License);
+    CHANGELOG           - the changelog file for the sm_calculator (SM Calculator) tool;
 
     sm_calc.fl_bis.bat  -  batch (for Windows platform) script file, that provides processing 
                             sm_calc.l and sm_calc.y specifications and generation files sm_calc_l.c, 
@@ -188,9 +198,9 @@ log_lib     (log_lib/) - small logging library (with synchronizing support);
 
 sstring_lib (deps/sstring_lib/) - secure string and safe memory control library (instead C run-time functions);
                                     this project is based on safestringlib; original sources can be found here:
-                                        http://smansoft.com/sm_calculator/0.0.1.1/safestringlib/
-                                        http://smansoft.com/sm_calculator/0.0.1.1/safestringlib/safestringlib.zip
-                                        http://smansoft.com/sm_calculator/0.0.1.1/safestringlib/safestringlib.tar.gz
+                                        http://smansoft.com/sm_calculator/0.1.0.2/safestringlib/
+                                        http://smansoft.com/sm_calculator/0.1.0.2/safestringlib/safestringlib.zip
+                                        http://smansoft.com/sm_calculator/0.1.0.2/safestringlib/safestringlib.tar.gz
                                     also developer can find these sources here:
                                         https://github.com/intel/safestringlib/
                                         git clone https://github.com/intel/safestringlib.git
@@ -201,8 +211,8 @@ sstring_lib (deps/sstring_lib/) - secure string and safe memory control library 
                                     
 getopt_lib  (deps/getopt_lib/)  - getopt library (parsing and processing of command line options);
                                     this project is based on getoptlib; original sources can be found here:
-                                        http://smansoft.com/sm_calculator/0.0.1.1/getopt/
-                                        http://smansoft.com/sm_calculator/0.0.1.1/getopt/getopt_mb_uni_src.zip
+                                        http://smansoft.com/sm_calculator/0.1.0.2/getopt/
+                                        http://smansoft.com/sm_calculator/0.1.0.2/getopt/getopt_mb_uni_src.zip
                                     also developer can find these sources here:
                                         https://www.codeproject.com/articles/157001/full-getopt-port-for-unicode-and-multibyte-microso
                                     original getoptlib project is published under LGPLv3 License;
@@ -213,8 +223,8 @@ getopt_lib  (deps/getopt_lib/)  - getopt library (parsing and processing of comm
 
 cmocka_lib  (deps/cmocka_lib/)  - C-based testing framework/library (dynamic and static modules/libraries are created during build);
                                     this project is based on cmocka; original sources can be found here:
-                                        http://smansoft.com/sm_calculator/0.0.1.1/cmocka/
-                                        http://smansoft.com/sm_calculator/0.0.1.1/cmocka/cmocka-1.1.5.tar.xz
+                                        http://smansoft.com/sm_calculator/0.1.0.2/cmocka/
+                                        http://smansoft.com/sm_calculator/0.1.0.2/cmocka/cmocka-1.1.5.tar.xz
                                     also developer can find these sources here:
                                         https://cmocka.org/files/1.1/
                                         https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz
@@ -237,6 +247,10 @@ sm_calc_test_expr   (tests/)            - unit test project, that provides testi
 sm_calc_test_files  (tests/)            - unit test, that provides testing of functionality via call of main module function (from sm_calc/m_calc.c),
                                             using options: --in_file=<in file name/path> --out_file=<out file name/path>;
                                             this project is built in this solution as executable module;
+                                            
+sm_calc_test_log  (tests/)              - unit test project, which provides testing of functionality, declared and implemented
+                                            in files sm_calc log_lib/sm_files_tools.h and log_lib/sm_files_tools.c;
+                                            this project is built in this solution as executable module;
 
 Tools necessary for build of the project:
 --------------------
@@ -250,8 +264,8 @@ Tools necessary for build of the project:
         - flex;
         - bison;
             developer can find FLEX and BISON tools here:
-                http://smansoft.com/sm_calculator/0.0.1.1/win_flex_bison/
-                http://smansoft.com/sm_calculator/0.0.1.1/win_flex_bison/win_flex_bison-2.5.22.zip
+                http://smansoft.com/sm_calculator/0.1.0.2/win_flex_bison/
+                http://smansoft.com/sm_calculator/0.1.0.2/win_flex_bison/win_flex_bison-2.5.22.zip
             or here:
                 https://sourceforge.net/projects/winflexbison/
                 https://sourceforge.net/projects/winflexbison/files/
@@ -325,12 +339,12 @@ The solution assembly:
             in:
                 /x64
                 /Win32
-            and copy there
-            (in /x64/share/smansoft/doc/ or /Win32/share/smansoft/doc/)
+            and copy there (in /x64/share/smansoft/doc/ or /Win32/share/smansoft/doc/)
             files:
                 /README
                 /HELP
                 /LICENSE
+                /CHANGELOG
             . In this case developer can run command help[;] in interactive mode.
         --------------------
         - using /_cmake/cmake_build.nmake.bat:
@@ -358,18 +372,18 @@ The solution assembly:
                     nmake test      - launching of unit tests;
 
                     cpack -G "ZIP" %BUILD_TYPE%                         - creating the binary archive package
-                                                                            /_cmake/_build/sm_calculator-0.0.1.1-Windows-x64.zip
+                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64.zip
                                                                         or 
-                                                                            /_cmake/_build/sm_calculator-0.0.1.1-Windows-x86.zip;
+                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86.zip;
 
                     cpack -G "ZIP" --config CPackSourceConfig.cmake     - creating of sources archive package
-                                                                            /_cmake/_build/sm_calculator-0.0.1.1-Source.zip;
+                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Source.zip;
             Developer can get as a result of this build:
-                /_cmake/_build/sm_calculator-0.0.1.1-Windows-x64.zip    - x64 binary archive package
+                /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64.zip    - x64 binary archive package
             or 
-                /_cmake/_build/sm_calculator-0.0.1.1-Windows-x86.zip    - x86 binary archive package
+                /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86.zip    - x86 binary archive package
             and 
-                /_cmake/_build/sm_calculator-0.0.1.1-Source.zip         - sources archive package.
+                /_cmake/_build/sm_calculator-0.1.0.2-Source.zip         - sources archive package.
         --------------------                                                                            
         - using /_cmake/cmake_build.vs.x64.bat or /_cmake/cmake_build.vs.x86.bat and then build,
             generated solution/projects using Visual Studio 2019 IDE:
@@ -388,19 +402,19 @@ The solution assembly:
                     ALL_BUILD   - full build of solution;
                     RUN_TESTS   - launching of all unit tests;
                     INSTALL     - creating the directory
-                                        /_cmake/_build/sm_calculator-0.0.1.1-Windows-x64
+                                        /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64
                                     or 
-                                        /_cmake/_build/sm_calculator-0.0.1.1-Windows-x86
+                                        /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86
                                      and deployment of all installed files here;
                     PACKAGE     - creating the binary archive package
-                                        /_cmake/_build/sm_calculator-0.0.1.1-Windows-x64.zip
+                                        /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64.zip
                                     or
-                                        /_cmake/_build/sm_calculator-0.0.1.1-Windows-x86.zip
+                                        /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86.zip
                                     ;
             Developer can get as a result of this build:
-                /_cmake/_build/sm_calculator-0.0.1.1-Windows-x64.zip    - x64 binary archive package
+                /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64.zip    - x64 binary archive package
             or 
-                /_cmake/_build/sm_calculator-0.0.1.1-Windows-x86.zip    - x86 binary archive package.
+                /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86.zip    - x86 binary archive package.
 
     --------------------
     Linux platform:
@@ -432,24 +446,24 @@ The solution assembly:
                     make all test;  - build of the solution and launching of unit tests;
 
                     cpack -G "TGZ";                                     - creating the binary archive package
-                                                                            /_cmake/_build/sm_calculator-0.0.1.1-Linux-x64.tar.gz
+                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Linux-x64.tar.gz
                                                                         or
-                                                                            /_cmake/_build/sm_calculator-0.0.1.1-Linux-x86.tar.gz
+                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Linux-x86.tar.gz
                     
                     cpack -G "TGZ" --config CPackSourceConfig.cmake;    - creating of sources archive package
-                                                                            /_cmake/_build/sm_calculator-0.0.1.1-Source.tar.gz;
+                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Source.tar.gz;
             Developer can get as a result of this build:
-                /_cmake/_build/sm_calculator-0.0.1.1-Linux-x64.tar.gz   - x64 binary archive package
+                /_cmake/_build/sm_calculator-0.1.0.2-Linux-x64.tar.gz   - x64 binary archive package
             or
-                /_cmake/_build/sm_calculator-0.0.1.1-Linux-x86.tar.gz   - x86 binary archive package
+                /_cmake/_build/sm_calculator-0.1.0.2-Linux-x86.tar.gz   - x86 binary archive package
             and
-                /_cmake/_build/sm_calculator-0.0.1.1-Source.tar.gz      - sources archive package. 
+                /_cmake/_build/sm_calculator-0.1.0.2-Source.tar.gz      - sources archive package. 
     
 Testing of builds:
 --------------------
 
     Unit tests are launched during all builds on all platforms (Windows/Linux).
-    Soultion contains follow unit tests: 
+    Solution contains follow unit tests: 
     
         sm_calc_test            - basic unit test (application sm_calc_test), which provides testing of functionality, declared
                                     and implemented in files sm_calc_proc.h and sm_calc_proc.c;

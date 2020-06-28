@@ -18,9 +18,6 @@
     <ClCompile Include="sm_calc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pch.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sm_calc_proc.c">
       <Filter>Source Files</Filter>
     </ClCompile>

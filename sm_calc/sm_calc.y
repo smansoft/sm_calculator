@@ -264,7 +264,7 @@ ld_expr	:
 
 	|	T_GRAD_DEG T_L_BRACK ld_expr T_R_BRACK	{	sm_conv_grad_2_deg((long double)$3, &$$);	}
 	|	T_DEG_GRAD T_L_BRACK ld_expr T_R_BRACK	{	sm_conv_deg_2_grad((long double)$3, &$$);	}
-	/* "^" - T_POWER */
+	/* "pow" - T_POWER */
 	|	T_POWER T_L_BRACK ld_expr T_COMMA ld_expr T_R_BRACK 		{ sm_calc_power($3, $5, &$$); }
 	|	T_POWER T_L_BRACK ll_10_expr T_COMMA ll_10_expr T_R_BRACK 	{ sm_calc_power((long double)$3, (long double)$5, &$$); }
 	|	T_POWER T_L_BRACK ld_expr T_COMMA ll_10_expr T_R_BRACK 		{ sm_calc_power($3, (long double)$5, &$$); }

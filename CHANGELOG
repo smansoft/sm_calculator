@@ -1,0 +1,48 @@
+This is the changelog file for the sm_calculator (SM Calculator) tool.
+
+Release 0.1.0.2 (2020-06-28)
+===========================
+
+New features of the SM Calculator (0.1.0.2):
+--------------------
+    - Control/administration the creation/start of the log of the sm_calculator (SM Calculator) tool:
+        start without log output (command line option: -q, --no_log)
+        changing the path of the created/opened log file (command line option: -l, --log_file);
+    - Access to the sm_calculator (SM Calculator) tool can be included into $PATH (Windows/Linux) and 
+        the sm_calculator (SM Calculator) tool can be launched from any current directory;
+
+Release 0.0.1.1 (2020-06-23)
+===========================
+
+This is the first public release of the sm_calculator (SM Calculator) tool.
+
+Features of the SM Calculator (0.0.1.1):
+--------------------
+
+    - Multi-platform application: there are builds for Windows 64/32 (.zip) and Linux 64/32 (.tar.gz);
+    - Various types of values (64 bits integers, 64 bits floats, strings);
+    - Various float constants (pi, exp,...);
+    - Solving of mathematical expressions, using basic arithmetic operators;
+    - Solving of mathematical expressions, using bracket delimiters
+        '(' and ')' (in one expression) and delimiters ';', '\n';
+    - Solving using suite of mathematical (including trigonometric, logarithm, exponentiation)
+        functions;
+    - Solving using bitwise functions and operators;   
+    - Various types of entering and output formats of integers (decimal, octal, hexadecimal,
+        binary formats);
+    - Various values of unit for measuring of angles (radians, degrees, gradians), which are used
+        by trigonometric functions;
+    - Support of output properties (precision) of float values;
+    - Suite of converting functions (various values of unit for measuring of angles, various
+        types of entering and output formats of integers);
+    - Suite of commands, which provide setup of configuration of SM Calculator;
+    - Several modes of execution (processing of files, processing of expressions, obtained via command line,
+        processing of expressions in interactive mode, using standard input/output devices);
+    - Help (command: help[;] or command line option: -h, --help);
+
+SM Calculator supports follow modes of execution:
+    - processing of file, that contains expression(s);
+    - processing of command line expression(s);
+    - interactive mode (user enters expression(s), using standard input device/console).
+
+

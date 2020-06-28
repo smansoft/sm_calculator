@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\sm_calc\pch.c" />
     <ClCompile Include="..\sm_calc\sm_calc.c" />
     <ClCompile Include="..\sm_calc\sm_calc_l.c" />
     <ClCompile Include="..\sm_calc\sm_calc_proc.c" />

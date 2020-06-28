@@ -24,8 +24,6 @@ endif(UNIX)
  
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-include_directories (${sm_common.rt_SOURCE_DIR})
-include_directories (${sm_version.rt_SOURCE_DIR})
 include_directories (${${PROJECT_NAME}_SOURCE_DIR})
 
 file(GLOB HEADER_FILES 		${${PROJECT_NAME}_SOURCE_DIR}/*.h)

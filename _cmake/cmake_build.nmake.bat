@@ -22,7 +22,7 @@ nmake clean
 nmake
 nmake test
 
-cpack -G "ZIP" %BUILD_TYPE%
+cpack -G "ZIP"
 cpack -G "ZIP" --config CPackSourceConfig.cmake
 
 popd

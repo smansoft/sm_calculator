@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\sm_calc\pch.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\sm_calc\sm_calc.c">
       <Filter>Source Files</Filter>
     </ClCompile>

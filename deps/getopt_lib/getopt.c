@@ -490,6 +490,14 @@ int _getopt_internal_a (int argc, char *const *argv, const char *optstring, cons
 	optopt = getopt_data_a.optopt;
 	return result;
 }
+int getopt_clean_a()
+{
+	memset((void*)&getopt_data_a, 0, sizeof(getopt_data_a));
+	optind = 1;
+	opterr = 1;
+	optopt = '?';
+	return 0;
+}
 int getopt_a (int argc, char *const *argv, const char *optstring) _GETOPT_THROW
 {
 	return _getopt_internal_a (argc, argv, optstring, (const struct option_a *) 0, (int *) 0, 0, 0);
@@ -955,6 +963,14 @@ int _getopt_internal_w (int argc, wchar_t *const *argv, const wchar_t *optstring
 	optarg_w = getopt_data_w.optarg;
 	optopt = getopt_data_w.optopt;
 	return result;
+}
+int getopt_clean_w()
+{
+	memset((void*)&getopt_data_w, 0, sizeof(getopt_data_w));
+	optind = 1;
+	opterr = 1;
+	optopt = '?';
+	return 0;
 }
 int getopt_w (int argc, wchar_t *const *argv, const wchar_t *optstring) _GETOPT_THROW
 {

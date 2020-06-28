@@ -11,7 +11,7 @@
     args:
         stream  - stream, which is source of read data
         str	    - buffer, that should be filled by read data from stdin file stream
-        len	    - size of the buffer
+		len	    - size of the buffer
 */
 char* safe_gets(FILE* const stream, char* const str, const size_t len)
 {

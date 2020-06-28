@@ -11,7 +11,7 @@ SYNOPSIS
 Please, see README and INSTALL files for more info, examples, build instructions.
 
 
-Lexems of SM Calculator expressions:
+Lexemes of SM Calculator expressions:
 --------------------
 
 Available keywords:
@@ -725,8 +725,11 @@ unit of measurement of an angle):
     help :
     --------------------
 Command prints help, reading file: 
-"..\share\smansoft\doc\HELP" on Windows platform;
-"../share/smansoft/doc/HELP" on Linux platform.
+
+"*{SM_CALC_BIN}*\..\share\smansoft\doc\HELP" (Windows);
+"*{SM_CALC_BIN}*/../share/smansoft/doc/HELP" (Linux),
+
+where *{SM_CALC_BIN}* is a path (including /bin/), where sm_calc exec is deployed.
 
     help[;]
     

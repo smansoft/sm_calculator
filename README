@@ -27,8 +27,13 @@ Features of the SM Calculator:
     - Suite of commands, which provide setup of configuration of SM Calculator;
     - Several modes of execution (processing of files, processing of expressions, obtained via command line,
         processing of expressions in interactive mode, using standard input/output devices);
+    - Control/administration the creation/start of the log of the sm_calculator (SM Calculator) tool:
+        start without log output (command line option: -q, --no_log)
+        changing the path of the created/opened log file (command line option: -l, --log_file);
+    - Access to the sm_calculator (SM Calculator) tool can be included into $PATH (Windows/Linux) and 
+        the sm_calculator (SM Calculator) tool can be launched from any current directory;
     - Help (command: help[;] or command line option: -h, --help);
-
+    
 SM Calculator supports follow modes of execution:
     - processing of file, that contains expression(s);
     - processing of command line expression(s);
@@ -48,13 +53,13 @@ Launching of SM Calculator:
 
 SM Calculator binary and sources distributions are deployed in follow archives:
     Windows:
-            sm_calculator-0.0.1.1-Windows-x64.zip    - x64 binary archive package
-            sm_calculator-0.0.1.1-Windows-x86.zip    - x86 binary archive package
-            sm_calculator-0.0.1.1-Source.zip         - sources archive package.
+            sm_calculator-0.1.0.2-Windows-x64.zip    - x64 binary archive package
+            sm_calculator-0.1.0.2-Windows-x86.zip    - x86 binary archive package
+            sm_calculator-0.1.0.2-Source.zip         - sources archive package.
     Linux:            
-            sm_calculator-0.0.1.1-Linux-x64.tar.gz   - x64 binary archive package
-            sm_calculator-0.0.1.1-Linux-x86.tar.gz   - x86 binary archive package
-            sm_calculator-0.0.1.1-Source.tar.gz      - sources archive package. 
+            sm_calculator-0.1.0.2-Linux-x64.tar.gz   - x64 binary archive package
+            sm_calculator-0.1.0.2-Linux-x86.tar.gz   - x86 binary archive package
+            sm_calculator-0.1.0.2-Source.tar.gz      - sources archive package. 
        
 For verification install files and archives, user can use:
     import public key (file: http://smansoft.com/gpg/smansoft.pub.asc):
@@ -68,26 +73,28 @@ Structure of binary archive (.zip or .tar.gz):
 
 .zip (Windows):
 
-    .\bin\
+    \bin\
         sm_calc.exe
     
-    .\share\smansoft\doc\
+    \share\smansoft\doc\
         HELP
         LICENSE
         README
+        CHANGELOG
         
 .tar.gz (Linux):
 
-    ./bin/
+    /bin/
         sm_calc
         
-    ./lib/
+    /lib/
         libgetopt_lib.so
     
-    ./share/smansoft/doc/
+    /share/smansoft/doc/
         HELP
         LICENSE
         README
+        CHANGELOG
 
 Execution 
 
@@ -95,8 +102,10 @@ Execution
     
 without parameters launches SM Calculator in interactive mode (default mode):
 
-    sm_calc 0.0.1.1 Copyright (c) 2020 SManSoft
+    sm_calc 0.1.0.2 Copyright (c) 2020 SManSoft
     SM Calculator
+
+    Log has been started in the file: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\log\sm_calc.log
 
             Interactive processing:
     Type 'help' for more information.
@@ -110,28 +119,149 @@ or
 
 to get help output - description of command line parameters:
 
-    sm_calc 0.0.1.1 Copyright (c) 2020 SManSoft
+    sm_calc 0.1.0.2 Copyright (c) 2020 SManSoft
     SM Calculator
+
+    Log has been started in the file: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\log\sm_calc.log
 
     USAGE: sm_calc [OPTION]
 
     -h, --help                                             display this message
-    -i, --interactive                                      force interactive mode
-    -f<infile>, --in_file=<infile>                         name/path of input file
-    -o<ofile>, --out_file=<ofile>                          name/path of output file
+    -i, --interactive                                      force the interactive mode
+    -l<lfile>, --log_file=<lfile>                          name/path of the log file
+                                                                   *{SM_CALC_BIN}* - pseudo-variable, that can be used
+                                                                   in the value of name/path of the log file and defines path
+                                                                   to the binary directory, where the 'sm_calc' exec is deployed
+    -q, --no_log                                           don't create/open the log file and don't start the log output
+    -f<infile>, --in_file=<infile>                         name/path of the input file
+    -o<ofile>, --out_file=<ofile>                          name/path of the output file
     -x<expression_value>, --expression=<expression_value>  expression, that should be solved
     -p<precision_value>, --f_precision=<precision_value>   floating-point precision (after '.' ): [0-20|exp]
-                                                                by default, precision_value == '10'
-                                                                if 'precision_value' == 'exp' - exponential output will be used
+                                                                   by default, precision_value == '10'
+                                                                   if 'precision_value' == 'exp' - exponential output will be used
     -n<i_format_value>, --i_format=<i_format_value>        output format of integers: [dec|oct|hex|bin]
-                                                                by default, output format of integers == 'dec'
-    -a<unit_value>, --a_unit=<unit_value>                  default unit of measurement of an angle = 'rad|deg|grad' 
+                                                                   by default, output format of integers == 'dec'
+    -a<unit_value>, --a_unit=<unit_value>                  default unit of measurement of an angle = 'rad|deg|grad'
 
 Using these options user can launch SM Calculator in various modes of execution and tune start values of 
 current configuration of SM Calculator (command: config[;]).
 
+Control/administration the creation/start of the log:
+--------------------
+After launching, the sm_calculator (SM Calculator) tool creates log file:
+    *{SM_CALC_BIN}*/../log/sm_calc.log
+    
+, where *{SM_CALC_BIN}* is a path (including /bin/), where sm_calc exec is deployed,
+i.e.
 
-Lexems of SM Calculator expressions:
+Windows:
+    \bin\
+        sm_calc.exe
+    \log\
+        sm_calc.log
+    \share\smansoft\doc\
+        ...
+
+    Message from console output:
+        Log has been started in the file: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\log\sm_calc.log
+
+Linux:
+    /bin/
+        sm_calc.exe
+    /lib/
+        libgetopt_lib.so
+    /log/
+        sm_calc.log
+    /share/smansoft/doc/
+        ...
+
+    Message from console output:
+        Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/log/sm_calc.log
+        
+By default path of log file doesn't depend on current directory, but, path, where sm_calculator (SM Calculator) tool 
+has been deployed.
+ 
+The sm_calculator (SM Calculator) tool supports command line options:
+    -l<lfile>, --log_file=<lfile>                          name/path of the log file
+                                                                   *{SM_CALC_BIN}* - pseudo-variable, that can be used
+                                                                   in the value of name/path of the log file and defines path
+                                                                   to the binary directory, where the 'sm_calc' exec is deployed
+    -q, --no_log                                           don't create/open the log file and don't start the log output
+
+Using these options, user can provide control/administration of log creation/start.
+If log hasn't been created/started, message "Log has been started in the file: ..." isn't outputted.
+
+User can use as absolute, as relative paths as 'lfile' value ( -l<lfile>, --log_file=<lfile>).
+
+Examples:
+
+1.
+    starting without log output
+    sm_calc -q
+   
+    sm_calc 0.1.0.2 Copyright (c) 2020 SManSoft
+    SM Calculator
+
+            Interactive processing:
+    Type 'help' for more information.
+    In  >>
+    
+    if user use -q option, log will bot be started, even user defined option ( -l<lfile>, --log_file=<lfile>).
+ 
+2. 
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    and:
+        sm_calc --log_file="./sm_calc.log"
+    then:
+        Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin/sm_calc.log
+
+3.
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    and:
+        sm_calc --log_file="./sm_calc.log"
+    then:
+        Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/sm_calc.log
+
+4. 
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    and:
+        ./sm_calc --log_file="/home/sman/sm_calc.log"
+    then:
+        Log has been started in the file: /home/sman/sm_calc.log
+        
+5. 
+    if current directory is: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\bin
+     , sm_calculator (SM Calculator) tool has been deployed: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\
+    and:
+        sm_calc.exe --log_file="e:\sman\sm_calc.log"
+    then:
+        Log has been started in the file: e:\sman\sm_calc.log
+
+6.
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    and:
+        ./sm_calc --log_file="/tmp/sm_calc_log/sm_calc.log"
+    then:
+        Log has been started in the file: /tmp/sm_calc_log/sm_calc.log
+
+Also sm_calculator (SM Calculator) tool supports pseudo-variable '*{SM_CALC_BIN}*', that can be used in command line:
+
+7. 
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    and:
+        ./sm_calc --log_file="*{SM_CALC_BIN}*/../log/sm_calc.log"
+    then:
+        Log has been started in the file: /home/sman/sm_calc.log
+
+    Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/log/sm_calc.log
+
+
+Lexemes of SM Calculator expressions:
 --------------------
 
 Available keywords:
@@ -765,7 +895,7 @@ Examples:
     In  >> pi
     Out >> 3.141593e+00;
 
-Input format of integer always defined in decimal format. User can enter values as in floating form format as in 
+Input format of float values always defined in decimal format. User can enter values as in floating form format as in 
 exponential format.
 
 Examples:
@@ -829,8 +959,8 @@ User should enter string value, using follow format:
 Max length of string - 1023 ASCII symbols with quotes(' or ")
 or 1021 ASCII symbols without quotes(' or ").
 
-String values don't use by calculations, but should be used  for formatting of outputs
-in file processing, using commands:
+String values aren't used during calculations, but could be used for formatting
+of outputs in file processing, using function echo:
 
 Examples:
     In  >> echo("config ------------------------------------------");
@@ -974,7 +1104,7 @@ Current configuration:
 
 User always can get current configuration, using command:
 
-    config;
+    config[;]
     
 Examples:
 
@@ -1056,7 +1186,7 @@ Examples:
 User can find here suite of files which contain suite examples of usage of operators, functions, commands,
 constants, various types of data:
 
-    http://smansoft.com/sm_calculator/0.0.1.1/examples/
+    http://smansoft.com/sm_calculator/0.1.0.2/examples/
     
 examples of expressions:
 
@@ -2659,8 +2789,10 @@ Example:
     help :
     --------------------
 Command prints help, reading file: 
-"..\share\smansoft\doc\HELP" on Windows platform;
-"../share/smansoft/doc/HELP" on Linux platform.
+"*{SM_CALC_BIN}*\..\share\smansoft\doc\HELP" on Windows platform;
+"*{SM_CALC_BIN}*/../share/smansoft/doc/HELP" on Linux platform,
+
+where *{SM_CALC_BIN}* is a path (including /bin/), where sm_calc exec is deployed.
 
     help[;]
 

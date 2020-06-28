@@ -207,7 +207,7 @@ int main(int argc, char* argv[])
 																//	i.e. if result of execution of unit tests is OK, int res == 0
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "cmocka_run_group_tests: res = %d", res);
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "cmocka_run_group_tests: result = %d", res);
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "sm_calc_test_files is finished");
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s",__FUNCTION__, "---------------------------------------------------------------------- <<");
@@ -221,7 +221,7 @@ int main(int argc, char* argv[])
 errno_t	sm_init_log_test()
 {
 	errno_t err = SM_RES_OK;
-	err = sm_log_init(SM_LOG_CONFIG, SM_LOG_DPATH, SM_LOG_FNAME);
+	err = sm_log_init_dpath_fname(SM_LOG_CONFIG, SM_LOG_DPATH, SM_LOG_FNAME);
 	if (err == SM_RES_OK)
 		err = sm_log_start(SM_LOG_CONFIG);
 	return err;

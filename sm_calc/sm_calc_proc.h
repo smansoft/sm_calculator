@@ -32,7 +32,7 @@ extern "C" {
 	int	yyerror(char* error);
 
 	/*
-		the function gets long long argument, converts it into string, according to 
+		the function gets long long argument, converts it into string, according to
 		current output format of integers (decimal, octal, hexadecimal,
 		binary formats) (from the current state of sm_calculator configuration)
 		and prints out it in yyout stream device
@@ -57,12 +57,10 @@ extern "C" {
 	/*	the  function, that prints error into yyout stream device	*/
 	errno_t sm_print_error(const char* const err_message);
 
-	/*	
-		this function reads file from gcsm_gelp_fpath path and print out 
+	/*
+		this function reads file from gcsm_gelp_fpath path and print out
 		content of this file into stdout device;
-
-		gcsm_gelp_fpath == "../share/smansoft/doc/HELP"		- Linux platform
-		gcsm_gelp_fpath == "..\share\smansoft\doc\HELP"		- Windows platform
+		gsm_gelp_fpath is read
 	*/
 	errno_t sm_print_help();
 
@@ -148,7 +146,7 @@ extern "C" {
 
 	/*
 		copying current unit for measuring of angles (radians, degrees, gradians), which are used
-        by trigonometric functions in buffer;
+		by trigonometric functions in buffer;
 		current unit for measuring of angles is read from the current state of sm_calculator configuration;
 
 		in args:
@@ -167,7 +165,7 @@ extern "C" {
 
 	/*
 		setup current unit for measuring of angles (radians, degrees, gradians), which are used
-        by trigonometric functions in buffer in global instance of definition the current state
+		by trigonometric functions in buffer in global instance of definition the current state
 		of sm_calculator configuration (sm_calc_params gsm_calc_param);
 
 		in args:
@@ -417,8 +415,8 @@ extern "C" {
 		result - float value (long double);
 
 		i.e. the function calculates:
-			*res = arg1 ** arg2 
-		or 
+			*res = arg1 ** arg2
+		or
 			pow(arg1, arg2 )
 
 		the function is called, when user uses function 'pow' in expression(s)
@@ -651,7 +649,7 @@ extern "C" {
 		arg2 should be >= 0;
 		result - integer value (long long);
 
-		for example: 
+		for example:
 			b10010010 == sm_calc_l_cshift(b1001001,1);
 			b000100100100 == sm_calc_l_cshift(b1001001,2);
 			b010010010000 == sm_calc_l_cshift(b1001001,4);
@@ -839,7 +837,7 @@ extern "C" {
 
 		where arg1 - integer value (long long), arg2 - integer value (long long);
 		result - integer value (long long);
-		
+
 		the function is called, when user uses function 'and' in expression(s)
 	*/
 	errno_t	sm_calc_and(const long long arg1, const long long arg2, long long* const res);
@@ -948,7 +946,7 @@ extern "C" {
 	errno_t sm_set_f_exp_precision();
 
 	/*
-		the function that returns current precision of float values and copying precision 
+		the function that returns current precision of float values and copying precision
 		current precision of float values in buffer;
 
 		in args:
@@ -1002,7 +1000,7 @@ extern "C" {
 	*/
 	errno_t	sm_conv_i_dec_2_sz(const sm_i_format i_format, const long long arg, char* const buf, const size_t buf_len);
 
-	/*	
+	/*
 		converting of char sz array to long long value:
 
 		for example:
@@ -1075,7 +1073,7 @@ extern "C" {
 	*/
 	errno_t sm_conv_bin_2_i_dec(const sm_bin* const in_bin, long long* const res);
 
-	/*	
+	/*
 		converting of char sz array (ascii char format) to long double value:
 
 		in:
@@ -1086,7 +1084,7 @@ extern "C" {
 	*/
 	errno_t	sm_conv_sz_2_f_dec(char* const buf, const size_t buf_len, long double* const res);
 
-	/*	
+	/*
 		converting of long double value to char sz array (ascii char format):
 
 		in:
@@ -1108,7 +1106,7 @@ extern "C" {
 
 		where arg - float value (long double); arg should be value of current unit for measuring of angles;
 		current unit for measuring of angles is read from the current state of sm_calculator configuration;
-		res - float value (long double); result is a value of unit for measuring of angles == radians ('rad'); 
+		res - float value (long double); result is a value of unit for measuring of angles == radians ('rad');
 	*/
 	errno_t	sm_conv_curr_2_rad(const long double arg, long double* const res);
 
@@ -1224,19 +1222,19 @@ extern "C" {
 	*/
 	errno_t	sm_conv_deg_2_grad(const long double deg, long double* const res);
 
-/*
-	Macros, that setup SM_RES_OK in the global
-	sm_calc_res gsm_calc_res	- global instance of definition the current result of calculations
-*/
+	/*
+		Macros, that setup SM_RES_OK in the global
+		sm_calc_res gsm_calc_res	- global instance of definition the current result of calculations
+	*/
 #define SM_SET_CALC_RES_OK	{	gsm_calc_res.m_res = SM_RES_OK;	\
 								gsm_calc_res.m_sz_message[0] = '\0'; }
 
-/*
-	Macros, that setup SM_RES_ERROR and saves error message 
-	in the global sm_calc_res gsm_calc_res	- global instance of definition the current result of calculations
+	/*
+		Macros, that setup SM_RES_ERROR and saves error message
+		in the global sm_calc_res gsm_calc_res	- global instance of definition the current result of calculations
 
-	gsm_calc_res.m_sz_message is used during printing the result of last command/function/operator execution
-*/
+		gsm_calc_res.m_sz_message is used during printing the result of last command/function/operator execution
+	*/
 #define SM_SET_CALC_RES_ERROR(message)	{	gsm_calc_res.m_res = SM_RES_ERROR;	\
 											safe_strcpy(gsm_calc_res.m_sz_message, SM_ARRAY_SIZE(gsm_calc_res.m_sz_message), message);	}
 

@@ -398,7 +398,7 @@ static void sm_f_precision_test_template(int precision, int expected)
 static void sm_calc_init_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -408,7 +408,7 @@ static void sm_calc_init_test(void** state)
 	assert_int_equal(gsm_calc_params.m_i_format, SM_I_FORMAT_DEF);
 	assert_int_equal(gsm_calc_params.m_trig_unit, SM_TRIG_UNIT_DEF);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -427,7 +427,7 @@ static void sm_calc_init_test(void** state)
 static void sm_get_const_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -442,7 +442,7 @@ static void sm_get_const_test(void** state)
 	sm_get_const_test_template(SM_CONST_GRAD_DEG, 0.9L);
 	sm_get_const_test_template(SM_CONST_DEG_GRAD, 1.111111111111111111111111111111L);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -451,7 +451,7 @@ static void sm_get_const_test(void** state)
 static void sm_calc_divide_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 	long double res;
@@ -472,7 +472,7 @@ static void sm_calc_divide_test(void** state)
 	assert_true(err == SM_RES_OK);
 	assert_float_equal(res, -99.5, gcsm_f_test_epsilon);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -481,7 +481,7 @@ static void sm_calc_divide_test(void** state)
 static void sm_a_unit_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -489,7 +489,7 @@ static void sm_a_unit_test(void** state)
 	sm_a_unit_test_template(SM_TRIG_DEGREES, "deg");
 	sm_a_unit_test_template(SM_TRIG_RADIANS, "rad");
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -498,7 +498,7 @@ static void sm_a_unit_test(void** state)
 static void sm_i_format_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -524,7 +524,7 @@ static void sm_i_format_test(void** state)
 	const char* const ress_5_sz[] = { "0", "00", "0x0", "b0000" };
 	sm_i_format_out_test_template(0ll, ress_5_sz);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -533,7 +533,7 @@ static void sm_i_format_test(void** state)
 static void sm_conv_i_dec_2_sz_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -554,7 +554,7 @@ static void sm_conv_i_dec_2_sz_test(void** state)
 	const char* const ress_5_sz[] = { "0", "00", "0x0", "b0000" };
 	sm_conv_i_dec_2_sz_test_template(0ll, ress_5_sz);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -563,7 +563,7 @@ static void sm_conv_i_dec_2_sz_test(void** state)
 static void sm_calc_trig_dir_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 	long double arg;
@@ -733,7 +733,7 @@ static void sm_calc_trig_dir_test(void** state)
 	assert_true(err == SM_RES_OK);
 	assert_float_equal(res, 1.1540615205, gcsm_f_test_epsilon);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -742,7 +742,7 @@ static void sm_calc_trig_dir_test(void** state)
 static void sm_calc_trig_rev_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 	long double pi;
@@ -906,7 +906,7 @@ static void sm_calc_trig_rev_test(void** state)
 	assert_true(err == SM_RES_OK);
 	assert_float_equal(res, ((3 * 200.0) / 11.0), gcsm_f_test_epsilon);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -915,7 +915,7 @@ static void sm_calc_trig_rev_test(void** state)
 static void sm_conv_trig_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 	long double pi;
@@ -1094,7 +1094,7 @@ static void sm_conv_trig_test(void** state)
 	assert_true(err == SM_RES_OK);
 	assert_float_equal(res, -28.57142857142857, gcsm_f_test_epsilon);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -1103,7 +1103,7 @@ static void sm_conv_trig_test(void** state)
 static void sm_calc_factorial_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 	long long arg;
@@ -1136,7 +1136,7 @@ static void sm_calc_factorial_test(void** state)
 	assert_true(err == SM_RES_ERROR);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1145,7 +1145,7 @@ static void sm_calc_factorial_test(void** state)
 static void sm_calc_rand_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 	long double res1;
@@ -1168,7 +1168,7 @@ static void sm_calc_rand_test(void** state)
 	}
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1176,7 +1176,7 @@ static void sm_calc_rand_test(void** state)
 static void sm_conv_i_dec_2_bin_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -1220,7 +1220,7 @@ static void sm_conv_i_dec_2_bin_test(void** state)
 	sm_conv_i_dec_2_bin_test_template(arg, true_array_5, SM_ARRAY_SIZE(true_array_5));
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1228,7 +1228,7 @@ static void sm_conv_i_dec_2_bin_test(void** state)
 static void sm_conv_sz_2_f_dec_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -1282,7 +1282,7 @@ static void sm_conv_sz_2_f_dec_test(void** state)
 	sm_conv_sz_2_f_dec_test_template("1.237110e-03", 123.711e-5);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1290,7 +1290,7 @@ static void sm_conv_sz_2_f_dec_test(void** state)
 static void sm_conv_i_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -1308,7 +1308,7 @@ static void sm_conv_i_test(void** state)
 		sm_conv_i_test_template((long long)rand());
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1316,7 +1316,7 @@ static void sm_conv_i_test(void** state)
 static void sm_conv_f_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 	long long res;
@@ -1341,7 +1341,7 @@ static void sm_conv_f_test(void** state)
 		sm_conv_f_test_template((long double)rand() / (long double)RAND_MAX);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1349,7 +1349,7 @@ static void sm_conv_f_test(void** state)
 static void sm_calc_l_ashift_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -1401,7 +1401,7 @@ static void sm_calc_l_ashift_test(void** state)
 	assert_int_equal(res, arg * (1 << 16));
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1409,7 +1409,7 @@ static void sm_calc_l_ashift_test(void** state)
 static void sm_calc_r_ashift_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -1547,7 +1547,7 @@ static void sm_calc_r_ashift_test(void** state)
 	assert_int_equal(res, 0xffffffffffffffff);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1555,7 +1555,7 @@ static void sm_calc_r_ashift_test(void** state)
 static void sm_calc_l_lshift_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -1607,7 +1607,7 @@ static void sm_calc_l_lshift_test(void** state)
 	assert_int_equal(res, arg * (1 << 16));
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1615,7 +1615,7 @@ static void sm_calc_l_lshift_test(void** state)
 static void sm_calc_r_lshift_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -1753,7 +1753,7 @@ static void sm_calc_r_lshift_test(void** state)
 	assert_int_equal(res, 0x1);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1761,7 +1761,7 @@ static void sm_calc_r_lshift_test(void** state)
 static void sm_calc_l_cshift_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -1826,7 +1826,7 @@ static void sm_calc_l_cshift_test(void** state)
 	assert_int_equal(res, arg * (1 << 16) | 0xfff1);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1834,7 +1834,7 @@ static void sm_calc_l_cshift_test(void** state)
 static void sm_calc_r_cshift_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -1972,7 +1972,7 @@ static void sm_calc_r_cshift_test(void** state)
 	assert_int_equal(res, 0xffe2ec6822445513);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -1980,7 +1980,7 @@ static void sm_calc_r_cshift_test(void** state)
 static void sm_calc_and_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2040,7 +2040,7 @@ static void sm_calc_and_test(void** state)
 	assert_int_equal(res, 0x7120763000002200);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2048,7 +2048,7 @@ static void sm_calc_and_test(void** state)
 static void sm_calc_or_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2108,7 +2108,7 @@ static void sm_calc_or_test(void** state)
 	assert_int_equal(res, 0xfff3fff53bab7ebd);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2116,7 +2116,7 @@ static void sm_calc_or_test(void** state)
 static void sm_calc_not_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2162,7 +2162,7 @@ static void sm_calc_not_test(void** state)
 	assert_int_equal(res, 0x000e89cbeeddd576);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2170,7 +2170,7 @@ static void sm_calc_not_test(void** state)
 static void sm_calc_nand_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2230,7 +2230,7 @@ static void sm_calc_nand_test(void** state)
 	assert_int_equal(res, 0x8edf89cfffffddff);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2238,7 +2238,7 @@ static void sm_calc_nand_test(void** state)
 static void sm_calc_nor_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2298,7 +2298,7 @@ static void sm_calc_nor_test(void** state)
 	assert_int_equal(res, 0x000c000ac4548142);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2306,7 +2306,7 @@ static void sm_calc_nor_test(void** state)
 static void sm_calc_xor_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2373,7 +2373,7 @@ static void sm_calc_xor_test(void** state)
 	assert_int_equal(res, 0x8ed389c53bab5cbd);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2381,7 +2381,7 @@ static void sm_calc_xor_test(void** state)
 static void sm_conv_bin_2_bin_sz_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -2400,7 +2400,7 @@ static void sm_conv_bin_2_bin_sz_test(void** state)
 	sm_conv_bin_2_bin_sz_test_template(0x1ed389c53bab5cbd, "0001111011010011100010011100010100111011101010110101110010111101");
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2408,7 +2408,7 @@ static void sm_conv_bin_2_bin_sz_test(void** state)
 static void sm_f_precision_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2427,7 +2427,7 @@ static void sm_f_precision_test(void** state)
 	assert_int_equal(gsm_calc_params.m_f_precision, -1);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2435,7 +2435,7 @@ static void sm_f_precision_test(void** state)
 static void sm_calc_recip_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 	long double res;
@@ -2476,7 +2476,7 @@ static void sm_calc_recip_test(void** state)
 	assert_float_equal(res, 62842.2269852444079524, gcsm_f_test_epsilon);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2484,7 +2484,7 @@ static void sm_calc_recip_test(void** state)
 static void sm_calc_mod_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2561,7 +2561,7 @@ static void sm_calc_mod_test(void** state)
 	assert_int_equal(res, 0);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2569,7 +2569,7 @@ static void sm_calc_mod_test(void** state)
 static void sm_calc_abs_i_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2614,7 +2614,7 @@ static void sm_calc_abs_i_test(void** state)
 	assert_int_equal(res, 1);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2622,7 +2622,7 @@ static void sm_calc_abs_i_test(void** state)
 static void sm_calc_abs_f_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2647,7 +2647,7 @@ static void sm_calc_abs_f_test(void** state)
 	assert_int_equal(res, 1.123e-5);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2655,7 +2655,7 @@ static void sm_calc_abs_f_test(void** state)
 void sm_calc_sqrt_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2684,7 +2684,7 @@ void sm_calc_sqrt_test(void** state)
 	assert_float_equal(res, 99.9999995L, gcsm_f_test_epsilon);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2692,7 +2692,7 @@ void sm_calc_sqrt_test(void** state)
 static void sm_calc_ln_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2727,7 +2727,7 @@ static void sm_calc_ln_test(void** state)
 	assert_float_equal(res, -4.6051701859880913L, gcsm_f_test_epsilon);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2735,7 +2735,7 @@ static void sm_calc_ln_test(void** state)
 static void sm_calc_lg_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2770,7 +2770,7 @@ static void sm_calc_lg_test(void** state)
 	assert_float_equal(res, -2.00L, gcsm_f_test_epsilon);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2778,7 +2778,7 @@ static void sm_calc_lg_test(void** state)
 static void sm_calc_log_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2829,7 +2829,7 @@ static void sm_calc_log_test(void** state)
 	assert_true(err == SM_RES_ERROR);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2837,7 +2837,7 @@ static void sm_calc_log_test(void** state)
 static void sm_calc_power_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2878,7 +2878,7 @@ static void sm_calc_power_test(void** state)
 	assert_float_equal(res, 2.00L, gcsm_f_test_epsilon);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2886,7 +2886,7 @@ static void sm_calc_power_test(void** state)
 static void sm_calc_power_2_i_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2920,7 +2920,7 @@ static void sm_calc_power_2_i_test(void** state)
 	assert_true(err == SM_RES_ERROR);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2928,7 +2928,7 @@ static void sm_calc_power_2_i_test(void** state)
 static void sm_calc_power_10_i_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -2957,7 +2957,7 @@ static void sm_calc_power_10_i_test(void** state)
 	assert_true(err == SM_RES_ERROR);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -2965,7 +2965,7 @@ static void sm_calc_power_10_i_test(void** state)
 static void sm_calc_power_i_2_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -3000,7 +3000,7 @@ static void sm_calc_power_i_2_test(void** state)
 	assert_int_equal(res, 1000 * 1000);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -3008,7 +3008,7 @@ static void sm_calc_power_i_2_test(void** state)
 static void sm_calc_power_2_d_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -3048,7 +3048,7 @@ static void sm_calc_power_2_d_test(void** state)
 	assert_float_equal(res, 7.148855937234499e-4L, gcsm_f_test_epsilon);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -3056,7 +3056,7 @@ static void sm_calc_power_2_d_test(void** state)
 static void sm_calc_power_10_d_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -3096,7 +3096,7 @@ static void sm_calc_power_10_d_test(void** state)
 	assert_float_equal(res, 3.5481338923357545843321870e-11L, gcsm_f_test_epsilon);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -3104,7 +3104,7 @@ static void sm_calc_power_10_d_test(void** state)
 static void sm_calc_power_exp_d_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -3148,7 +3148,7 @@ static void sm_calc_power_exp_d_test(void** state)
 	assert_float_equal(res, 0.00429630469075234057L, gcsm_f_test_epsilon);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -3156,7 +3156,7 @@ static void sm_calc_power_exp_d_test(void** state)
 static void sm_calc_power_d_2_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -3196,7 +3196,7 @@ static void sm_calc_power_d_2_test(void** state)
 	assert_float_equal(res, 109.2025L, gcsm_f_test_epsilon);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -3204,7 +3204,7 @@ static void sm_calc_power_d_2_test(void** state)
 static void sm_echo_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -3226,7 +3226,7 @@ static void sm_echo_test(void** state)
 	assert_true(err == SM_RES_ERROR);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -3234,7 +3234,7 @@ static void sm_echo_test(void** state)
 static void sm_conv_quot_sz_2_sz_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err;
 
@@ -3268,7 +3268,7 @@ static void sm_conv_quot_sz_2_sz_test(void** state)
 	assert_string_equal(out_buf, "test buffer message");
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 
 	return;
 }
@@ -3337,6 +3337,8 @@ int main(int argc, char* argv[])
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "sm_calc_test is started");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
 
+	sm_calc_show_log_info();
+
 	sm_init_random();			//	initializing the random seed (for 'rand[;]' command)
 	sm_set_def_calc_params();	//	initializing the global sm_calc_params object
 	sm_log_calc_params();		//	provides log out (in log file) the sm_calc_params gsm_calc_params, current state of sm_calculator configuration
@@ -3346,7 +3348,7 @@ int main(int argc, char* argv[])
 															//	i.e. if result of execution of unit tests is OK, int res == 0
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "cmocka_run_group_tests: res = %d", res);
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "cmocka_run_group_tests: result = %d", res);
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "sm_calc_test is finished");
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s", __FUNCTION__, "---------------------------------------------------------------------- <<");
@@ -3360,7 +3362,7 @@ int main(int argc, char* argv[])
 errno_t	sm_init_log_test()
 {
 	errno_t err = SM_RES_OK;
-	err = sm_log_init(SM_LOG_CONFIG, SM_LOG_DPATH, SM_LOG_FNAME);
+	err = sm_log_init_dpath_fname(SM_LOG_CONFIG, SM_LOG_DPATH, SM_LOG_FNAME);
 	if (err == SM_RES_OK)
 		err = sm_log_start(SM_LOG_CONFIG);
 	return err;

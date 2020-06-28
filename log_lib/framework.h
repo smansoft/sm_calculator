@@ -15,20 +15,20 @@
 #include <ctype.h>
 
 #if defined SM_OS_WINDOWS
-	#include <windows.h>
-	#include <process.h>
-	#include <share.h>
+#include <windows.h>
+#include <process.h>
+#include <share.h>
 #endif
 
 #if defined SM_OS_LINUX
-	#include <sys/time.h>
-	#include <sys/types.h>
-	#include <sys/stat.h>
-	#include <unistd.h>
-	#include <errno.h>
-	#include <dirent.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <errno.h>
+#include <dirent.h>
 #if defined SM_SYNC_LOG
-	#include <threads.h>
+#include <threads.h>
 #endif
 #endif
 

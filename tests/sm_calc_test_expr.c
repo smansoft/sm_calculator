@@ -151,7 +151,7 @@ static void sm_calc_equation_check_res(const long double check_res_value)
 static void sm_calc_init_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	(void)state;
 
@@ -161,7 +161,7 @@ static void sm_calc_init_test(void** state)
 	assert_int_equal(gsm_calc_params.m_i_format, SM_I_FORMAT_DEF);
 	assert_int_equal(gsm_calc_params.m_trig_unit, SM_TRIG_UNIT_DEF);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 
 	return;
@@ -178,7 +178,7 @@ static void sm_calc_init_test(void** state)
 			parametersm initialized prevoiusly; during this build, original main()
 			in module sm_calc/sm_calc.c will be compiled with name
 			int sm_calc_main(int argc, char* argv[]);
-			sm_calc_main (during execution) provides write out to opened 
+			sm_calc_main (during execution) provides write out to opened
 			temporary file (using gsm_test_out name/path);
 		- closes temporary file;
 		- call the function: void sm_calc_equation_check_res(const long double check_res_value),
@@ -187,7 +187,7 @@ static void sm_calc_init_test(void** state)
 static void sm_calc_equation_test(void** state)
 {
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- >>");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is started");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is started");
 
 	errno_t err = SM_RES_OK;
 
@@ -232,7 +232,7 @@ static void sm_calc_equation_test(void** state)
 
 	sm_calc_equation_check_res(exp_value);
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s","test",__FUNCTION__,"is finished: Ok");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
 }
 
@@ -250,7 +250,7 @@ int main(int argc, char* argv[])
 
 	sm_init_log_test();			//	initializing and starting the log output (file path, defined by SM_LOG_DPATH and SM_LOG_FNAME is used)
 
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s",__FUNCTION__,"---------------------------------------------------------------------- >>");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s", __FUNCTION__, "---------------------------------------------------------------------- >>");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "sm_calc_test_expr is started");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
 
@@ -263,10 +263,10 @@ int main(int argc, char* argv[])
 															//	i.e. if result of execution of unit tests is OK, int res == 0
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "cmocka_run_group_tests: res = %d", res);
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "cmocka_run_group_tests: result = %d", res);
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "sm_calc_test_expr is finished");
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s",__FUNCTION__,"---------------------------------------------------------------------- <<");
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s", __FUNCTION__, "---------------------------------------------------------------------- <<");
 
 	sm_close_log_test();		//	stopping and closing the log output
 
@@ -277,7 +277,7 @@ int main(int argc, char* argv[])
 errno_t	sm_init_log_test()
 {
 	errno_t err = SM_RES_OK;
-	err = sm_log_init(SM_LOG_CONFIG, SM_LOG_DPATH, SM_LOG_FNAME);
+	err = sm_log_init_dpath_fname(SM_LOG_CONFIG, SM_LOG_DPATH, SM_LOG_FNAME);
 	if (err == SM_RES_OK)
 		err = sm_log_start(SM_LOG_CONFIG);
 	return err;

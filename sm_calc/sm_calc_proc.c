@@ -27,19 +27,7 @@ extern FILE* yyout;		//	file output stream, that is used by lexical analyzer;
 extern sm_log_config gsm_log_config;	//	global instance of main log support structure
 #define SM_LOG_CONFIG &gsm_log_config	//	just synonym: SM_LOG_CONFIG == &gsm_log_config - for usage in log api calls
 
-/*
-	path of the HELP file;
-	is used during read of help:
-
-	function sm_print_help();
-	command 'help[;]'
-
-	gcsm_gelp_fpath == "../share/smansoft/doc/HELP"		- Linux platform
-	gcsm_gelp_fpath == "..\share\smansoft\doc\HELP"		- Windows platform
-*/
-errno_t sm_print_help();
-static const char gcsm_gelp_fpath[] = { ".." SM_FILES_DIR_SLASH "share" SM_FILES_DIR_SLASH "smansoft" 
-											SM_FILES_DIR_SLASH "doc" SM_FILES_DIR_SLASH "HELP" };
+extern char gsm_help_fpath[];
 
 /*	error processor; this function is called by the syntax parser	*/
 int yyerror(char* error)
@@ -55,7 +43,7 @@ errno_t sm_print_error(const char* const err_message)
 	errno_t err = SM_RES_ERROR;
 	int err_prn = fprintf(yyout, "Error: %s", err_message);
 	err = (err_prn > 0) ? SM_RES_OK : SM_RES_ERROR;
-	if(err == SM_RES_OK)
+	if (err == SM_RES_OK)
 		SM_SET_CALC_RES_OK;
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "Error: %s", err_message);
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "result = %d", err);
@@ -707,29 +695,27 @@ errno_t	sm_get_config(char* const buf, const size_t buf_len)
 /*
 	this function reads file from gcsm_gelp_fpath path and print out
 	content of this file into stdout device;
-
-	gcsm_gelp_fpath == "../share/smansoft/doc/HELP"		- Linux platform
-	gcsm_gelp_fpath == "..\share\smansoft\doc\HELP"		- Windows platform
+	gsm_help_fpath is read
 */
 errno_t sm_print_help()
 {
 	errno_t err = SM_RES_OK;
 	char buf[SM_L_BUFF_SIZE];
 	FILE* help_file_h;
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "opening of the help file: %s", gcsm_gelp_fpath);
-	err = safe_fopen(&help_file_h, gcsm_gelp_fpath, "r", SM_SFOPEN_NSHARED_TYPE);
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "opening of the help file: %s", gsm_help_fpath);
+	err = safe_fopen(&help_file_h, gsm_help_fpath, "r", SM_SFOPEN_NSHARED_TYPE);
 	if (err == SAFE_RES_ERROR || help_file_h == NULL) {
 		err = SM_RES_ERROR;
 		char err_buf[SM_L_BUFF_SIZE];
-		snprintf(err_buf, SM_ARRAY_SIZE(err_buf), "help file %s hasn't been opened for reading", gcsm_gelp_fpath);
+		snprintf(err_buf, SM_ARRAY_SIZE(err_buf), "help file %s hasn't been opened for reading", gsm_help_fpath);
 		SM_SET_CALC_RES_ERROR(err_buf);
 		sm_print_error(err_buf);
 		err = SM_RES_ERROR;
 		return err;
 	}
 	unsigned int count = 0;
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "reading help (from the file: %s)", gcsm_gelp_fpath);
-	printf("Help (from the file: %s):\n", gcsm_gelp_fpath);
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "reading help (from the file: %s)", gsm_help_fpath);
+	printf("Help (from the file: %s):\n", gsm_help_fpath);
 	while (TRUE) {
 		if (count == 30) {
 			printf("\nPress 'Enter' button to continue...\n");
@@ -745,7 +731,7 @@ errno_t sm_print_help()
 		printf("%s", buf);
 		count++;
 	}
-	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "closing of the help file: %s", gcsm_gelp_fpath);
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "closing of the help file: %s", gsm_help_fpath);
 	fclose(help_file_h);
 	return err;
 }
@@ -2390,7 +2376,7 @@ errno_t sm_calc_mod(const long long arg1, const long long arg2, long long* const
 		SM_SET_CALC_RES_ERROR("wrong parameter of function 'mod': arg2 should be != 0");
 		err = SM_RES_ERROR;
 	}
-	if(err == SM_RES_OK)
+	if (err == SM_RES_OK)
 		sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "out: res = %lld", *res);
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "result = %d", err);
 	return err;
