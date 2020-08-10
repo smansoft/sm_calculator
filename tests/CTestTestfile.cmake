@@ -22,6 +22,7 @@ set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
 						sm_calc_test_files_01 sm_calc_test_files_02 
 						sm_calc_test_files_03 sm_calc_test_files_04
 						sm_calc_test_files_05 sm_calc_test_files_06
+						sm_calc_test_files_08
 						PROPERTIES WILL_FAIL "0")
-set_tests_properties(sm_calc_test_files_07 sm_calc_test_files_08 
+set_tests_properties(sm_calc_test_files_07
 						PROPERTIES WILL_FAIL "1") 

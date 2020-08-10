@@ -32,6 +32,8 @@ Features of the SM Calculator:
         changing the path of the created/opened log file (command line option: -l, --log_file);
     - Access to the sm_calculator (SM Calculator) tool can be included into $PATH (Windows/Linux) and 
         the sm_calculator (SM Calculator) tool can be launched from any current directory;
+    - Detailed processing of syntax error(s);
+    - Restoring of syntax parsing after error(s);        
     - Help (command: help[;] or command line option: -h, --help);
     
 SM Calculator supports follow modes of execution:
@@ -714,18 +716,20 @@ Examples:
                     
     In  >> 08       :   here is an error, as 8 isn't octal digit:
     Out >> Error: syntax error:
-        current buffer : 08
-        current error lexem: 8
-        length of the current error lexem: 1    
+            current buffer : 08
+            current error lexem: 8
+            length of the current error lexem: 1
+    ;    
 
     In  >> -07      :   octal value
     Out >> -7;      :   output in decimal format
 
     In  >> -08      :   here is error, as 8 isn't octal value:
     Out >> Error: syntax error:
-        current buffer : -08
-        current error lexem: 8
-        length of the current error lexem: 1
+            current buffer : -08
+            current error lexem: 8
+            length of the current error lexem: 1
+    ;
 
     In  >> 0712377  :   octal value
     Out >> 234751;  :   output in decimal format

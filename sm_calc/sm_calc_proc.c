@@ -58,11 +58,11 @@ errno_t sm_print_error_ext(const char* const err_message)
 	errno_t err_buf = sm_get_buff_info(&l_buff_info);
 	if(err_buf == SM_RES_OK)
 		err_prn = fprintf(yyout, "Error: %s:\n\tcurrent buffer : %s\n\tcurrent error lexem: %s"
-			"\n\tlength of the current error lexem: %d",
+			"\n\tlength of the current error lexem: %d\n;",
 			err_message, l_buff_info.yy_buf_pos,
 			yyget_text(), yyget_leng());
 	else
-		err_prn = fprintf(yyout, "Error: %s:\n\tcurrent lexem: %s\n\tlength of the current lexem: %d",
+		err_prn = fprintf(yyout, "Error: %s:\n\tcurrent lexem: %s\n\tlength of the current lexem: %d\n;",
 			err_message, yyget_text(), yyget_leng());
 	err = (err_prn > 0) ? SM_RES_OK : SM_RES_ERROR;
 	if (err == SM_RES_OK)

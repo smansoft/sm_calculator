@@ -4,3 +4,4 @@ Error: syntax error:
 s
 	current error lexem: s
 	length of the current error lexem: 1
+;

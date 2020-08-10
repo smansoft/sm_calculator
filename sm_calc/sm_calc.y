@@ -99,6 +99,24 @@ calc_res	:
 
 	| 	T_QUIT T_NEWLINE     		{	sm_do_exit(); sm_print_nl(); SM_RES_OK;	}
 	| 	T_EXIT T_NEWLINE			{	sm_do_exit(); sm_print_nl(); SM_RES_OK;	}
+
+	|	ll_10_expr  error T_STOP		{	yyerrok; sm_print_nl(); SM_RES_OK;	}
+	|	ld_expr 	error T_STOP		{	yyerrok; sm_print_nl(); SM_RES_OK; }
+	|	sz_expr 	error T_STOP		{	yyerrok; sm_print_nl(); SM_RES_OK;	}
+
+	|	T_HELP error T_STOP			{	yyerrok; sm_print_nl(); SM_RES_OK;	}
+
+	| 	T_QUIT error T_STOP     		{	yyerrok; sm_print_nl(); SM_RES_OK;	}
+	| 	T_EXIT error T_STOP			{	yyerrok; sm_print_nl(); SM_RES_OK;	}
+
+	|	ll_10_expr 	error T_NEWLINE		{	yyerrok; sm_print_nl(); SM_RES_OK;	}
+	|	ld_expr 	error T_NEWLINE		{	yyerrok; sm_print_nl(); SM_RES_OK; }
+	|	sz_expr 	error T_NEWLINE		{	yyerrok; sm_print_nl(); SM_RES_OK;	}
+
+	|	T_HELP error T_NEWLINE			{	yyerrok; sm_print_nl(); SM_RES_OK;	}
+
+	| 	T_QUIT error T_NEWLINE     		{	yyerrok; sm_print_nl(); SM_RES_OK;	}
+	| 	T_EXIT error T_NEWLINE			{	yyerrok; sm_print_nl(); SM_RES_OK;	}
 ;
 
 sz_expr	:
