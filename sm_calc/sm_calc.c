@@ -28,7 +28,7 @@ int sm_calc_main(int argc, char* argv[]);
 #endif /* UNIT_TESTING */
 
 #define NAME				"sm_calc"
-#define VERSION				"0.1.0.2"
+#define VERSION				"0.1.1.3"
 #define COPYRIGHT			"Copyright (c) 2020 SManSoft"
 #define PRODUCT_NAME		"SM Calculator"
 

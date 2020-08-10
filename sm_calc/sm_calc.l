@@ -207,3 +207,21 @@ void sm_scan_file(FILE* const in_f)
     yyrestart(in_f);
     gsm_string_buffer_active = 0;
 }
+
+int sm_get_buff_info(sm_l_buff_info* l_buff_info)
+{
+    int res;
+    YY_BUFFER_STATE curr_buf = YY_CURRENT_BUFFER;
+    if(curr_buf) {
+        l_buff_info->yy_ch_buf = curr_buf->yy_ch_buf;
+        l_buff_info->yy_buf_pos = curr_buf->yy_buf_pos;
+
+        l_buff_info->yy_buf_size = curr_buf->yy_buf_size;
+        l_buff_info->yy_n_chars = curr_buf->yy_n_chars;
+
+        res = SM_RES_OK;
+    }
+    else
+        res = SM_RES_ERROR;
+    return res;
+}

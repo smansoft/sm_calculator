@@ -109,6 +109,7 @@ The basic directory layout of SM Calculator solution is as follows:
         sm_calc_test.in.05.txt
         sm_calc_test.in.06.txt
         sm_calc_test.in.07.txt
+        sm_calc_test.in.08.txt        
 
                     - files, which contain execution results of sm_calc_test_files and processing of sm_calc_test.in.xx.txt:  
         sm_calc_test.out.01.txt
@@ -118,6 +119,7 @@ The basic directory layout of SM Calculator solution is as follows:
         sm_calc_test.out.05.txt
         sm_calc_test.out.06.txt
         sm_calc_test.out.07.txt
+        sm_calc_test.out.08.txt        
         
                     - temporary file, that contains execution result of sm_calc_test_expr:
         sm_calc_test.out.expr.txt
@@ -131,6 +133,7 @@ The basic directory layout of SM Calculator solution is as follows:
         sm_calc_test.check.05.txt
         sm_calc_test.check.06.txt
         sm_calc_test.check.07.txt
+        sm_calc_test.check.08.txt        
 
                     - files, which should/can be used for comparing execution results of sm_calc_test_files and
                             true/correct execution results of sm_calc_test_files
@@ -198,9 +201,9 @@ log_lib     (log_lib/) - small logging library (with synchronizing support);
 
 sstring_lib (deps/sstring_lib/) - secure string and safe memory control library (instead C run-time functions);
                                     this project is based on safestringlib; original sources can be found here:
-                                        http://smansoft.com/sm_calculator/0.1.0.2/safestringlib/
-                                        http://smansoft.com/sm_calculator/0.1.0.2/safestringlib/safestringlib.zip
-                                        http://smansoft.com/sm_calculator/0.1.0.2/safestringlib/safestringlib.tar.gz
+                                        http://smansoft.com/sm_calculator/0.1.1.3/safestringlib/
+                                        http://smansoft.com/sm_calculator/0.1.1.3/safestringlib/safestringlib.zip
+                                        http://smansoft.com/sm_calculator/0.1.1.3/safestringlib/safestringlib.tar.gz
                                     also developer can find these sources here:
                                         https://github.com/intel/safestringlib/
                                         git clone https://github.com/intel/safestringlib.git
@@ -211,8 +214,8 @@ sstring_lib (deps/sstring_lib/) - secure string and safe memory control library 
                                     
 getopt_lib  (deps/getopt_lib/)  - getopt library (parsing and processing of command line options);
                                     this project is based on getoptlib; original sources can be found here:
-                                        http://smansoft.com/sm_calculator/0.1.0.2/getopt/
-                                        http://smansoft.com/sm_calculator/0.1.0.2/getopt/getopt_mb_uni_src.zip
+                                        http://smansoft.com/sm_calculator/0.1.1.3/getopt/
+                                        http://smansoft.com/sm_calculator/0.1.1.3/getopt/getopt_mb_uni_src.zip
                                     also developer can find these sources here:
                                         https://www.codeproject.com/articles/157001/full-getopt-port-for-unicode-and-multibyte-microso
                                     original getoptlib project is published under LGPLv3 License;
@@ -223,8 +226,8 @@ getopt_lib  (deps/getopt_lib/)  - getopt library (parsing and processing of comm
 
 cmocka_lib  (deps/cmocka_lib/)  - C-based testing framework/library (dynamic and static modules/libraries are created during build);
                                     this project is based on cmocka; original sources can be found here:
-                                        http://smansoft.com/sm_calculator/0.1.0.2/cmocka/
-                                        http://smansoft.com/sm_calculator/0.1.0.2/cmocka/cmocka-1.1.5.tar.xz
+                                        http://smansoft.com/sm_calculator/0.1.1.3/cmocka/
+                                        http://smansoft.com/sm_calculator/0.1.1.3/cmocka/cmocka-1.1.5.tar.xz
                                     also developer can find these sources here:
                                         https://cmocka.org/files/1.1/
                                         https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz
@@ -264,8 +267,8 @@ Tools necessary for build of the project:
         - flex;
         - bison;
             developer can find FLEX and BISON tools here:
-                http://smansoft.com/sm_calculator/0.1.0.2/win_flex_bison/
-                http://smansoft.com/sm_calculator/0.1.0.2/win_flex_bison/win_flex_bison-2.5.22.zip
+                http://smansoft.com/sm_calculator/0.1.1.3/win_flex_bison/
+                http://smansoft.com/sm_calculator/0.1.1.3/win_flex_bison/win_flex_bison-2.5.22.zip
             or here:
                 https://sourceforge.net/projects/winflexbison/
                 https://sourceforge.net/projects/winflexbison/files/
@@ -372,18 +375,18 @@ The solution assembly:
                     nmake test      - launching of unit tests;
 
                     cpack -G "ZIP" %BUILD_TYPE%                         - creating the binary archive package
-                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64.zip
+                                                                            /_cmake/_build/sm_calculator-0.1.1.3-Windows-x64.zip
                                                                         or 
-                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86.zip;
+                                                                            /_cmake/_build/sm_calculator-0.1.1.3-Windows-x86.zip;
 
                     cpack -G "ZIP" --config CPackSourceConfig.cmake     - creating of sources archive package
-                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Source.zip;
+                                                                            /_cmake/_build/sm_calculator-0.1.1.3-Source.zip;
             Developer can get as a result of this build:
-                /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64.zip    - x64 binary archive package
+                /_cmake/_build/sm_calculator-0.1.1.3-Windows-x64.zip    - x64 binary archive package
             or 
-                /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86.zip    - x86 binary archive package
+                /_cmake/_build/sm_calculator-0.1.1.3-Windows-x86.zip    - x86 binary archive package
             and 
-                /_cmake/_build/sm_calculator-0.1.0.2-Source.zip         - sources archive package.
+                /_cmake/_build/sm_calculator-0.1.1.3-Source.zip         - sources archive package.
         --------------------                                                                            
         - using /_cmake/cmake_build.vs.x64.bat or /_cmake/cmake_build.vs.x86.bat and then build,
             generated solution/projects using Visual Studio 2019 IDE:
@@ -402,19 +405,19 @@ The solution assembly:
                     ALL_BUILD   - full build of solution;
                     RUN_TESTS   - launching of all unit tests;
                     INSTALL     - creating the directory
-                                        /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64
+                                        /_cmake/_build/sm_calculator-0.1.1.3-Windows-x64
                                     or 
-                                        /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86
+                                        /_cmake/_build/sm_calculator-0.1.1.3-Windows-x86
                                      and deployment of all installed files here;
                     PACKAGE     - creating the binary archive package
-                                        /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64.zip
+                                        /_cmake/_build/sm_calculator-0.1.1.3-Windows-x64.zip
                                     or
-                                        /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86.zip
+                                        /_cmake/_build/sm_calculator-0.1.1.3-Windows-x86.zip
                                     ;
             Developer can get as a result of this build:
-                /_cmake/_build/sm_calculator-0.1.0.2-Windows-x64.zip    - x64 binary archive package
+                /_cmake/_build/sm_calculator-0.1.1.3-Windows-x64.zip    - x64 binary archive package
             or 
-                /_cmake/_build/sm_calculator-0.1.0.2-Windows-x86.zip    - x86 binary archive package.
+                /_cmake/_build/sm_calculator-0.1.1.3-Windows-x86.zip    - x86 binary archive package.
 
     --------------------
     Linux platform:
@@ -446,18 +449,18 @@ The solution assembly:
                     make all test;  - build of the solution and launching of unit tests;
 
                     cpack -G "TGZ";                                     - creating the binary archive package
-                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Linux-x64.tar.gz
+                                                                            /_cmake/_build/sm_calculator-0.1.1.3-Linux-x64.tar.gz
                                                                         or
-                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Linux-x86.tar.gz
+                                                                            /_cmake/_build/sm_calculator-0.1.1.3-Linux-x86.tar.gz
                     
                     cpack -G "TGZ" --config CPackSourceConfig.cmake;    - creating of sources archive package
-                                                                            /_cmake/_build/sm_calculator-0.1.0.2-Source.tar.gz;
+                                                                            /_cmake/_build/sm_calculator-0.1.1.3-Source.tar.gz;
             Developer can get as a result of this build:
-                /_cmake/_build/sm_calculator-0.1.0.2-Linux-x64.tar.gz   - x64 binary archive package
+                /_cmake/_build/sm_calculator-0.1.1.3-Linux-x64.tar.gz   - x64 binary archive package
             or
-                /_cmake/_build/sm_calculator-0.1.0.2-Linux-x86.tar.gz   - x86 binary archive package
+                /_cmake/_build/sm_calculator-0.1.1.3-Linux-x86.tar.gz   - x86 binary archive package
             and
-                /_cmake/_build/sm_calculator-0.1.0.2-Source.tar.gz      - sources archive package. 
+                /_cmake/_build/sm_calculator-0.1.1.3-Source.tar.gz      - sources archive package. 
     
 Testing of builds:
 --------------------
@@ -490,6 +493,9 @@ Testing of builds:
         sm_calc_test_files_07   - ...
                                     --in_file=./sm_calc_test.in.07.txt --out_file=./sm_calc_test.out.07.txt
                                 ;
+        sm_calc_test_files_08   - ...
+                                    --in_file=./sm_calc_test.in.08.txt --out_file=./sm_calc_test.out.08.txt
+                                ;
         m_calc_test_expr        - unit test (application m_calc_test_expr), that provides testing of functionality via cal
                                     of main module function (from sm_calc.c), using option:
                                     --expression="pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;"
@@ -505,6 +511,7 @@ Testing of builds:
         sm_calc_test.in.05.txt
         sm_calc_test.in.06.txt
         sm_calc_test.in.07.txt
+        sm_calc_test.in.08.txt
 
                     - files, which contain execution results of sm_calc_test_files and processing of sm_calc_test.in.xx.txt:  
         sm_calc_test.out.01.txt
@@ -514,6 +521,7 @@ Testing of builds:
         sm_calc_test.out.05.txt
         sm_calc_test.out.06.txt
         sm_calc_test.out.07.txt
+        sm_calc_test.out.08.txt
 
                     - temporary file, that contain execution result of sm_calc_test_expr:
         sm_calc_test.out.expr.txt
@@ -527,6 +535,7 @@ Testing of builds:
         sm_calc_test.check.05.txt
         sm_calc_test.check.06.txt
         sm_calc_test.check.07.txt
+        sm_calc_test.check.08.txt
 
     After execution of unit tests sm_calc_test_files_xx developer should compare files
         sm_calc_test.out.xx.txt

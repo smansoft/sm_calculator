@@ -53,13 +53,13 @@ Launching of SM Calculator:
 
 SM Calculator binary and sources distributions are deployed in follow archives:
     Windows:
-            sm_calculator-0.1.0.2-Windows-x64.zip    - x64 binary archive package
-            sm_calculator-0.1.0.2-Windows-x86.zip    - x86 binary archive package
-            sm_calculator-0.1.0.2-Source.zip         - sources archive package.
+            sm_calculator-0.1.1.3-Windows-x64.zip    - x64 binary archive package
+            sm_calculator-0.1.1.3-Windows-x86.zip    - x86 binary archive package
+            sm_calculator-0.1.1.3-Source.zip         - sources archive package.
     Linux:            
-            sm_calculator-0.1.0.2-Linux-x64.tar.gz   - x64 binary archive package
-            sm_calculator-0.1.0.2-Linux-x86.tar.gz   - x86 binary archive package
-            sm_calculator-0.1.0.2-Source.tar.gz      - sources archive package. 
+            sm_calculator-0.1.1.3-Linux-x64.tar.gz   - x64 binary archive package
+            sm_calculator-0.1.1.3-Linux-x86.tar.gz   - x86 binary archive package
+            sm_calculator-0.1.1.3-Source.tar.gz      - sources archive package. 
        
 For verification install files and archives, user can use:
     import public key (file: http://smansoft.com/gpg/smansoft.pub.asc):
@@ -102,10 +102,10 @@ Execution
     
 without parameters launches SM Calculator in interactive mode (default mode):
 
-    sm_calc 0.1.0.2 Copyright (c) 2020 SManSoft
+    sm_calc 0.1.1.3 Copyright (c) 2020 SManSoft
     SM Calculator
 
-    Log has been started in the file: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\log\sm_calc.log
+    Log has been started in the file: C:\sman\bin\sm_calculator\sm_calculator-0.1.1.3-Windows-x64\log\sm_calc.log
 
             Interactive processing:
     Type 'help' for more information.
@@ -119,10 +119,10 @@ or
 
 to get help output - description of command line parameters:
 
-    sm_calc 0.1.0.2 Copyright (c) 2020 SManSoft
+    sm_calc 0.1.1.3 Copyright (c) 2020 SManSoft
     SM Calculator
 
-    Log has been started in the file: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\log\sm_calc.log
+    Log has been started in the file: C:\sman\bin\sm_calculator\sm_calculator-0.1.1.3-Windows-x64\log\sm_calc.log
 
     USAGE: sm_calc [OPTION]
 
@@ -163,7 +163,7 @@ Windows:
         ...
 
     Message from console output:
-        Log has been started in the file: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\log\sm_calc.log
+        Log has been started in the file: C:\sman\bin\sm_calculator\sm_calculator-0.1.1.3-Windows-x64\log\sm_calc.log
 
 Linux:
     /bin/
@@ -176,7 +176,7 @@ Linux:
         ...
 
     Message from console output:
-        Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/log/sm_calc.log
+        Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/log/sm_calc.log
         
 By default path of log file doesn't depend on current directory, but, path, where sm_calculator (SM Calculator) tool 
 has been deployed.
@@ -199,7 +199,7 @@ Examples:
     starting without log output
     sm_calc -q
    
-    sm_calc 0.1.0.2 Copyright (c) 2020 SManSoft
+    sm_calc 0.1.1.3 Copyright (c) 2020 SManSoft
     SM Calculator
 
             Interactive processing:
@@ -209,40 +209,40 @@ Examples:
     if user use -q option, log will bot be started, even user defined option ( -l<lfile>, --log_file=<lfile>).
  
 2. 
-    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
-    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/
     and:
         sm_calc --log_file="./sm_calc.log"
     then:
-        Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin/sm_calc.log
+        Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/bin/sm_calc.log
 
 3.
-    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
-    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/
     and:
         sm_calc --log_file="./sm_calc.log"
     then:
-        Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/sm_calc.log
+        Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/sm_calc.log
 
 4. 
-    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
-    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/
     and:
         ./sm_calc --log_file="/home/sman/sm_calc.log"
     then:
         Log has been started in the file: /home/sman/sm_calc.log
         
 5. 
-    if current directory is: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\bin
-     , sm_calculator (SM Calculator) tool has been deployed: C:\sman\bin\sm_calculator\sm_calculator-0.1.0.2-Windows-x64\
+    if current directory is: C:\sman\bin\sm_calculator\sm_calculator-0.1.1.3-Windows-x64\bin
+     , sm_calculator (SM Calculator) tool has been deployed: C:\sman\bin\sm_calculator\sm_calculator-0.1.1.3-Windows-x64\
     and:
         sm_calc.exe --log_file="e:\sman\sm_calc.log"
     then:
         Log has been started in the file: e:\sman\sm_calc.log
 
 6.
-    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
-    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/
     and:
         ./sm_calc --log_file="/tmp/sm_calc_log/sm_calc.log"
     then:
@@ -251,14 +251,14 @@ Examples:
 Also sm_calculator (SM Calculator) tool supports pseudo-variable '*{SM_CALC_BIN}*', that can be used in command line:
 
 7. 
-    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/bin
-    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/
+    if current directory is: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/bin
+    , sm_calculator (SM Calculator) tool has been deployed: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/
     and:
         ./sm_calc --log_file="*{SM_CALC_BIN}*/../log/sm_calc.log"
     then:
         Log has been started in the file: /home/sman/sm_calc.log
 
-    Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.0.2-Linux-x64/log/sm_calc.log
+    Log has been started in the file: /home/sman/bin/sm_calculator/sm_calculator-0.1.1.3-Linux-x64/log/sm_calc.log
 
 
 Lexemes of SM Calculator expressions:
@@ -713,13 +713,19 @@ Examples:
 
                     
     In  >> 08       :   here is an error, as 8 isn't octal digit:
-    Out >> Error: syntax error
+    Out >> Error: syntax error:
+        current buffer : 08
+        current error lexem: 8
+        length of the current error lexem: 1    
 
     In  >> -07      :   octal value
     Out >> -7;      :   output in decimal format
 
     In  >> -08      :   here is error, as 8 isn't octal value:
-    Out >> Error: syntax error
+    Out >> Error: syntax error:
+        current buffer : -08
+        current error lexem: 8
+        length of the current error lexem: 1
 
     In  >> 0712377  :   octal value
     Out >> 234751;  :   output in decimal format
@@ -1186,7 +1192,7 @@ Examples:
 User can find here suite of files which contain suite examples of usage of operators, functions, commands,
 constants, various types of data:
 
-    http://smansoft.com/sm_calculator/0.1.0.2/examples/
+    http://smansoft.com/sm_calculator/0.1.1.3/examples/
     
 examples of expressions:
 

@@ -54,8 +54,13 @@ extern "C" {
 	/*	the function, that prints '\n' (end of line) symbol into yyout stream device	*/
 	errno_t sm_print_nl();
 
-	/*	the  function, that prints error into yyout stream device	*/
+	/*	the function, that prints error into yyout stream device	*/
 	errno_t sm_print_error(const char* const err_message);
+
+	/*	the function, that prints error into yyout stream device;
+		additional error info is used (from internal lexem/syntax data structures)
+	*/
+	errno_t sm_print_error_ext(const char* const err_message);
 
 	/*
 		this function reads file from gcsm_gelp_fpath path and print out
@@ -1268,6 +1273,36 @@ extern "C" {
 
 	extern const char* const	gcsm_s_format;							// contains format for string output/print
 	extern const char* const	gcsm_nl;								// contains format for new line output/print
+
+	/*	contains internal data from YY_CURRENT_BUFFER	*/
+	typedef struct _sm_l_buff_info
+	{
+		char* yy_ch_buf;		/* input buffer */
+		char* yy_buf_pos;		/* current position in input buffer */
+
+		/* Size of input buffer in bytes, not including room for EOB
+		 * characters.
+		 */
+		int yy_buf_size;
+
+		/* Number of characters read into yy_ch_buf, not including EOB
+		 * characters.
+		 */
+		int yy_n_chars;
+	} sm_l_buff_info, * psm_l_buff_info;
+
+	/* returns internal data from YY_CURRENT_BUFFER */
+	errno_t sm_get_buff_info(sm_l_buff_info* l_buff_info);
+
+	char* yyget_text(void);
+	int yyget_leng(void);
+
+	extern FILE* yyin;		// file input stream, that is used by lexical analyzer;
+							// this device is used for read data
+
+	extern FILE* yyout;		//	file output stream, that is used by lexical analyzer;
+							//	same file output stream is used for output of 
+							//	results, floats values, integer values, strings 
 
 #if defined __cplusplus
 }

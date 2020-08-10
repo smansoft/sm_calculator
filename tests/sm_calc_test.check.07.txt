@@ -1,2 +1,6 @@
 
-Error: syntax error
+Error: syntax error:
+	current buffer : 
+s
+	current error lexem: s
+	length of the current error lexem: 1

@@ -1,5 +1,12 @@
 This is the changelog file for the sm_calculator (SM Calculator) tool.
 
+Release 0.1.1.3 (2020-08-10)
+===========================
+
+New features of the SM Calculator (0.1.1.3):
+--------------------
+    - More detailed processing of syntax errors has been added;
+
 Release 0.1.0.2 (2020-06-28)
 ===========================
 
@@ -44,5 +51,4 @@ SM Calculator supports follow modes of execution:
     - processing of file, that contains expression(s);
     - processing of command line expression(s);
     - interactive mode (user enters expression(s), using standard input device/console).
-
 

@@ -9,7 +9,7 @@ echo ""
 echo "Comparing unit test (results) files and check (original) files:"
 echo ""
 
-for %%i in ( 1 2 3 4 5 6 7 ) do (
+for %%i in ( 1 2 3 4 5 6 7 8 ) do (
 
 	echo "----------------------------------------------"
 

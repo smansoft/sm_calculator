@@ -12,7 +12,8 @@ add_test(sm_calc_test_files_04 "sm_calc_test_files" "./sm_calc_test.in.04.txt" "
 add_test(sm_calc_test_files_05 "sm_calc_test_files" "./sm_calc_test.in.05.txt" "./sm_calc_test.out.05.txt")
 add_test(sm_calc_test_files_06 "sm_calc_test_files" "./sm_calc_test.in.06.txt" "./sm_calc_test.out.06.txt")
 add_test(sm_calc_test_files_07 "sm_calc_test_files" "./sm_calc_test.in.07.txt" "./sm_calc_test.out.07.txt")
-
+add_test(sm_calc_test_files_08 "sm_calc_test_files" "./sm_calc_test.in.08.txt" "./sm_calc_test.out.08.txt")
+                                                                                                           
 add_test(sm_calc_test_expr "sm_calc_test_expr")
 
 add_test(sm_calc_test_log "sm_calc_test_log")
@@ -22,5 +23,5 @@ set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
 						sm_calc_test_files_03 sm_calc_test_files_04
 						sm_calc_test_files_05 sm_calc_test_files_06
 						PROPERTIES WILL_FAIL "0")
-set_tests_properties(sm_calc_test_files_07 
+set_tests_properties(sm_calc_test_files_07 sm_calc_test_files_08 
 						PROPERTIES WILL_FAIL "1") 

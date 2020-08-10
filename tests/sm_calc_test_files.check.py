@@ -42,7 +42,7 @@ def compare_files(in_fpath_fst, in_fpath_sec):
 	return;
 
 def main(argv):
-	for i in (1,2,3,4,5,6,7):
+	for i in (1,2,3,4,5,6,7,8):
 		in_fpath_fst="./sm_calc_test.check.0%d.txt" % i;
 		in_fpath_sec="./sm_calc_test.out.0%d.txt" % i;		
 		compare_files(in_fpath_fst, in_fpath_sec);

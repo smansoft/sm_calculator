@@ -95,13 +95,15 @@ set(SM_CALC_TEST_FILES
 	"sm_calc_test.in.05.txt"
 	"sm_calc_test.in.06.txt"
 	"sm_calc_test.in.07.txt"
+	"sm_calc_test.in.08.txt"
 	"sm_calc_test.check.01.txt"
 	"sm_calc_test.check.02.txt"
 	"sm_calc_test.check.03.txt"
 	"sm_calc_test.check.04.txt"
 	"sm_calc_test.check.05.txt"
 	"sm_calc_test.check.06.txt"
-	"sm_calc_test.check.07.txt")
+	"sm_calc_test.check.07.txt"
+	"sm_calc_test.check.08.txt")
 
 foreach(test_file ${SM_CALC_TEST_FILES})
 	add_custom_command(
@@ -141,6 +143,9 @@ add_test(NAME sm_calc_test_files_06 COMMAND sm_calc_test_files "./sm_calc_test.i
 
 ### sm_calc_test_files_07
 add_test(NAME sm_calc_test_files_07 COMMAND sm_calc_test_files "./sm_calc_test.in.07.txt" "./sm_calc_test.out.07.txt")
+
+### sm_calc_test_files_08
+add_test(NAME sm_calc_test_files_08 COMMAND sm_calc_test_files "./sm_calc_test.in.08.txt" "./sm_calc_test.out.08.txt")
 
 ### sm_calc_test_expr
 if(WIN32)
@@ -183,7 +188,7 @@ set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
 						sm_calc_test_files_03 sm_calc_test_files_04
 						sm_calc_test_files_05 sm_calc_test_files_06
 						PROPERTIES WILL_FAIL "0")
-set_tests_properties(sm_calc_test_files_07 
+set_tests_properties(sm_calc_test_files_07 sm_calc_test_files_08 
 						PROPERTIES WILL_FAIL "1") 
 
 if(CMAKE_GENERATOR MATCHES "Visual Studio*")
@@ -191,13 +196,13 @@ if(CMAKE_GENERATOR MATCHES "Visual Studio*")
 							sm_calc_test_files_01 sm_calc_test_files_02 
 							sm_calc_test_files_03 sm_calc_test_files_04
 							sm_calc_test_files_05 sm_calc_test_files_06
-							sm_calc_test_files_07
+							sm_calc_test_files_07 sm_calc_test_files_08
 							PROPERTIES ENVIRONMENT "PATH=$<TARGET_FILE_DIR:getopt_lib>;$ENV{PATH}")
 else()
 	set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
 							sm_calc_test_files_01 sm_calc_test_files_02 
 							sm_calc_test_files_03 sm_calc_test_files_04
 							sm_calc_test_files_05 sm_calc_test_files_06
-							sm_calc_test_files_07
+							sm_calc_test_files_07 sm_calc_test_files_08
 							PROPERTIES ENVIRONMENT "PATH=${getopt_lib_BINARY_DIR};$ENV{PATH}")
 endif()

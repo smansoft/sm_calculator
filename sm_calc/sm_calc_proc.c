@@ -17,13 +17,6 @@
 #include "sm_calc.h"
 #include "sm_calc_proc.h"
 
-extern FILE* yyin;		// file input stream, that is used by lexical analyzer;
-						// this device is used for read data
-
-extern FILE* yyout;		//	file output stream, that is used by lexical analyzer;
-						//	same file output stream is used for output of 
-						//	results, floats values, integer values, strings 
-
 extern sm_log_config gsm_log_config;	//	global instance of main log support structure
 #define SM_LOG_CONFIG &gsm_log_config	//	just synonym: SM_LOG_CONFIG == &gsm_log_config - for usage in log api calls
 
@@ -32,12 +25,12 @@ extern char gsm_help_fpath[];
 /*	error processor; this function is called by the syntax parser	*/
 int yyerror(char* error)
 {
-	sm_print_error(error);
+	sm_print_error_ext(error);
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "yyerror: %s", error);
 	return SM_RES_OK;
 }
 
-/*	the  function, that prints error into yyout stream device	*/
+/*	the function, that prints error into yyout stream device	*/
 errno_t sm_print_error(const char* const err_message)
 {
 	errno_t err = SM_RES_ERROR;
@@ -46,6 +39,39 @@ errno_t sm_print_error(const char* const err_message)
 	if (err == SM_RES_OK)
 		SM_SET_CALC_RES_OK;
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "Error: %s", err_message);
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "result = %d", err);
+	return err;
+}
+
+/*
+	the function, that prints error into yyout stream device;
+	additional info is printed:
+		- current lexem;
+		- length oof the current lexem;
+		- internal data from YY_CURRENT_BUFFER;
+*/
+errno_t sm_print_error_ext(const char* const err_message)
+{
+	errno_t err = SM_RES_ERROR;
+	int err_prn;
+	sm_l_buff_info l_buff_info;
+	errno_t err_buf = sm_get_buff_info(&l_buff_info);
+	if(err_buf == SM_RES_OK)
+		err_prn = fprintf(yyout, "Error: %s:\n\tcurrent buffer : %s\n\tcurrent error lexem: %s"
+			"\n\tlength of the current error lexem: %d",
+			err_message, l_buff_info.yy_buf_pos,
+			yyget_text(), yyget_leng());
+	else
+		err_prn = fprintf(yyout, "Error: %s:\n\tcurrent lexem: %s\n\tlength of the current lexem: %d",
+			err_message, yyget_text(), yyget_leng());
+	err = (err_prn > 0) ? SM_RES_OK : SM_RES_ERROR;
+	if (err == SM_RES_OK)
+		SM_SET_CALC_RES_OK;
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "Error: %s", err_message);
+	if (err_buf == SM_RES_OK)
+		sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "current buffer: %s", l_buff_info.yy_buf_pos);
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "current error lexem: %s", yyget_text());
+	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "length of the current error lexem: %d", yyget_leng());
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "result = %d", err);
 	return err;
 }
