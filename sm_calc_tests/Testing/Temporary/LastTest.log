@@ -1,0 +1,988 @@
+Start testing: Jan 24 17:33 FLE Standard Time
+----------------------------------------------------------
+1/19 Testing: sm_calc_test
+1/19 Test: sm_calc_test
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test.exe"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test.log
+
+[==========] Running 48 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_get_const_test
+[       OK ] sm_get_const_test
+[ RUN      ] sm_calc_divide_test
+[       OK ] sm_calc_divide_test
+[ RUN      ] sm_a_unit_test
+[       OK ] sm_a_unit_test
+[ RUN      ] sm_i_format_test
+[       OK ] sm_i_format_test
+[ RUN      ] sm_calc_trig_dir_test
+[       OK ] sm_calc_trig_dir_test
+[ RUN      ] sm_calc_trig_rev_test
+[       OK ] sm_calc_trig_rev_test
+[ RUN      ] sm_conv_trig_test
+[       OK ] sm_conv_trig_test
+[ RUN      ] sm_calc_factorial_test
+[       OK ] sm_calc_factorial_test
+[ RUN      ] sm_calc_rand_test
+[       OK ] sm_calc_rand_test
+[ RUN      ] sm_conv_i_dec_2_sz_test
+[       OK ] sm_conv_i_dec_2_sz_test
+[ RUN      ] sm_conv_i_dec_2_bin_test
+[       OK ] sm_conv_i_dec_2_bin_test
+[ RUN      ] sm_conv_sz_2_f_dec_test
+[       OK ] sm_conv_sz_2_f_dec_test
+[ RUN      ] sm_conv_sz_2_f_dec_test
+[       OK ] sm_conv_sz_2_f_dec_test
+[ RUN      ] sm_conv_i_test
+[       OK ] sm_conv_i_test
+[ RUN      ] sm_conv_f_test
+[       OK ] sm_conv_f_test
+[ RUN      ] sm_calc_l_ashift_test
+[       OK ] sm_calc_l_ashift_test
+[ RUN      ] sm_calc_r_ashift_test
+[       OK ] sm_calc_r_ashift_test
+[ RUN      ] sm_calc_l_lshift_test
+[       OK ] sm_calc_l_lshift_test
+[ RUN      ] sm_calc_r_lshift_test
+[       OK ] sm_calc_r_lshift_test
+[ RUN      ] sm_calc_l_cshift_test
+[       OK ] sm_calc_l_cshift_test
+[ RUN      ] sm_calc_r_cshift_test
+[       OK ] sm_calc_r_cshift_test
+[ RUN      ] sm_calc_and_test
+[       OK ] sm_calc_and_test
+[ RUN      ] sm_calc_or_test
+[       OK ] sm_calc_or_test
+[ RUN      ] sm_calc_not_test
+[       OK ] sm_calc_not_test
+[ RUN      ] sm_calc_nand_test
+[       OK ] sm_calc_nand_test
+[ RUN      ] sm_calc_nor_test
+[       OK ] sm_calc_nor_test
+[ RUN      ] sm_calc_xor_test
+[       OK ] sm_calc_xor_test
+[ RUN      ] sm_conv_bin_2_bin_sz_test
+[       OK ] sm_conv_bin_2_bin_sz_test
+[ RUN      ] sm_f_precision_test
+[       OK ] sm_f_precision_test
+[ RUN      ] sm_calc_recip_test
+[       OK ] sm_calc_recip_test
+[ RUN      ] sm_calc_mod_test
+[       OK ] sm_calc_mod_test
+[ RUN      ] sm_calc_abs_i_test
+[       OK ] sm_calc_abs_i_test
+[ RUN      ] sm_calc_abs_f_test
+[       OK ] sm_calc_abs_f_test
+[ RUN      ] sm_calc_sqrt_test
+[       OK ] sm_calc_sqrt_test
+[ RUN      ] sm_calc_ln_test
+[       OK ] sm_calc_ln_test
+[ RUN      ] sm_calc_lg_test
+[       OK ] sm_calc_lg_test
+[ RUN      ] sm_calc_log_test
+[       OK ] sm_calc_log_test
+[ RUN      ] sm_calc_power_test
+[       OK ] sm_calc_power_test
+[ RUN      ] sm_calc_power_2_i_test
+[       OK ] sm_calc_power_2_i_test
+[ RUN      ] sm_calc_power_10_i_test
+[       OK ] sm_calc_power_10_i_test
+[ RUN      ] sm_calc_power_i_2_test
+[       OK ] sm_calc_power_i_2_test
+[ RUN      ] sm_calc_power_2_d_test
+[       OK ] sm_calc_power_2_d_test
+[ RUN      ] sm_calc_power_10_d_test
+[       OK ] sm_calc_power_10_d_test
+[ RUN      ] sm_calc_power_exp_d_test
+[       OK ] sm_calc_power_exp_d_test
+[ RUN      ] sm_calc_power_d_2_test
+[       OK ] sm_calc_power_d_2_test
+[ RUN      ] sm_echo_test
+[       OK ] sm_echo_test
+[ RUN      ] sm_conv_quot_sz_2_sz_test
+[       OK ] sm_conv_quot_sz_2_sz_test
+[==========] 48 test(s) run.
+[  PASSED  ] 48 test(s).
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/19 Testing: sm_calc_test_files_01
+2/19 Test: sm_calc_test_files_01
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_files.exe" "./sm_calc_test.in.01.txt" "./sm_calc_test.out.01.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_files_01" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_files:
+input    file: ./sm_calc_test.in.01.txt
+output   file: ./sm_calc_test.out.01.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_files_processing_test
+sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+SM Calculator, Re-Entrant Parser Core
+
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_files.log
+
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.txt
+
+[       OK ] sm_calc_files_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_files_01" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_files_01" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/19 Testing: sm_calc_test_files_02
+3/19 Test: sm_calc_test_files_02
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_files.exe" "./sm_calc_test.in.02.txt" "./sm_calc_test.out.02.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_files_02" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_files:
+input    file: ./sm_calc_test.in.02.txt
+output   file: ./sm_calc_test.out.02.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_files_processing_test
+sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+SM Calculator, Re-Entrant Parser Core
+
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_files.log
+
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.txt
+
+[       OK ] sm_calc_files_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_files_02" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_files_02" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/19 Testing: sm_calc_test_files_03
+4/19 Test: sm_calc_test_files_03
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_files.exe" "./sm_calc_test.in.03.txt" "./sm_calc_test.out.03.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_files_03" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_files:
+input    file: ./sm_calc_test.in.03.txt
+output   file: ./sm_calc_test.out.03.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_files_processing_test
+sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+SM Calculator, Re-Entrant Parser Core
+
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_files.log
+
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.txt
+
+[       OK ] sm_calc_files_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_files_03" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_files_03" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/19 Testing: sm_calc_test_files_04
+5/19 Test: sm_calc_test_files_04
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_files.exe" "./sm_calc_test.in.04.txt" "./sm_calc_test.out.04.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_files_04" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_files:
+input    file: ./sm_calc_test.in.04.txt
+output   file: ./sm_calc_test.out.04.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_files_processing_test
+sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+SM Calculator, Re-Entrant Parser Core
+
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_files.log
+
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.txt
+
+[       OK ] sm_calc_files_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_files_04" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_files_04" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/19 Testing: sm_calc_test_files_05
+6/19 Test: sm_calc_test_files_05
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_files.exe" "./sm_calc_test.in.05.txt" "./sm_calc_test.out.05.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_files_05" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_files:
+input    file: ./sm_calc_test.in.05.txt
+output   file: ./sm_calc_test.out.05.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_files_processing_test
+sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+SM Calculator, Re-Entrant Parser Core
+
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_files.log
+
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.txt
+
+[       OK ] sm_calc_files_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_files_05" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_files_05" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/19 Testing: sm_calc_test_files_06
+7/19 Test: sm_calc_test_files_06
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_files.exe" "./sm_calc_test.in.06.txt" "./sm_calc_test.out.06.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_files_06" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_files:
+input    file: ./sm_calc_test.in.06.txt
+output   file: ./sm_calc_test.out.06.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_files_processing_test
+sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+SM Calculator, Re-Entrant Parser Core
+
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_files.log
+
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.txt
+
+[       OK ] sm_calc_files_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_files_06" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_files_06" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/19 Testing: sm_calc_test_files_07
+8/19 Test: sm_calc_test_files_07
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_files.exe" "./sm_calc_test.in.07.txt" "./sm_calc_test.out.07.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_files_07" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_files:
+input    file: ./sm_calc_test.in.07.txt
+output   file: ./sm_calc_test.out.07.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_files_processing_test
+[  ERROR   ] --- 0x1 != 0x0
+[   LINE   ] --- G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_files.c:155: error: Failure!
+sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+SM Calculator, Re-Entrant Parser Core
+
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_files.log
+
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.txt
+
+[  FAILED  ] sm_calc_files_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 1 test(s).
+[  FAILED  ] 1 test(s), listed below:
+[  FAILED  ] sm_calc_files_processing_test
+
+ 1 FAILED TEST(S)
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_files_07" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_files_07" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/19 Testing: sm_calc_test_files_08
+9/19 Test: sm_calc_test_files_08
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_files.exe" "./sm_calc_test.in.08.txt" "./sm_calc_test.out.08.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_files_08" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_files:
+input    file: ./sm_calc_test.in.08.txt
+output   file: ./sm_calc_test.out.08.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_files_processing_test
+sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+SM Calculator, Re-Entrant Parser Core
+
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_files.log
+
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.txt
+
+[       OK ] sm_calc_files_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_files_08" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_files_08" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/19 Testing: sm_calc_test_expr
+10/19 Test: sm_calc_test_expr
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_expr.exe"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_expr" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_equation_test
+sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+SM Calculator, Re-Entrant Parser Core
+
+Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_expr.log
+
+	Command line processing:
+
+[       OK ] sm_calc_equation_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.19 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_expr" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_expr" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/19 Testing: sm_calc_test_log
+11/19 Test: sm_calc_test_log
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_log.exe"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_log" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+[==========] Running 9 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_get_cur_dpath_test
+[       OK ] sm_get_cur_dpath_test
+[ RUN      ] sm_get_temp_dpath_test
+[       OK ] sm_get_temp_dpath_test
+[ RUN      ] sm_create_dpath_is_dpath_found_test
+[       OK ] sm_create_dpath_is_dpath_found_test
+[ RUN      ] sm_get_base_module_fpath_test
+[       OK ] sm_get_base_module_fpath_test
+[ RUN      ] sm_get_dpath_from_fpath_test
+[       OK ] sm_get_dpath_from_fpath_test
+[ RUN      ] sm_get_fname_from_fpath_test
+[       OK ] sm_get_fname_from_fpath_test
+[ RUN      ] sm_path_is_abs_test
+[       OK ] sm_path_is_abs_test
+[ RUN      ] sm_make_path_abs_test
+[       OK ] sm_make_path_abs_test
+[==========] 9 test(s) run.
+[  PASSED  ] 9 test(s).
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_log" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_log" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/19 Testing: sm_calc_test_mthread_01
+12/19 Test: sm_calc_test_mthread_01
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_mthread.exe" "./sm_calc_test.in.01.txt" "./sm_calc_test.out.01.XXX.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_mthread_01" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_mthread:
+input    file: ./sm_calc_test.in.01.txt
+output   file: ./sm_calc_test.out.01.XXX.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_mthread_processing_test
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.003.txt
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.002.txt
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.000.txt
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.001.txt
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.009.txt
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.006.txt
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.004.txt
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.005.txt
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.008.txt
+	Files processing:
+in file = ./sm_calc_test.in.01.txt
+out file = ./sm_calc_test.out.01.007.txt
+
+
+
+
+
+
+
+
+
+
+[       OK ] sm_calc_mthread_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.60 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_mthread_01" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_mthread_01" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/19 Testing: sm_calc_test_mthread_02
+13/19 Test: sm_calc_test_mthread_02
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_mthread.exe" "./sm_calc_test.in.02.txt" "./sm_calc_test.out.02.XXX.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_mthread_02" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_mthread:
+input    file: ./sm_calc_test.in.02.txt
+output   file: ./sm_calc_test.out.02.XXX.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_mthread_processing_test
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.006.txt
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.004.txt
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.005.txt
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.007.txt
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.000.txt
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.009.txt
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.001.txt
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.003.txt
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.008.txt
+	Files processing:
+in file = ./sm_calc_test.in.02.txt
+out file = ./sm_calc_test.out.02.002.txt
+
+
+
+
+
+
+
+
+
+
+[       OK ] sm_calc_mthread_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_mthread_02" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_mthread_02" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/19 Testing: sm_calc_test_mthread_03
+14/19 Test: sm_calc_test_mthread_03
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_mthread.exe" "./sm_calc_test.in.03.txt" "./sm_calc_test.out.03.XXX.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_mthread_03" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_mthread:
+input    file: ./sm_calc_test.in.03.txt
+output   file: ./sm_calc_test.out.03.XXX.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_mthread_processing_test
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.000.txt
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.008.txt
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.004.txt
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.006.txt
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.001.txt
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.009.txt
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.003.txt
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.005.txt
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.002.txt
+	Files processing:
+in file = ./sm_calc_test.in.03.txt
+out file = ./sm_calc_test.out.03.007.txt
+
+
+
+
+
+
+
+
+
+
+[       OK ] sm_calc_mthread_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.66 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_mthread_03" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_mthread_03" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/19 Testing: sm_calc_test_mthread_04
+15/19 Test: sm_calc_test_mthread_04
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_mthread.exe" "./sm_calc_test.in.04.txt" "./sm_calc_test.out.04.XXX.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_mthread_04" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_mthread:
+input    file: ./sm_calc_test.in.04.txt
+output   file: ./sm_calc_test.out.04.XXX.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_mthread_processing_test
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.008.txt
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.003.txt
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.004.txt
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.006.txt
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.002.txt
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.009.txt
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.007.txt
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.000.txt
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.005.txt
+	Files processing:
+in file = ./sm_calc_test.in.04.txt
+out file = ./sm_calc_test.out.04.001.txt
+
+
+
+
+
+
+
+
+
+
+[       OK ] sm_calc_mthread_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.41 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_mthread_04" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_mthread_04" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/19 Testing: sm_calc_test_mthread_05
+16/19 Test: sm_calc_test_mthread_05
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_mthread.exe" "./sm_calc_test.in.05.txt" "./sm_calc_test.out.05.XXX.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_mthread_05" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_mthread:
+input    file: ./sm_calc_test.in.05.txt
+output   file: ./sm_calc_test.out.05.XXX.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_mthread_processing_test
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.003.txt
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.000.txt
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.002.txt
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.009.txt
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.001.txt
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.004.txt
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.006.txt
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.007.txt
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.008.txt
+	Files processing:
+in file = ./sm_calc_test.in.05.txt
+out file = ./sm_calc_test.out.05.005.txt
+
+
+
+
+
+
+
+
+
+
+[       OK ] sm_calc_mthread_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.62 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_mthread_05" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_mthread_05" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/19 Testing: sm_calc_test_mthread_06
+17/19 Test: sm_calc_test_mthread_06
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_mthread.exe" "./sm_calc_test.in.06.txt" "./sm_calc_test.out.06.XXX.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_mthread_06" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_mthread:
+input    file: ./sm_calc_test.in.06.txt
+output   file: ./sm_calc_test.out.06.XXX.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_mthread_processing_test
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.000.txt
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.001.txt
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.007.txt
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.005.txt
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.004.txt
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.008.txt
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.002.txt
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.003.txt
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.006.txt
+	Files processing:
+in file = ./sm_calc_test.in.06.txt
+out file = ./sm_calc_test.out.06.009.txt
+
+
+
+
+
+
+
+
+
+
+[       OK ] sm_calc_mthread_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.88 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_mthread_06" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_mthread_06" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/19 Testing: sm_calc_test_mthread_07
+18/19 Test: sm_calc_test_mthread_07
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_mthread.exe" "./sm_calc_test.in.07.txt" "./sm_calc_test.out.07.XXX.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_mthread_07" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_mthread:
+input    file: ./sm_calc_test.in.07.txt
+output   file: ./sm_calc_test.out.07.XXX.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_mthread_processing_test
+[  ERROR   ] --- 0x1 != 0x0
+[   LINE   ] --- G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_mthread.c:482: error: Failure!
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.000.txt
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.007.txt
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.008.txt
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.005.txt
+
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.004.txt
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.002.txt
+
+
+
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.001.txt
+
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.006.txt
+
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.009.txt
+
+	Files processing:
+in file = ./sm_calc_test.in.07.txt
+out file = ./sm_calc_test.out.07.003.txt
+
+
+
+[  FAILED  ] sm_calc_mthread_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 1 test(s).
+[  FAILED  ] 1 test(s), listed below:
+[  FAILED  ] sm_calc_mthread_processing_test
+
+ 1 FAILED TEST(S)
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_mthread_07" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_mthread_07" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/19 Testing: sm_calc_test_mthread_08
+19/19 Test: sm_calc_test_mthread_08
+Command: "G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/x64/bin.Debug/sm_calc_test_mthread.exe" "./sm_calc_test.in.08.txt" "./sm_calc_test.out.08.XXX.txt"
+Directory: G:/sman/git.cur/w.sm_calculator/src/main/sm_calculator/tests
+"sm_calc_test_mthread_08" start time: Jan 24 17:33 FLE Standard Time
+Output:
+----------------------------------------------------------
+sm_calc_test_mthread:
+input    file: ./sm_calc_test.in.08.txt
+output   file: ./sm_calc_test.out.08.XXX.txt
+[==========] Running 2 test(s).
+[ RUN      ] sm_calc_init_test
+[       OK ] sm_calc_init_test
+[ RUN      ] sm_calc_mthread_processing_test
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.000.txt
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.004.txt
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.003.txt
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.006.txt
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.005.txt
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.002.txt
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.009.txt
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.008.txt
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.007.txt
+	Files processing:
+in file = ./sm_calc_test.in.08.txt
+out file = ./sm_calc_test.out.08.001.txt
+
+
+
+
+
+
+
+
+
+
+[       OK ] sm_calc_mthread_processing_test
+[==========] 2 test(s) run.
+[  PASSED  ] 2 test(s).
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"sm_calc_test_mthread_08" end time: Jan 24 17:33 FLE Standard Time
+"sm_calc_test_mthread_08" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jan 24 17:33 FLE Standard Time

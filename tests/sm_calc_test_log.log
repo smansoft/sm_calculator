@@ -1,0 +1,81 @@
+22/01/2021 10:14:37.318 - <main> - main ---------------------------------------------------------------------- >>
+22/01/2021 10:14:37.319 - <main> - sm_calc_test_log is started
+22/01/2021 10:14:37.319 - <main> - ------------------
+22/01/2021 10:14:37.319 - <sm_init_random> - random starting point has been initialized
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - calc_params --------------- >>
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 0
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_help          = 0
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file_path = 
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file_path = 
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_expression = 
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file  = 0x0
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file = 0x0
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_trig_unit   = 0
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_f_precision = 10
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_i_format = 0
+22/01/2021 10:14:37.319 - <sm_log_calc_params> - calc_params --------------- <<
+22/01/2021 10:14:37.319 - <sm_calc_init_test> - test -------------------------------------- >>
+22/01/2021 10:14:37.319 - <sm_calc_init_test> - test sm_calc_init_test is started
+22/01/2021 10:14:37.319 - <sm_calc_init_test> - test sm_calc_init_test is finished: Ok
+22/01/2021 10:14:37.319 - <sm_calc_init_test> - test -------------------------------------- <<
+22/01/2021 10:14:37.322 - <main> - ------------------
+22/01/2021 10:14:37.322 - <main> - cmocka_run_group_tests: result = 0
+22/01/2021 10:14:37.322 - <main> - ------------------
+22/01/2021 10:14:37.322 - <main> - sm_calc_test_log is finished
+22/01/2021 10:14:37.322 - <main> - main ---------------------------------------------------------------------- <<
+22/01/2021 11:40:05.756 - <main> - main ---------------------------------------------------------------------- >>
+22/01/2021 11:40:05.757 - <main> - sm_calc_test_log is started
+22/01/2021 11:40:05.757 - <main> - ------------------
+22/01/2021 11:40:05.757 - <sm_init_random> - random starting point has been initialized
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - calc_params --------------- >>
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 0
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_help          = 0
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file_path = 
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file_path = 
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_expression = 
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file  = 0x0
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file = 0x0
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_trig_unit   = 0
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_f_precision = 10
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_i_format = 0
+22/01/2021 11:40:05.757 - <sm_log_calc_params> - calc_params --------------- <<
+22/01/2021 11:40:05.757 - <sm_calc_init_test> - test -------------------------------------- >>
+22/01/2021 11:40:05.757 - <sm_calc_init_test> - test sm_calc_init_test is started
+22/01/2021 11:40:05.757 - <sm_calc_init_test> - test sm_calc_init_test is finished: Ok
+22/01/2021 11:40:05.757 - <sm_calc_init_test> - test -------------------------------------- <<
+22/01/2021 11:40:05.760 - <main> - ------------------
+22/01/2021 11:40:05.760 - <main> - cmocka_run_group_tests: result = 0
+22/01/2021 11:40:05.760 - <main> - ------------------
+22/01/2021 11:40:05.760 - <main> - sm_calc_test_log is finished
+22/01/2021 11:40:05.760 - <main> - main ---------------------------------------------------------------------- <<
+24/01/2021 17:33:26.033 - <main> - main ---------------------------------------------------------------------- >>
+24/01/2021 17:33:26.033 - <main> - sm_calc_test_log is started
+24/01/2021 17:33:26.033 - <main> - ------------------
+24/01/2021 17:33:26.033 - <sm_init_random> - random starting point has been initialized
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - calc_params --------------- >>
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 0
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_help          = 0
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file_path = 
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file_path = 
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_expression = 
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file  = 0x0
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file = 0x0
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_trig_unit   = 0
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_f_precision = 10
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_i_format = 0
+24/01/2021 17:33:26.033 - <sm_log_calc_params> - calc_params --------------- <<
+24/01/2021 17:33:26.034 - <sm_calc_init_test> - test -------------------------------------- >>
+24/01/2021 17:33:26.034 - <sm_calc_init_test> - test sm_calc_init_test is started
+24/01/2021 17:33:26.034 - <sm_calc_init_test> - test sm_calc_init_test is finished: Ok
+24/01/2021 17:33:26.034 - <sm_calc_init_test> - test -------------------------------------- <<
+24/01/2021 17:33:26.036 - <main> - ------------------
+24/01/2021 17:33:26.036 - <main> - cmocka_run_group_tests: result = 0
+24/01/2021 17:33:26.036 - <main> - ------------------
+24/01/2021 17:33:26.036 - <main> - sm_calc_test_log is finished
+24/01/2021 17:33:26.036 - <main> - main ---------------------------------------------------------------------- <<

@@ -1,27 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <Manifest Include="sm_calc.manifest" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sm_calc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sm_calc_proc.c">
+    <ClCompile Include="sm_calc_l.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sm_calc_l.c">
+    <ClCompile Include="sm_calc_proc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sm_calc_y.c">
@@ -29,9 +18,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sm_calc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -47,12 +33,26 @@
     <ClInclude Include="sm_calc_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Manifest Include="sm_calc.manifest" />
+    <ClInclude Include="sm_calc_l.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sm_calc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="sm_calc.l" />
     <CustomBuild Include="sm_calc.y" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{d4f1e706-d65e-4eb3-a877-63cecd1bc78f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{55a3a7f9-454f-47f6-ab3a-9fbd484344d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{e03d8b6e-f505-48ec-8de8-d22d540e1067}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

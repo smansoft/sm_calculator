@@ -1,5 +1,5 @@
 #
-#    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+#    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
 #                       Sergey Manoylo <info@smansoft.com>
 #
 
@@ -12,11 +12,11 @@ message (STATUS "PROJECT_NAME     	= ${PROJECT_NAME}")
 enable_language (C)
 
 if(WIN32)
-	add_definitions (/D_LIB)
+	add_definitions (/D_LIB /DSM_SYNC_LOG)
 endif(WIN32)
 
 if(UNIX)
-	add_definitions (-D_LIB)
+	add_definitions (-D_LIB -DSM_SYNC_LOG)
 endif(UNIX)
  
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

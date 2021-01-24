@@ -1,9 +1,11 @@
 /*
- *    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+ *    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
  *    Sergey Manoylo <info@smansoft.com>
  */
 
 #pragma once
+
+#include <stdio.h>
 
 #if defined __cplusplus
 extern "C" {
@@ -168,29 +170,83 @@ typedef struct _sm_calc_params
 	char m_out_file_path[MAX_PATH];			//	output file path (obtained via command line params: -o, --out_file)
 	char m_expression[SM_L_BUFF_SIZE];		//	command line expression (-x, --expression)
 
-	BOOL m_interact_proc;			//	TRUE if interactive mode is initialized
-	BOOL m_cmd_line_proc;			//	TRUE if command line expression should be processed
-	BOOL m_file_proc;				//	TRUE if file processing (input file path, [output file path]) is defined
+	BOOL m_interact_proc;				//	TRUE if interactive mode is initialized
+	BOOL m_cmd_line_proc;				//	TRUE if command line expression should be processed
+	BOOL m_file_proc;					//	TRUE if file processing (input file path, [output file path]) is defined
 
-	BOOL m_no_log;					//	TRUE if don't need to create/open and don't need to start log output
+	BOOL m_no_log;						//	TRUE if don't need to create/open and don't need to start log output
 
-	BOOL m_help;					//	TRUE if sm_calc should show calc usage (sm_calc_usage()): -h, --help 
+	BOOL m_help;						//	TRUE if sm_calc should show calc usage (sm_calc_usage()): -h, --help 
+
+	int	m_f_precision;					//	current precision of float value output
+	sm_i_format	m_i_format;				//	current output formats of integers (decimal, octal, hexadecimal, binary formats)
+
+	sm_trig_unit m_trig_unit;			//	current unit for measuring of angles (radians, degrees, gradians)
 
 	FILE* m_in_file;				//	stream of input file (if m_interact_proc == TRUE)
 	FILE* m_out_file;				//	stream of output file (if m_interact_proc == TRUE)
 
-	sm_trig_unit m_trig_unit;		//	current unit for measuring of angles (radians, degrees, gradians)
-
-	int	m_f_precision;				//	current precision of float value output
 	char* m_f_prec_buf;				//	current pointer to format string
 									//	it depends on current precision value m_f_precision
 									//	m_f_prec_buf contains address of gsm_f_print_formats[0] if current precision value == 'exp' (SM_PREC_EXP)
 									//	m_f_prec_buf contains address of gsm_f_print_formats[1] if current precision value == [0,20]
 									//	in this case format "%.[0,20]Lf" depends on m_f_precision value;
 
-	sm_i_format	m_i_format;			//	current output formats of integers (decimal, octal, hexadecimal, binary formats)
+	char	m_f_print_formats[2][SM_S_BUFF_SIZE]; // = { "%Le", "" };		//	current precision of float value output formats
+																			//	gsm_f_print_formats[0] is used, when current precision value == 'exp' (SM_PREC_EXP)
+																			//	gsm_f_print_formats[1] is used, when current precision value == [0,20]
+																			//	gsm_f_print_formats[1] contains current print format string %.[0,20]Lf"
 
+	char	m_help_fpath[MAX_PATH];
+
+	int		m_exit;					//	flag (if gsm_exit != 0), that precessing cycle:
+									//	taking expression(s) :
+									//	In >>
+									//	, printing result(s) :
+									//	Out >>
+									//	should be finished and application should exit
 } sm_calc_params, * psm_calc_params;
+
+/*	contains internal data from YY_CURRENT_BUFFER	*/
+typedef struct _sm_l_buff_info
+{
+	char* yy_ch_buf;		/* input buffer */
+	char* yy_buf_pos;		/* current position in input buffer */
+
+	/* Size of input buffer in bytes, not including room for EOB
+	 * characters.
+	 */
+	int yy_buf_size;
+
+	/* Number of characters read into yy_ch_buf, not including EOB
+	 * characters.
+	 */
+	int yy_n_chars;
+} sm_l_buff_info, * psm_l_buff_info;
+
+typedef void* yyscan_t;
+
+/*	parser context	*/
+typedef struct _sm_parser_ctx
+{
+	yyscan_t			m_scanner;				//	current scanner
+	sm_calc_params		m_calc_params;			//	parser/calculator params
+	sm_calc_res			m_calc_res;				//	global instance of definition the current result of calculations
+} sm_parser_ctx, *psm_parser_ctx;
+
+/*
+	callback function (for the parser);
+
+	in args:
+		parser_ctx		- current parser context
+		param			- argument
+	out args:
+		res				- result
+
+	the function can be used for returning the result from the parser;
+	this function just defined, but is not called in this implementing;
+*/
+typedef int (*parser_callback_t)(sm_parser_ctx* const parser_ctx, void* param);
 
 #define SM_PREC_MIN			0		//	minimal value of m_f_precision (current precision of float value output)
 #define SM_PREC_MAX			20		//	maximum value of m_f_precision (current precision of float value output)

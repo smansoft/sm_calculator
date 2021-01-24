@@ -1,5 +1,5 @@
 #
-#    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+#    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
 #                       Sergey Manoylo <info@smansoft.com>
 #
 
@@ -25,9 +25,9 @@ set (CPACK_PACKAGE_VENDOR 			"SManSoft")
 set (CPACK_PACKAGE_CONTACT 			"info@smansoft.com")
 
 set (CPACK_PACKAGE_VERSION_MAJOR 	"0")
-set (CPACK_PACKAGE_VERSION_MINOR 	"1")
-set (CPACK_PACKAGE_VERSION_PATCH 	"1")
-set (CPACK_PACKAGE_BUILD 			"3")
+set (CPACK_PACKAGE_VERSION_MINOR 	"2")
+set (CPACK_PACKAGE_VERSION_PATCH 	"0")
+set (CPACK_PACKAGE_BUILD 			"4")
 
 set (CMAKE_COLOR_MAKEFILE ON)
 
@@ -57,6 +57,7 @@ if(WIN32)
 	set (BISON_CMD_OPTIONS 	"-l -d -v")
 
 	add_definitions (/DSM_OS_WINDOWS)
+	add_definitions (/DSM_SYNC_LOG)
 	add_definitions (/DMBCS /D_MBCS)
 
 	if("${CMAKE_PLATFORM}" STREQUAL "x86")
@@ -110,6 +111,7 @@ if(UNIX)
 	message (STATUS "CompilerFlag     	= ${CompilerFlag}")
 
 	add_definitions (-DSM_OS_LINUX)
+	add_definitions (-DSM_SYNC_LOG)
 
 	if (UNICODE)
   		add_definitions (-DUNICODE -D_UNICODE -UMBCS -U_MBCS)
@@ -152,7 +154,6 @@ endif(UNIX)
 add_subdirectory (deps)
 add_subdirectory (log_lib)
 add_subdirectory (sm_calc)
-
 add_subdirectory (tests)
 
 install(FILES

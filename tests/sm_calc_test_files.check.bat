@@ -1,7 +1,7 @@
 @echo off
 
 rem
-rem    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+rem    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
 rem                       Sergey Manoylo <info@smansoft.com>
 rem
 

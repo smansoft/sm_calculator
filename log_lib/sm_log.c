@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+ *    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
  *    Sergey Manoylo <info@smansoft.com>
  */
 
@@ -27,6 +27,8 @@
 #define SM_LOG_BUFF_SIZE               (10*1024)        //	max length of log message
 #endif
 
+int gsm_count_lock = 0;
+
 #if defined SM_SYNC_LOG
 
 #if defined SM_OS_LINUX
@@ -40,24 +42,36 @@
 errno_t sm_sync_type_init(sm_sync_type* const sync_type)
 {
 	errno_t err = SM_RES_OK;
-	int mtx_res = mtx_init(&sync_type->m_sync, mtx_recursive);
-	err = (mtx_res == thrd_success) ? SM_RES_OK : SM_RES_ERROR;
+	pthread_mutexattr_t mtx_attr;
+    	int mtx_res = pthread_mutexattr_init(&mtx_attr);
+    	if (mtx_res)
+        	return SM_RES_ERROR;
+    	mtx_res = pthread_mutexattr_settype(&mtx_attr, PTHREAD_MUTEX_RECURSIVE);
+//	mtx_res = pthread_mutexattr_settype(&mtx_attr, PTHREAD_MUTEX_DEFAULT);
+//	mtx_res = pthread_mutexattr_settype(&mtx_attr, PTHREAD_MUTEX_NORMAL);
+    	if (mtx_res)
+        	return SM_RES_ERROR;
+	mtx_res = pthread_mutex_init(&sync_type->m_sync, &mtx_attr);
+//	int mtx_res = pthread_mutex_init(&sync_type->m_sync, NULL);
+	err = (!mtx_res) ? SM_RES_OK : SM_RES_ERROR;
 	return err;
 }
 
 /*  destroying the multi-platform synchronizing object  */
 errno_t sm_sync_type_close(sm_sync_type* const sync_type)
 {
-	mtx_destroy(&sync_type->m_sync);
-	return SM_RES_OK;
+	errno_t err = SM_RES_OK;
+	int mtx_res = pthread_mutex_destroy(&sync_type->m_sync);
+	err = (!mtx_res) ? SM_RES_OK : SM_RES_ERROR;
+	return err;
 }
 
 /*  locking the current thread, using multi-platform synchronizing object   */
 errno_t sm_sync_type_lock(sm_sync_type* const sync_type)
 {
 	errno_t err = SM_RES_OK;
-	int mtx_res = mtx_lock(&sync_type->m_sync);
-	err = (mtx_res == thrd_success) ? SM_RES_OK : SM_RES_ERROR;
+	int mtx_res = pthread_mutex_lock(&sync_type->m_sync);
+	err = (!mtx_res) ? SM_RES_OK : SM_RES_ERROR;
 	return err;
 }
 
@@ -70,13 +84,8 @@ errno_t sm_sync_type_lock(sm_sync_type* const sync_type)
 errno_t sm_sync_type_try_lock(sm_sync_type* const sync_type)
 {
 	errno_t err = SM_RES_OK;
-	int mtx_res = mtx_trylock(&sync_type->m_sync);
-	if (mtx_res == thrd_success)
-		err = SM_RES_OK;
-	else if (mtx_res == thrd_busy)
-		err = SM_RES_ERROR;
-	else
-		err = SM_RES_ERROR;
+//	int mtx_res = pthread_mutex_trylock(&sync_type->m_sync);
+//	err = (!mtx_res) ? SM_RES_OK : SM_RES_ERROR;
 	return err;
 }
 
@@ -84,8 +93,8 @@ errno_t sm_sync_type_try_lock(sm_sync_type* const sync_type)
 errno_t sm_sync_type_unlock(sm_sync_type* const sync_type)
 {
 	errno_t err = SM_RES_OK;
-	int mtx_res = mtx_unlock(&sync_type->m_sync);
-	err = (mtx_res == thrd_success) ? SM_RES_OK : SM_RES_ERROR;
+	int mtx_res = pthread_mutex_unlock(&sync_type->m_sync);
+	err = (!mtx_res) ? SM_RES_OK : SM_RES_ERROR;
 	return err;
 }
 
@@ -99,6 +108,7 @@ errno_t sm_sync_type_unlock(sm_sync_type* const sync_type)
 errno_t sm_sync_type_init(sm_sync_type* const sync_type)
 {
 	errno_t err;
+	gsm_count_lock = 0;
 	__try {
 		InitializeCriticalSection(&sync_type->m_sync);
 		err = SM_RES_OK;
@@ -120,7 +130,7 @@ errno_t sm_sync_type_close(sm_sync_type* const sync_type)
 	__except (GetExceptionCode()) {
 		err = SM_RES_ERROR;
 	}
-	return res;
+	return err;
 }
 
 /*  locking the current thread, using multi-platform synchronizing object   */
@@ -128,6 +138,7 @@ errno_t sm_sync_type_lock(sm_sync_type* const sync_type)
 {
 	errno_t err;
 	__try {
+		gsm_count_lock++;
 		EnterCriticalSection(&sync_type->m_sync);
 		err = SM_RES_OK;
 	}
@@ -150,7 +161,7 @@ errno_t sm_sync_type_try_lock(sm_sync_type* const sync_type)
 		err = (TryEnterCriticalSection(&sync_type->m_sync)) ? SM_RES_OK : SM_RES_ERROR;
 	}
 	__except (GetExceptionCode()) {
-		res = SM_RES_ERROR;
+		err = SM_RES_ERROR;
 	}
 	return err;
 }
@@ -160,13 +171,14 @@ errno_t sm_sync_type_unlock(sm_sync_type* const sync_type)
 {
 	errno_t err;
 	__try {
+		gsm_count_lock--;
 		LeaveCriticalSection(&sync_type->m_sync);
 		err = SM_RES_OK;
 	}
 	__except (GetExceptionCode()) {
-		res = SM_RES_ERROR;
+		err = SM_RES_ERROR;
 	}
-	return res;
+	return err;
 }
 
 #endif
@@ -241,9 +253,9 @@ errno_t sm_log_init_dpath_fname(sm_log_config* const log_config, const char* con
 	safe_memset(log_config, sizeof(sm_log_config), 0);
 
 #if defined SM_SYNC_LOG
-	res = sm_sync_type_init(&log_config->m_sync);
-	if (res == SM_RES_ERROR)
-		return res;
+	err = sm_sync_type_init(&log_config->m_sync);
+	if (err == SM_RES_ERROR)
+		return err;
 
 	sm_sync_type_lock(&log_config->m_sync);
 #endif
@@ -253,8 +265,12 @@ errno_t sm_log_init_dpath_fname(sm_log_config* const log_config, const char* con
 	size_t log_dpath_len = safe_strnlen(log_dpath, MAX_PATH);
 	if (log_dpath_len > 0) {
 		err = sm_make_path_abs(log_dpath_abs, SM_ARRAY_SIZE(log_dpath_abs), log_dpath, SM_BIN_PATH_MARKER);
-		if (err != SM_RES_OK)
+		if (err != SM_RES_OK) {
+#if defined SM_SYNC_LOG
+			sm_sync_type_unlock(&log_config->m_sync);
+#endif
 			return err;
+		}
 	}
 
 	size_t log_dpath_abs_len = safe_strnlen(log_dpath_abs, MAX_PATH);
@@ -477,12 +493,14 @@ errno_t sm_log_print(sm_log_config* const log_config, const char* const log_cate
 
 #if defined SM_SYNC_LOG
 	sm_sync_type_lock(&log_config->m_sync);
+#endif
 
 	if (log_config->m_start != 1) {
+#if defined SM_SYNC_LOG
 		sm_sync_type_unlock(&log_config->m_sync);
+#endif
 		return err;
 	}
-#endif
 
 	sm_log_time time;
 	sm_log_get_local_time(&time);   //  init the sm_log_time object (get current date/time)

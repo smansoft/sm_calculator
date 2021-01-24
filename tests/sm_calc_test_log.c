@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+ *    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
  *    Sergey Manoylo <info@smansoft.com>
  */
 
@@ -23,11 +23,13 @@
 #include "sm_calc.h"
 #include "sm_calc_proc.h"
 
-#define SM_LOG_DPATH		"."								//	default directory path, where log file will be created (current directory)
-#define SM_LOG_FNAME		"sm_calc_test_log.log"			//	log file name
+#define SM_LOG_FPATH		"./sm_calc_test_log.log"	//	log file path
 
 extern sm_log_config gsm_log_config;	//	global instance of main log support structure
 #define SM_LOG_CONFIG &gsm_log_config	//	just synonym: SM_LOG_CONFIG == &gsm_log_config - for usage in log api calls
+
+extern FILE* gsm_yyout;					//	stream file, that is used for temprorary saving the output stream (is used by unit tests)
+extern FILE* gsm_yyin;					//	stream file, that is used for temprorary saving the input stream (is used by unit tests)
 
 /*	initializing and starting the log output (SM_LOG_DPATH and SM_LOG_FNAME - init params)	*/
 errno_t	sm_init_log_test();
@@ -178,11 +180,14 @@ static void sm_calc_init_test(void** state)
 
 	(void)state;
 
-	sm_set_def_calc_params();
+	sm_parser_ctx parser_ctx_o;
+	sm_parser_ctx* parser_ctx = &parser_ctx_o;
 
-	assert_int_equal(gsm_calc_params.m_f_precision, SM_PREC_DEF);
-	assert_int_equal(gsm_calc_params.m_i_format, SM_I_FORMAT_DEF);
-	assert_int_equal(gsm_calc_params.m_trig_unit, SM_TRIG_UNIT_DEF);
+	sm_init_parser_ctx(&parser_ctx_o);
+
+	assert_int_equal(parser_ctx->m_calc_params.m_f_precision, SM_PREC_DEF);
+	assert_int_equal(parser_ctx->m_calc_params.m_i_format, SM_I_FORMAT_DEF);
+	assert_int_equal(parser_ctx->m_calc_params.m_trig_unit, SM_TRIG_UNIT_DEF);
 
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
@@ -626,15 +631,20 @@ int main(int argc, char* argv[])
 		cmocka_unit_test(sm_make_path_abs_test)
 	};
 
+	sm_parser_ctx parser_ctx_o;
+	sm_parser_ctx* parser_ctx = &parser_ctx_o;
+
+	sm_init_parser_ctx(&parser_ctx_o);
+
 	sm_init_log_test();			//	initializing and starting the log output (file path, defined by SM_LOG_DPATH and SM_LOG_FNAME is used)
 
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s", __FUNCTION__, "---------------------------------------------------------------------- >>");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "sm_calc_test_log is started");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
 
-	sm_init_random();			//	initializing the random seed (for 'rand[;]' command)
-	sm_set_def_calc_params();	//	initializing the global sm_calc_params object
-	sm_log_calc_params();		//	provides log out (in log file) the sm_calc_params gsm_calc_params, current state of sm_calculator configuration
+	sm_init_random();					//	initializing the random seed (for 'rand[;]' command)
+	sm_set_def_calc_params(parser_ctx);	//	initializing the global sm_calc_params object
+	sm_log_calc_params(parser_ctx);		//	provides log out (in log file) the sm_calc_params gsm_calc_params, current state of sm_calculator configuration
 
 	int res = cmocka_run_group_tests(tests, NULL, NULL);	//	execution of unit tests (array of void (*CMUnitTestFunction)(void **state) functions)
 															//	the function cmocka_run_group_tests returns: total_failed + total_errors
@@ -655,7 +665,7 @@ int main(int argc, char* argv[])
 errno_t	sm_init_log_test()
 {
 	errno_t err = SM_RES_OK;
-	err = sm_log_init_dpath_fname(SM_LOG_CONFIG, SM_LOG_DPATH, SM_LOG_FNAME);
+	err = sm_log_init_fpath(SM_LOG_CONFIG, SM_LOG_FPATH);
 	if (err == SM_RES_OK)
 		err = sm_log_start(SM_LOG_CONFIG);
 	return err;

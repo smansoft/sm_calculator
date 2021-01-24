@@ -34,8 +34,8 @@
 /* Undocumented macros, especially those whose name start with YY_,
    are private implementation details.  Do not rely on them.  */
 
-#ifndef YY_YY_E_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED
-# define YY_YY_E_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED
+#ifndef YY_YY_G_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED
+# define YY_YY_G_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -43,6 +43,28 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+
+
+	#ifndef YY_EXTRA_TYPE
+		#define YY_EXTRA_TYPE sm_parser_ctx*
+	#endif	
+
+	#ifndef YY_TYPEDEF_YY_SCANNER_T
+		#define YY_TYPEDEF_YY_SCANNER_T
+		typedef void *yyscan_t;
+	#endif
+
+	#include "sm_calc_y.h"
+	#include "sm_calc_types.h"
+
+	YY_EXTRA_TYPE yyget_extra (yyscan_t yyscanner);
+
+	typedef int (*parser_callback_t)(sm_parser_ctx* const parser_ctx, void *param);
+	extern int yyerror(yyscan_t scanner, parser_callback_t parser_callback, const char *err_message);
+
+	#include "sm_calc_proc.h"
+
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -151,8 +173,13 @@ typedef union YYSTYPE YYSTYPE;
 #endif
 
 
-extern YYSTYPE yylval;
 
-int yyparse (void);
+int yyparse (yyscan_t scanner, parser_callback_t parser_callback);
+/* "%code provides" blocks.  */
 
-#endif /* !YY_YY_E_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED  */
+
+	extern int yylex (YYSTYPE * yylval_param , yyscan_t yyscanner);
+
+
+
+#endif /* !YY_YY_G_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED  */

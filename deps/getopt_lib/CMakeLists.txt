@@ -1,5 +1,5 @@
 #
-#    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+#    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
 #                       Sergey Manoylo <info@smansoft.com>
 #
 
@@ -35,7 +35,6 @@ set (BUILD_SHARED_LIBS true)
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${HEADER_FILES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-	PUBLIC_HEADER  	"${HEADER_FILES}"
 	OUTPUT_NAME 	"${PROJECT_NAME}")
 
 if(WIN32)

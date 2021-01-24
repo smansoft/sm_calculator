@@ -1,5 +1,5 @@
 #
-#    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+#    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
 #                       Sergey Manoylo <info@smansoft.com>
 #
 
@@ -20,10 +20,10 @@ set (FLEX_OUTPUT_C 	"${sm_calc_SOURCE_DIR}/sm_calc_l.c")
 
 set (BISON_INPUT 	"${sm_calc_SOURCE_DIR}/sm_calc.y")
 set (BISON_OUTPUT_C	"${sm_calc_SOURCE_DIR}/sm_calc_y.c")
-set (BISON_OUTPUT_H "${sm_calc_SOURCE_DIR}/sm_calc_y.h")
+set (BISON_OUTPUT_H 	"${sm_calc_SOURCE_DIR}/sm_calc_y.h")
 
 if(WIN32)
-	add_definitions (/D_CONSOLE)
+	add_definitions (/D_CONSOLE /DSM_SYNC_LOG /DUNIT_TESTING)
 
 	add_custom_command(OUTPUT "${FLEX_OUTPUT_C}"
 		COMMAND "cmd" ARGS "/C ${FLEX_CMD} ${FLEX_CMD_OPTIONS} -o ${FLEX_OUTPUT_C} ${FLEX_INPUT}")
@@ -32,7 +32,7 @@ if(WIN32)
 endif(WIN32)
 
 if(UNIX)
-	add_definitions (-D_CONSOLE)
+	add_definitions (-D_CONSOLE -DSM_SYNC_LOG -DUNIT_TESTING)
 
 	add_custom_command(OUTPUT "${FLEX_OUTPUT_C}"
 		COMMAND "${FLEX_CMD}" ARGS ${FLEX_CMD_OPTIONS} "-o" "${FLEX_OUTPUT_C}" "${FLEX_INPUT}")
@@ -46,15 +46,11 @@ include_directories (${getopt_lib_SOURCE_DIR})
 include_directories (${log_lib_SOURCE_DIR})
 include_directories (${cmocka_SOURCE_DIR}/include)
 
-file(GLOB SM_CALC_HEADER_FILES 		${sm_calc_SOURCE_DIR}/*.h)
-file(GLOB SM_CALC_SOURCE_FILES 		${sm_calc_SOURCE_DIR}/*.c ${sm_calc_SOURCE_DIR}/*.cpp)
+file(GLOB SM_CALC_HEADER_FILES 	${sm_calc_SOURCE_DIR}/*.h)
+file(GLOB SM_CALC_SOURCE_FILES 	${sm_calc_SOURCE_DIR}/*.c ${sm_calc_SOURCE_DIR}/*.cpp)
 file(GLOB SM_CALC_MANIFEST_FILES 	${sm_calc_SOURCE_DIR}/*.manifest)
 file(GLOB SM_CALC_TEST_PCH_FILES 	framework.h pch.h )
-
-set_source_files_properties(sm_calc_test.c sm_calc_test_files.c sm_calc_test_expr.c
-			${SM_CALC_SOURCE_FILES} ${FLEX_OUTPUT_C} ${BISON_OUTPUT_C} ${BISON_OUTPUT_H}
-			PROPERTIES COMPILE_DEFINITIONS UNIT_TESTING=1)
-
+ 
 ### sm_calc_test
 if(WIN32)
 	add_executable(sm_calc_test sm_calc_test.c "${SM_CALC_TEST_PCH_FILES}" "${SM_CALC_SOURCE_FILES}" "${SM_CALC_HEADER_FILES}" 
@@ -117,11 +113,23 @@ add_custom_command(
 
 add_custom_command(
 	TARGET sm_calc_test_files POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_test_mthread.check.bat" "${CMAKE_CURRENT_BINARY_DIR}")
+
+add_custom_command(
+	TARGET sm_calc_test_files POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_test_files.check.sh" "${CMAKE_CURRENT_BINARY_DIR}")
 
 add_custom_command(
 	TARGET sm_calc_test_files POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_test_mthread.check.sh" "${CMAKE_CURRENT_BINARY_DIR}")
+
+add_custom_command(
+	TARGET sm_calc_test_files POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_test_files.check.py" "${CMAKE_CURRENT_BINARY_DIR}")
+
+add_custom_command(
+	TARGET sm_calc_test_files POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_test_mthread.check.py" "${CMAKE_CURRENT_BINARY_DIR}")
 
 ### sm_calc_test_files_01
 add_test(NAME sm_calc_test_files_01 COMMAND sm_calc_test_files "./sm_calc_test.in.01.txt" "./sm_calc_test.out.01.txt")
@@ -181,23 +189,69 @@ endif(UNIX)
 
 add_test(NAME sm_calc_test_log COMMAND sm_calc_test_log)
 
-### properties
+### sm_calc_test_mthread
+if(WIN32)
+	add_executable(sm_calc_test_mthread sm_calc_test_mthread.c "${SM_CALC_TEST_PCH_FILES}" "${SM_CALC_SOURCE_FILES}" "${SM_CALC_HEADER_FILES}"
+				"${FLEX_OUTPUT_C}" "${BISON_OUTPUT_C}" "${BISON_OUTPUT_H}" 
+				"${SM_CALC_MANIFEST_FILES}")
+	target_link_libraries(sm_calc_test_mthread getopt_lib log_lib sstring_lib ${CMOCKA_STATIC_LIBRARY})
+endif(WIN32)
 
+if(UNIX)
+	add_executable(sm_calc_test_mthread sm_calc_test_mthread.c "${SM_CALC_TEST_PCH_FILES}" "${SM_CALC_SOURCE_FILES}" "${SM_CALC_HEADER_FILES}"
+				"${FLEX_OUTPUT_C}" "${BISON_OUTPUT_C}" "${BISON_OUTPUT_H}" 
+				"${SM_CALC_MANIFEST_FILES}")
+	target_link_libraries(sm_calc_test_mthread pthread dl m getopt_lib log_lib sstring_lib ${CMOCKA_STATIC_LIBRARY})
+endif(UNIX)
+
+### sm_calc_test_mthread_01
+add_test(NAME sm_calc_test_mthread_01 COMMAND sm_calc_test_mthread "./sm_calc_test.in.01.txt" "./sm_calc_test.out.01.XXX.txt")
+
+### sm_calc_test_mthread_02
+add_test(NAME sm_calc_test_mthread_02 COMMAND sm_calc_test_mthread "./sm_calc_test.in.02.txt" "./sm_calc_test.out.02.XXX.txt")
+
+### sm_calc_test_mthread_03
+add_test(NAME sm_calc_test_mthread_03 COMMAND sm_calc_test_mthread "./sm_calc_test.in.03.txt" "./sm_calc_test.out.03.XXX.txt")
+
+### sm_calc_test_mthread_04
+add_test(NAME sm_calc_test_mthread_04 COMMAND sm_calc_test_mthread "./sm_calc_test.in.04.txt" "./sm_calc_test.out.04.XXX.txt")
+
+### sm_calc_test_mthread_05
+add_test(NAME sm_calc_test_mthread_05 COMMAND sm_calc_test_mthread "./sm_calc_test.in.05.txt" "./sm_calc_test.out.05.XXX.txt")
+
+### sm_calc_test_mthread_06
+add_test(NAME sm_calc_test_mthread_06 COMMAND sm_calc_test_mthread "./sm_calc_test.in.06.txt" "./sm_calc_test.out.06.XXX.txt")
+
+### sm_calc_test_mthread_07
+add_test(NAME sm_calc_test_mthread_07 COMMAND sm_calc_test_mthread "./sm_calc_test.in.07.txt" "./sm_calc_test.out.07.XXX.txt")
+
+### sm_calc_test_mthread_08
+add_test(NAME sm_calc_test_mthread_08 COMMAND sm_calc_test_mthread "./sm_calc_test.in.08.txt" "./sm_calc_test.out.08.XXX.txt")
+
+### properties
 set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
 						sm_calc_test_files_01 sm_calc_test_files_02 
 						sm_calc_test_files_03 sm_calc_test_files_04
 						sm_calc_test_files_05 sm_calc_test_files_06
 						sm_calc_test_files_08 
+						sm_calc_test_mthread_01 sm_calc_test_mthread_02 
+						sm_calc_test_mthread_03 sm_calc_test_mthread_04
+						sm_calc_test_mthread_05 sm_calc_test_mthread_06
+						sm_calc_test_mthread_08
 						PROPERTIES WILL_FAIL "0")
-set_tests_properties(sm_calc_test_files_07
+set_tests_properties(sm_calc_test_files_07 sm_calc_test_mthread_07
 						PROPERTIES WILL_FAIL "1") 
 
 if(CMAKE_GENERATOR MATCHES "Visual Studio*")
-	set_tests_properties(sm_calc_test sm_calc_test_expr
+	set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
 							sm_calc_test_files_01 sm_calc_test_files_02 
 							sm_calc_test_files_03 sm_calc_test_files_04
 							sm_calc_test_files_05 sm_calc_test_files_06
 							sm_calc_test_files_07 sm_calc_test_files_08
+							sm_calc_test_mthread_01 sm_calc_test_mthread_02 
+							sm_calc_test_mthread_03 sm_calc_test_mthread_04
+							sm_calc_test_mthread_05 sm_calc_test_mthread_06
+							sm_calc_test_mthread_07 sm_calc_test_mthread_08
 							PROPERTIES ENVIRONMENT "PATH=$<TARGET_FILE_DIR:getopt_lib>;$ENV{PATH}")
 else()
 	set_tests_properties(sm_calc_test sm_calc_test_expr sm_calc_test_log
@@ -205,5 +259,9 @@ else()
 							sm_calc_test_files_03 sm_calc_test_files_04
 							sm_calc_test_files_05 sm_calc_test_files_06
 							sm_calc_test_files_07 sm_calc_test_files_08
+							sm_calc_test_mthread_01 sm_calc_test_mthread_02 
+							sm_calc_test_mthread_03 sm_calc_test_mthread_04
+							sm_calc_test_mthread_05 sm_calc_test_mthread_06
+							sm_calc_test_mthread_07 sm_calc_test_mthread_08
 							PROPERTIES ENVIRONMENT "PATH=${getopt_lib_BINARY_DIR};$ENV{PATH}")
 endif()

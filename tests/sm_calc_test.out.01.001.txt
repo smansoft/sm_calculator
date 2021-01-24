@@ -1,0 +1,23 @@
+
+config ------------------------------------------;
+
+Current Configuration :
+---------------------------------------------
+Current double precision          : 10;
+Current output format of integers : dec;
+Unit of measurement of an angle   : rad;
+
+f_precision -------------------------------------;
+
+10;
+
+i_format ----------------------------------------;
+
+dec;
+
+a_unit ------------------------------------------;
+
+rad;
+
+-------------------------------------------------;
+

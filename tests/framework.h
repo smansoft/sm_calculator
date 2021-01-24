@@ -32,7 +32,7 @@
 	#include <errno.h>
 	#include <dirent.h>
 #if defined SM_SYNC_LOG
-	#include <threads.h>
+	#include <pthread.h>
 #endif
 #endif
 

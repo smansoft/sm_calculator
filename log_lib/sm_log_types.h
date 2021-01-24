@@ -84,7 +84,7 @@ extern "C" {
 	typedef struct _sm_sync_type
 	{
 #if defined SM_OS_LINUX
-		mtx_t				m_sync; // sync object (mutex), supported by C11 (ISO/IEC 9899:2011) (Linux)
+		pthread_mutex_t     m_sync; // sync object (mutex) (Linux)
 #elif defined SM_OS_WINDOWS
 		CRITICAL_SECTION    m_sync; // sync object (critical section) (Windows)
 #endif

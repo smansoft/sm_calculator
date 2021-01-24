@@ -50,5 +50,8 @@
     <ClInclude Include="..\sm_calc\sm_calc_y.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\sm_calc\sm_calc_l.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

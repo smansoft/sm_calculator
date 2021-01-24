@@ -1,13 +1,21 @@
 
-%{
-
 /*
- *    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+ *    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
  *    Sergey Manoylo <info@smansoft.com>
  */
 
-#include "sm_calc_proc.h"
+%option reentrant bison-bridge
+%option noyywrap nounput noinput
+
+%{
+
+#include <stdio.h>
+#include <string.h>
+
+#include "sm_calc_types.h"
+
 #include "sm_calc_y.h"
+#include "sm_calc_types.h"
 
 #if defined SM_OS_WINDOWS
 
@@ -22,62 +30,60 @@ int gsm_string_buffer_active;
 
 %}
 
-%option noyywrap
-
 %%
 
 ([1-9]{1}[0-9]*)|(0{1})  	{
 			long long val;
-			errno_t err = sm_conv_sz_2_i_dec(SM_I_10, yytext, SM_L_BUFF_SIZE, &val);
+			errno_t err = sm_conv_sz_2_i_dec(yyget_extra(yyscanner), SM_I_10, yytext, SM_L_BUFF_SIZE, &val);
 			if(err == SM_RES_OK)
- 				yylval.ll_val = val;
+ 				yylval_param->ll_val = val;
 			return T_LL_10; 
 	}
 
 0[0-7]+	{
 			long long val;
-			errno_t err = sm_conv_sz_2_i_dec(SM_I_8, yytext, SM_L_BUFF_SIZE, &val);
+			errno_t err = sm_conv_sz_2_i_dec(yyget_extra(yyscanner), SM_I_8, yytext, SM_L_BUFF_SIZE, &val);
 			if(err == SM_RES_OK)
- 				yylval.ll_val = val;
+ 				yylval_param->ll_val = val;
 			return T_LL_8; 
 	}
 
 0x[0-9a-fA-F]+	{
 			long long val;
-			errno_t err = sm_conv_sz_2_i_dec(SM_I_16, yytext, SM_L_BUFF_SIZE, &val);
+			errno_t err = sm_conv_sz_2_i_dec(yyget_extra(yyscanner), SM_I_16, yytext, SM_L_BUFF_SIZE, &val);
 			if(err == SM_RES_OK)
- 				yylval.ll_val = val;
+ 				yylval_param->ll_val = val;
 			return T_LL_16; 
 	}
 
 b[0-1]+ {
 			long long val;
-			errno_t err = sm_conv_sz_2_i_dec(SM_I_2, yytext, SM_S_BUFF_SIZE+2, &val);
+			errno_t err = sm_conv_sz_2_i_dec(yyget_extra(yyscanner), SM_I_2, yytext, SM_S_BUFF_SIZE+2, &val);
 			if(err == SM_RES_OK)
- 				yylval.ll_val = val;
+ 				yylval_param->ll_val = val;
 			return T_LL_2; 
 	}
 
 ([0-9]+[.]{1}[0-9]*)|([0-9]*[.]{1}[0-9]+) {	
 			long double val;
-			errno_t err = sm_conv_sz_2_f_dec(yytext, SM_L_BUFF_SIZE, &val);
+			errno_t err = sm_conv_sz_2_f_dec(yyget_extra(yyscanner), yytext, SM_L_BUFF_SIZE, &val);
 			if(err == SM_RES_OK)
- 				yylval.ld_val = val;
+ 				yylval_param->ld_val = val;
 			return T_LD_N; 
 	}
 
 (([0-9]+[.]{1}[0-9]*)|([0-9]*[.]{0,1}[0-9]+))([e|E]{1}[+|-]*[0-9]+) {
 			long double val;
-			errno_t err = sm_conv_sz_2_f_dec(yytext, SM_L_BUFF_SIZE, &val);
+			errno_t err = sm_conv_sz_2_f_dec(yyget_extra(yyscanner), yytext, SM_L_BUFF_SIZE, &val);
 			if(err == SM_RES_OK)
- 				yylval.ld_val = val;
+ 				yylval_param->ld_val = val;
 			return T_LD_E; 
 	}
 
 (\".*\")|(\'.*\') {
-			errno_t err = sm_conv_quot_sz_2_sz(yytext, yylval.sz_val, SM_L_BUFF_SIZE);
+			errno_t err = sm_conv_quot_sz_2_sz(yyget_extra(yyscanner), yytext, yylval_param->sz_val, SM_L_BUFF_SIZE);
 			if(err == SM_RES_ERROR)
-				yylval.sz_val[0] = '\0';
+				yylval_param->sz_val[0] = '\0';
 			return T_SZ; 
 	}
 
@@ -190,27 +196,72 @@ b[0-1]+ {
 
 %%
 
-void sm_scan_string(const char* const in_str)
+FILE* sm_get_yyout(yyscan_t scanner)
 {
-    YY_FLUSH_BUFFER;
+	if(!scanner)
+		return stdout;
+	else {
+		struct yyguts_t * yyg = (struct yyguts_t*)scanner;
+		return yyg->yyout_r;
+	}
+}
+
+FILE* sm_get_yyin(yyscan_t scanner)
+{
+	if(!scanner)
+		return stdin;
+	else {
+		struct yyguts_t * yyg = (struct yyguts_t*)scanner;
+		return yyg->yyin_r;
+	}
+}
+
+FILE* sm_set_yyout(yyscan_t scanner, FILE * const yyout_v)
+{
+	if(!scanner)
+		return yyout_v;
+	else {
+		struct yyguts_t * yyg = (struct yyguts_t*)scanner;
+		yyg->yyout_r = yyout_v;
+		return yyg->yyout_r;
+	}
+}
+
+FILE* sm_set_yyin(yyscan_t scanner, FILE * const yyin_v)
+{
+	if(!scanner)
+		return yyin_v;
+	else {
+		struct yyguts_t * yyg = (struct yyguts_t*)scanner;
+		yyg->yyin_r = yyin_v;
+		return yyg->yyin_r;
+	}
+}
+
+void sm_scan_string(yyscan_t scanner, const char* const in_str)
+{
+	struct yyguts_t *yyg = (struct yyguts_t*)scanner;
+	yy_flush_buffer(YY_CURRENT_BUFFER, scanner);
     if (gsm_string_buffer_active)
-        yy_delete_buffer(gsm_string_buffer);
-    gsm_string_buffer = yy_scan_string(in_str);
+        yy_delete_buffer(gsm_string_buffer, scanner);
+    gsm_string_buffer = yy_scan_string(in_str, scanner);
     gsm_string_buffer_active = 1;
 }
 
-void sm_scan_file(FILE* const in_f)
+void sm_scan_file(yyscan_t scanner, FILE* const in_f)
 {
-    YY_FLUSH_BUFFER;
+	struct yyguts_t *yyg = (struct yyguts_t*)scanner;
+	yy_flush_buffer(YY_CURRENT_BUFFER, scanner);
     if (gsm_string_buffer_active)
-        yy_delete_buffer(gsm_string_buffer);
-    yyrestart(in_f);
+        yy_delete_buffer(gsm_string_buffer, scanner);
+    yyrestart(in_f, scanner);
     gsm_string_buffer_active = 0;
 }
 
-int sm_get_buff_info(sm_l_buff_info* l_buff_info)
+errno_t sm_get_buff_info(yyscan_t scanner, sm_l_buff_info* l_buff_info)
 {
-    int res;
+	int res;
+	struct yyguts_t *yyg = (struct yyguts_t*)scanner;
     YY_BUFFER_STATE curr_buf = YY_CURRENT_BUFFER;
     if(curr_buf) {
         l_buff_info->yy_ch_buf = curr_buf->yy_ch_buf;
@@ -219,7 +270,7 @@ int sm_get_buff_info(sm_l_buff_info* l_buff_info)
         l_buff_info->yy_buf_size = curr_buf->yy_buf_size;
         l_buff_info->yy_n_chars = curr_buf->yy_n_chars;
 
-        res = SM_RES_OK;
+		res = SM_RES_OK;
     }
     else
         res = SM_RES_ERROR;

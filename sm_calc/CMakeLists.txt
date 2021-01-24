@@ -1,5 +1,5 @@
 #
-#    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+#    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
 #                       Sergey Manoylo <info@smansoft.com>
 #
 
@@ -15,23 +15,24 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set (FLEX_INPUT 	"${CMAKE_CURRENT_SOURCE_DIR}/sm_calc.l")
 set (FLEX_OUTPUT_C 	"${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_l.c")
+set (FLEX_OUTPUT_H 	"${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_l.h")
 
 set (BISON_INPUT 	"${CMAKE_CURRENT_SOURCE_DIR}/sm_calc.y")
 set (BISON_OUTPUT_C	"${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_y.c")
-set (BISON_OUTPUT_H "${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_y.h")
+set (BISON_OUTPUT_H     "${CMAKE_CURRENT_SOURCE_DIR}/sm_calc_y.h")
 
 if(WIN32)
-	add_custom_command(OUTPUT "${FLEX_OUTPUT_C}"
-		COMMAND "cmd" ARGS "/C ${FLEX_CMD} ${FLEX_CMD_OPTIONS} -o ${FLEX_OUTPUT_C} ${FLEX_INPUT}")
+	add_custom_command(OUTPUT "${FLEX_OUTPUT_C}" "${FLEX_OUTPUT_H}"
+		COMMAND "cmd" ARGS "/C ${FLEX_CMD} ${FLEX_CMD_OPTIONS} --header=${FLEX_OUTPUT_H} -o ${FLEX_OUTPUT_C} ${FLEX_INPUT}")
 	add_custom_command(OUTPUT "${BISON_OUTPUT_C}" "${BISON_OUTPUT_H}"
-		COMMAND "cmd" ARGS "/C ${BISON_CMD} ${BISON_CMD_OPTIONS} -o ${BISON_OUTPUT_C} ${BISON_INPUT}")
+		COMMAND "cmd" ARGS "/C ${BISON_CMD} ${BISON_CMD_OPTIONS} --defines=${BISON_OUTPUT_H} -o ${BISON_OUTPUT_C} ${BISON_INPUT}")
 endif(WIN32)
 
 if(UNIX)
-	add_custom_command(OUTPUT "${FLEX_OUTPUT_C}"
-		COMMAND "${FLEX_CMD}" ARGS ${FLEX_CMD_OPTIONS} "-o" "${FLEX_OUTPUT_C}" "${FLEX_INPUT}")
-	add_custom_command(OUTPUT ${BISON_OUTPUT_C} ${BISON_OUTPUT_H}
-		COMMAND "${BISON_CMD}" ARGS ${BISON_CMD_OPTIONS} "-o" "${BISON_OUTPUT_C}" "${BISON_INPUT}")
+	add_custom_command(OUTPUT "${FLEX_OUTPUT_C}" "${FLEX_OUTPUT_H}"
+		COMMAND "${FLEX_CMD}" ARGS ${FLEX_CMD_OPTIONS} "--header=${FLEX_OUTPUT_H}" "-o" "${FLEX_OUTPUT_C}" "${FLEX_INPUT}")
+	add_custom_command(OUTPUT "${BISON_OUTPUT_C}" "${BISON_OUTPUT_H}"
+		COMMAND "${BISON_CMD}" ARGS ${BISON_CMD_OPTIONS} "--defines=${BISON_OUTPUT_H}" "-o" "${BISON_OUTPUT_C}" "${BISON_INPUT}")
 endif(UNIX)
 
 include_directories (${sstring_lib_SOURCE_DIR})
@@ -49,7 +50,7 @@ if(WIN32)
 	add_definitions (/D_CONSOLE)
 
 	add_executable(${PROJECT_NAME} "${SOURCE_FILES}" "${HEADER_FILES}" 
-		"${FLEX_OUTPUT_C}" "${BISON_OUTPUT_C}" "${BISON_OUTPUT_H}" 
+		"${FLEX_OUTPUT_C}" "${BISON_OUTPUT_C}" "${FLEX_OUTPUT_H}" "${BISON_OUTPUT_H}" 
 		"${MANIFEST_FILES}")
 
 	set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:CONSOLE")
@@ -64,7 +65,7 @@ if(UNIX)
 	set(CMAKE_INSTALL_RPATH $ORIGIN/../${CMAKE_INSTALL_LIBDIR})
 
 	add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES}
-		"${FLEX_OUTPUT_C}" "${BISON_OUTPUT_C}" "${BISON_OUTPUT_H}")
+		"${FLEX_OUTPUT_C}" "${BISON_OUTPUT_C}" "${FLEX_OUTPUT_H}" "${BISON_OUTPUT_H}")
 
 	target_link_libraries(${PROJECT_NAME} pthread dl m getopt_lib log_lib sstring_lib)
 endif(UNIX)

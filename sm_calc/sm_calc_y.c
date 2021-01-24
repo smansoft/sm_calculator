@@ -54,7 +54,7 @@
 #define YYSKELETON_NAME "yacc.c"
 
 /* Pure parsers.  */
-#define YYPURE 0
+#define YYPURE 2
 
 /* Push parsers.  */
 #define YYPUSH 0
@@ -63,17 +63,6 @@
 #define YYPULL 1
 
 
-
-
-/* First part of user prologue.  */
-
-
-/*
- *    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
- *    Sergey Manoylo <info@smansoft.com>
- */
-
-#include "sm_calc_proc.h"
 
 
 
@@ -108,8 +97,8 @@
 
 /* Use api.header.include to #include this header
    instead of duplicating it here.  */
-#ifndef YY_YY_E_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED
-# define YY_YY_E_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED
+#ifndef YY_YY_G_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED
+# define YY_YY_G_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -117,6 +106,28 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+
+
+	#ifndef YY_EXTRA_TYPE
+		#define YY_EXTRA_TYPE sm_parser_ctx*
+	#endif	
+
+	#ifndef YY_TYPEDEF_YY_SCANNER_T
+		#define YY_TYPEDEF_YY_SCANNER_T
+		typedef void *yyscan_t;
+	#endif
+
+	#include "sm_calc_y.h"
+	#include "sm_calc_types.h"
+
+	YY_EXTRA_TYPE yyget_extra (yyscan_t yyscanner);
+
+	typedef int (*parser_callback_t)(sm_parser_ctx* const parser_ctx, void *param);
+	extern int yyerror(yyscan_t scanner, parser_callback_t parser_callback, const char *err_message);
+
+	#include "sm_calc_proc.h"
+
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -225,11 +236,16 @@ typedef union YYSTYPE YYSTYPE;
 #endif
 
 
-extern YYSTYPE yylval;
 
-int yyparse (void);
+int yyparse (yyscan_t scanner, parser_callback_t parser_callback);
+/* "%code provides" blocks.  */
 
-#endif /* !YY_YY_E_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED  */
+
+	extern int yylex (YYSTYPE * yylval_param , yyscan_t yyscanner);
+
+
+
+#endif /* !YY_YY_G_SMAN_GIT_CUR_W_SM_CALCULATOR_SRC_MAIN_SM_CALCULATOR_SM_CALC_SM_CALC_Y_H_INCLUDED  */
 
 
 
@@ -599,22 +615,22 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    78,    78,    79,    83,    85,    86,    87,    89,    91,
-      92,    94,    95,    96,    98,   100,   101,   103,   104,   105,
-     107,   109,   110,   112,   113,   114,   116,   118,   119,   123,
-     125,   127,   128,   130,   132,   133,   134,   136,   137,   138,
-     140,   142,   143,   144,   145,   147,   148,   149,   150,   152,
-     153,   154,   156,   157,   158,   160,   164,   166,   167,   168,
-     170,   172,   173,   174,   176,   178,   180,   182,   184,   186,
-     188,   189,   191,   192,   194,   195,   197,   199,   200,   202,
-     203,   204,   205,   206,   207,   211,   215,   219,   223,   224,
-     226,   228,   229,   230,   231,   233,   234,   235,   237,   238,
-     239,   241,   242,   243,   245,   246,   247,   248,   250,   252,
-     253,   254,   256,   257,   258,   260,   261,   262,   264,   265,
-     266,   268,   269,   271,   272,   274,   275,   277,   278,   280,
-     281,   283,   284,   286,   287,   288,   289,   291,   293,   294,
-     296,   298,   300,   301,   303,   304,   306,   307,   309,   310,
-     311,   312,   314,   315,   317,   319
+       0,   106,   106,   107,   111,   113,   114,   115,   117,   119,
+     120,   122,   123,   124,   126,   128,   129,   131,   132,   133,
+     135,   137,   138,   140,   141,   142,   144,   146,   147,   151,
+     153,   155,   156,   158,   160,   161,   162,   164,   165,   166,
+     168,   170,   171,   172,   173,   175,   176,   177,   178,   180,
+     181,   182,   184,   185,   186,   188,   192,   194,   195,   196,
+     198,   200,   201,   202,   204,   206,   208,   210,   212,   214,
+     216,   217,   219,   220,   222,   223,   225,   227,   228,   230,
+     231,   232,   233,   234,   235,   239,   243,   247,   251,   252,
+     254,   256,   257,   258,   259,   261,   262,   263,   265,   266,
+     267,   269,   270,   271,   273,   274,   275,   276,   278,   280,
+     281,   282,   284,   285,   286,   288,   289,   290,   292,   293,
+     294,   296,   297,   299,   300,   302,   303,   305,   306,   308,
+     309,   311,   312,   314,   315,   316,   317,   319,   321,   322,
+     324,   326,   328,   329,   331,   332,   334,   335,   337,   338,
+     339,   340,   342,   343,   345,   347
 };
 #endif
 
@@ -1162,7 +1178,7 @@ static const yytype_int8 yyr2[] =
       }                                                           \
     else                                                          \
       {                                                           \
-        yyerror (YY_("syntax error: cannot back up")); \
+        yyerror (scanner, parser_callback, YY_("syntax error: cannot back up")); \
         YYERROR;                                                  \
       }                                                           \
   while (0)
@@ -1199,7 +1215,7 @@ do {                                                                      \
     {                                                                     \
       YYFPRINTF (stderr, "%s ", Title);                                   \
       yy_symbol_print (stderr,                                            \
-                  Type, Value); \
+                  Type, Value, scanner, parser_callback); \
       YYFPRINTF (stderr, "\n");                                           \
     }                                                                     \
 } while (0)
@@ -1210,10 +1226,12 @@ do {                                                                      \
 `-----------------------------------*/
 
 static void
-yy_symbol_value_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep)
+yy_symbol_value_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep, yyscan_t scanner, parser_callback_t parser_callback)
 {
   FILE *yyoutput = yyo;
   YYUSE (yyoutput);
+  YYUSE (scanner);
+  YYUSE (parser_callback);
   if (!yyvaluep)
     return;
 # ifdef YYPRINT
@@ -1231,12 +1249,12 @@ yy_symbol_value_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep)
 `---------------------------*/
 
 static void
-yy_symbol_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep)
+yy_symbol_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep, yyscan_t scanner, parser_callback_t parser_callback)
 {
   YYFPRINTF (yyo, "%s %s (",
              yytype < YYNTOKENS ? "token" : "nterm", yytname[yytype]);
 
-  yy_symbol_value_print (yyo, yytype, yyvaluep);
+  yy_symbol_value_print (yyo, yytype, yyvaluep, scanner, parser_callback);
   YYFPRINTF (yyo, ")");
 }
 
@@ -1269,7 +1287,7 @@ do {                                                            \
 `------------------------------------------------*/
 
 static void
-yy_reduce_print (yy_state_t *yyssp, YYSTYPE *yyvsp, int yyrule)
+yy_reduce_print (yy_state_t *yyssp, YYSTYPE *yyvsp, int yyrule, yyscan_t scanner, parser_callback_t parser_callback)
 {
   int yylno = yyrline[yyrule];
   int yynrhs = yyr2[yyrule];
@@ -1283,7 +1301,7 @@ yy_reduce_print (yy_state_t *yyssp, YYSTYPE *yyvsp, int yyrule)
       yy_symbol_print (stderr,
                        yystos[yyssp[yyi + 1 - yynrhs]],
                        &yyvsp[(yyi + 1) - (yynrhs)]
-                                              );
+                                              , scanner, parser_callback);
       YYFPRINTF (stderr, "\n");
     }
 }
@@ -1291,7 +1309,7 @@ yy_reduce_print (yy_state_t *yyssp, YYSTYPE *yyvsp, int yyrule)
 # define YY_REDUCE_PRINT(Rule)          \
 do {                                    \
   if (yydebug)                          \
-    yy_reduce_print (yyssp, yyvsp, Rule); \
+    yy_reduce_print (yyssp, yyvsp, Rule, scanner, parser_callback); \
 } while (0)
 
 /* Nonzero means print parse trace.  It is left uninitialized so that
@@ -1559,9 +1577,11 @@ yysyntax_error (YYPTRDIFF_T *yymsg_alloc, char **yymsg,
 `-----------------------------------------------*/
 
 static void
-yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep)
+yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, yyscan_t scanner, parser_callback_t parser_callback)
 {
   YYUSE (yyvaluep);
+  YYUSE (scanner);
+  YYUSE (parser_callback);
   if (!yymsg)
     yymsg = "Deleting";
   YY_SYMBOL_PRINT (yymsg, yytype, yyvaluep, yylocationp);
@@ -1574,22 +1594,26 @@ yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep)
 
 
 
-/* The lookahead symbol.  */
-int yychar;
-
-/* The semantic value of the lookahead symbol.  */
-YYSTYPE yylval;
-/* Number of syntax errors so far.  */
-int yynerrs;
-
-
 /*----------.
 | yyparse.  |
 `----------*/
 
 int
-yyparse (void)
+yyparse (yyscan_t scanner, parser_callback_t parser_callback)
 {
+/* The lookahead symbol.  */
+int yychar;
+
+
+/* The semantic value of the lookahead symbol.  */
+/* Default value used for initialization, for pacifying older GCCs
+   or non-GCC compilers.  */
+YY_INITIAL_VALUE (static YYSTYPE yyval_default;)
+YYSTYPE yylval YY_INITIAL_VALUE (= yyval_default);
+
+    /* Number of syntax errors so far.  */
+    int yynerrs;
+
     yy_state_fast_t yystate;
     /* Number of tokens to shift before error messages enabled.  */
     int yyerrstatus;
@@ -1753,7 +1777,7 @@ yybackup:
   if (yychar == YYEMPTY)
     {
       YYDPRINTF ((stderr, "Reading a token: "));
-      yychar = yylex ();
+      yychar = yylex (&yylval, scanner);
     }
 
   if (yychar <= YYEOF)
@@ -1830,211 +1854,211 @@ yyreduce:
   switch (yyn)
     {
   case 4:
-                                                                {	sm_print_nl(); SM_RES_OK;	}
+                                                                {	sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 5:
-                                                {	sm_print_ll((yyvsp[-1].ll_val)); SM_RES_OK;	}
+                                                {	sm_print_ll(yyget_extra(scanner), (yyvsp[-1].ll_val)); SM_RES_OK;	}
     break;
 
   case 6:
-                                                {	sm_print_ld((yyvsp[-1].ld_val)); SM_RES_OK; }
+                                                {	sm_print_ld(yyget_extra(scanner), (yyvsp[-1].ld_val)); SM_RES_OK; }
     break;
 
   case 7:
-                                                {	sm_print_sz((yyvsp[-1].sz_val)); SM_RES_OK;	}
+                                                {	sm_print_sz(yyget_extra(scanner), (yyvsp[-1].sz_val)); SM_RES_OK;	}
     break;
 
   case 8:
-                                                {	sm_print_help(); SM_RES_OK;	}
+                                                {	sm_print_help(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 9:
-                                                {	sm_do_exit(); SM_RES_OK;	}
+                                                {	sm_do_exit(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 10:
-                                                {	sm_do_exit(); SM_RES_OK;	}
+                                                {	sm_do_exit(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 11:
-                                                        {	sm_print_ll((yyvsp[-1].ll_val)); sm_print_nl(); SM_RES_OK;	}
+                                                        {	sm_print_ll(yyget_extra(scanner), (yyvsp[-1].ll_val)); sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 12:
-                                                        {	sm_print_ld((yyvsp[-1].ld_val)); sm_print_nl(); SM_RES_OK; }
+                                                        {	sm_print_ld(yyget_extra(scanner), (yyvsp[-1].ld_val)); sm_print_nl(yyget_extra(scanner)); SM_RES_OK; }
     break;
 
   case 13:
-                                                        {	sm_print_sz((yyvsp[-1].sz_val)); sm_print_nl(); SM_RES_OK;	}
+                                                        {	sm_print_sz(yyget_extra(scanner), (yyvsp[-1].sz_val)); sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 14:
-                                                        {	sm_print_help(); sm_print_nl(); SM_RES_OK;	}
+                                                        {	sm_print_help(yyget_extra(scanner)); sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 15:
-                                                {	sm_do_exit(); sm_print_nl(); SM_RES_OK;	}
+                                                {	sm_do_exit(yyget_extra(scanner)); sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 16:
-                                                        {	sm_do_exit(); sm_print_nl(); SM_RES_OK;	}
+                                                        {	sm_do_exit(yyget_extra(scanner)); sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 17:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 18:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK; }
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK; }
     break;
 
   case 19:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 20:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                                {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 21:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 22:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                                {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 23:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 24:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK; }
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK; }
     break;
 
   case 25:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 26:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 27:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 28:
-                                                        {	yyerrok; sm_print_nl(); SM_RES_OK;	}
+                                                        {	yyerrok; sm_print_nl(yyget_extra(scanner)); SM_RES_OK;	}
     break;
 
   case 29:
-                                                        { 	sm_copy_buf((yyvsp[0].sz_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); }
+                                                        { 	sm_copy_buf(yyget_extra(scanner), (yyvsp[0].sz_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); }
     break;
 
   case 30:
-                                                        {	sm_get_config((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                        {	sm_get_config(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 31:
-                                                {	sm_get_f_precision((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                {	sm_get_f_precision(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 32:
-                                                        {	sm_set_f_exp_precision(); sm_get_f_precision((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); }
+                                                        {	sm_set_f_exp_precision(yyget_extra(scanner)); sm_get_f_precision(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); }
     break;
 
   case 33:
-                                                        {	sm_get_a_unit((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                        {	sm_get_a_unit(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 34:
-                                                {	sm_set_a_unit(SM_TRIG_RADIANS); sm_get_a_unit((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                {	sm_set_a_unit(yyget_extra(scanner), SM_TRIG_RADIANS); sm_get_a_unit(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 35:
-                                                {	sm_set_a_unit(SM_TRIG_DEGREES); sm_get_a_unit((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
+                                                {	sm_set_a_unit(yyget_extra(scanner), SM_TRIG_DEGREES); sm_get_a_unit(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
     break;
 
   case 36:
-                                                {	sm_set_a_unit(SM_TRIG_GRADIAN); sm_get_a_unit((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
+                                                {	sm_set_a_unit(yyget_extra(scanner), SM_TRIG_GRADIAN); sm_get_a_unit(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
     break;
 
   case 37:
-                                                        {	sm_set_a_unit(SM_TRIG_RADIANS); sm_get_a_unit((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                        {	sm_set_a_unit(yyget_extra(scanner), SM_TRIG_RADIANS); sm_get_a_unit(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 38:
-                                                        {	sm_set_a_unit(SM_TRIG_DEGREES); sm_get_a_unit((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                        {	sm_set_a_unit(yyget_extra(scanner), SM_TRIG_DEGREES); sm_get_a_unit(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 39:
-                                                        {	sm_set_a_unit(SM_TRIG_GRADIAN); sm_get_a_unit((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                        {	sm_set_a_unit(yyget_extra(scanner), SM_TRIG_GRADIAN); sm_get_a_unit(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 40:
-                                                        {	sm_get_i_format((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                        {	sm_get_i_format(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 41:
-                                                {	sm_set_i_format(SM_I_10); sm_get_i_format((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                {	sm_set_i_format(yyget_extra(scanner), SM_I_10); sm_get_i_format(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 42:
-                                                {	sm_set_i_format(SM_I_8); sm_get_i_format((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
+                                                {	sm_set_i_format(yyget_extra(scanner), SM_I_8); sm_get_i_format(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
     break;
 
   case 43:
-                                                {	sm_set_i_format(SM_I_16); sm_get_i_format((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
+                                                {	sm_set_i_format(yyget_extra(scanner), SM_I_16); sm_get_i_format(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
     break;
 
   case 44:
-                                                {	sm_set_i_format(SM_I_2); sm_get_i_format((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
+                                                {	sm_set_i_format(yyget_extra(scanner), SM_I_2); sm_get_i_format(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val))); 	}
     break;
 
   case 45:
-                                                                {	sm_set_i_format(SM_I_10); sm_get_i_format((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                {	sm_set_i_format(yyget_extra(scanner), SM_I_10); sm_get_i_format(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 46:
-                                                                {	sm_set_i_format(SM_I_8); sm_get_i_format((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                {	sm_set_i_format(yyget_extra(scanner), SM_I_8); sm_get_i_format(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 47:
-                                                                {	sm_set_i_format(SM_I_16); sm_get_i_format((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                {	sm_set_i_format(yyget_extra(scanner), SM_I_16); sm_get_i_format(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 48:
-                                                                {	sm_set_i_format(SM_I_2); sm_get_i_format((yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                {	sm_set_i_format(yyget_extra(scanner), SM_I_2); sm_get_i_format(yyget_extra(scanner), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 49:
-                                                                {	sm_conv_i_dec_2_sz(SM_I_8, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                {	sm_conv_i_dec_2_sz(yyget_extra(scanner), SM_I_8, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 50:
-                                                                {	sm_conv_i_dec_2_sz(SM_I_16, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                {	sm_conv_i_dec_2_sz(yyget_extra(scanner), SM_I_16, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 51:
-                                                                {	sm_conv_i_dec_2_sz(SM_I_2, (yyvsp[-1].ll_val), (yyval.sz_val), SM_S_BUFF_SIZE+2);	}
+                                                                {	sm_conv_i_dec_2_sz(yyget_extra(scanner), SM_I_2, (yyvsp[-1].ll_val), (yyval.sz_val), SM_S_BUFF_SIZE+2);	}
     break;
 
   case 52:
-                                                                {	sm_conv_i_dec_2_sz(SM_I_10, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                {	sm_conv_i_dec_2_sz(yyget_extra(scanner), SM_I_10, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 53:
-                                                                {	sm_conv_i_dec_2_sz(SM_I_10, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                {	sm_conv_i_dec_2_sz(yyget_extra(scanner), SM_I_10, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 54:
-                                                                {	sm_conv_i_dec_2_sz(SM_I_10, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                {	sm_conv_i_dec_2_sz(yyget_extra(scanner), SM_I_10, (yyvsp[-1].ll_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 55:
-                                                                        {	sm_copy_buf((yyvsp[-1].sz_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
+                                                                        {	sm_copy_buf(yyget_extra(scanner), (yyvsp[-1].sz_val), (yyval.sz_val), SM_ARRAY_SIZE((yyval.sz_val)));	}
     break;
 
   case 56:
@@ -2046,15 +2070,15 @@ yyreduce:
     break;
 
   case 61:
-                                                        {	sm_calc_add_i((yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_add_i(yyget_extra(scanner), (yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 62:
-                                                        {	sm_calc_sub_i((yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_sub_i(yyget_extra(scanner), (yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 63:
-                                                        {	sm_calc_mul_i((yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_mul_i(yyget_extra(scanner), (yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 64:
@@ -2062,83 +2086,83 @@ yyreduce:
     break;
 
   case 65:
-                                                {	sm_set_f_precision((int)(yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                {	sm_set_f_precision(yyget_extra(scanner), (int)(yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 66:
-                                                {	sm_calc_factorial((yyvsp[-1].ll_val), &(yyval.ll_val));		}
+                                                {	sm_calc_factorial(yyget_extra(scanner), (yyvsp[-1].ll_val), &(yyval.ll_val));		}
     break;
 
   case 67:
-                                                                {	sm_calc_power_i_2((yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                                {	sm_calc_power_i_2(yyget_extra(scanner), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 68:
-                                                                {	sm_calc_power_10_i((yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                                {	sm_calc_power_10_i(yyget_extra(scanner), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 69:
-                                                                {	sm_calc_power_2_i((yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                                {	sm_calc_power_2_i(yyget_extra(scanner), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 70:
-                                                        {	sm_calc_l_ashift((yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_l_ashift(yyget_extra(scanner), (yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 71:
-                                                        {	sm_calc_r_ashift((yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_r_ashift(yyget_extra(scanner), (yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 72:
-                                                        {	sm_calc_l_lshift((yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_l_lshift(yyget_extra(scanner), (yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 73:
-                                                        {	sm_calc_r_lshift((yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_r_lshift(yyget_extra(scanner), (yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 74:
-                                                        {	sm_calc_l_cshift((yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_l_cshift(yyget_extra(scanner), (yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 75:
-                                                        {	sm_calc_r_cshift((yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_r_cshift(yyget_extra(scanner), (yyvsp[-2].ll_val), (yyvsp[0].ll_val), &(yyval.ll_val));	}
     break;
 
   case 76:
-                                                        {	sm_calc_abs_i((yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                        {	sm_calc_abs_i(yyget_extra(scanner), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 77:
-                                                                                {	sm_calc_mod((yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                                                {	sm_calc_mod(yyget_extra(scanner), (yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 78:
-                                                                                                {	sm_calc_mod((yyvsp[-1].ll_val), 2ll, &(yyval.ll_val));	}
+                                                                                                {	sm_calc_mod(yyget_extra(scanner), (yyvsp[-1].ll_val), 2ll, &(yyval.ll_val));	}
     break;
 
   case 79:
-                                                                                        {	sm_calc_and((yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                                                        {	sm_calc_and(yyget_extra(scanner), (yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 80:
-                                                                                        {	sm_calc_or((yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                                                        {	sm_calc_or(yyget_extra(scanner), (yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 81:
-                                                                                                        {	sm_calc_not((yyvsp[-1].ll_val), &(yyval.ll_val));		}
+                                                                                                        {	sm_calc_not(yyget_extra(scanner), (yyvsp[-1].ll_val), &(yyval.ll_val));		}
     break;
 
   case 82:
-                                                                                        {	sm_calc_nand((yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                                                        {	sm_calc_nand(yyget_extra(scanner), (yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 83:
-                                                                                        {	sm_calc_nor((yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                                                        {	sm_calc_nor(yyget_extra(scanner), (yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 84:
-                                                                                        {	sm_calc_xor((yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
+                                                                                        {	sm_calc_xor(yyget_extra(scanner), (yyvsp[-3].ll_val), (yyvsp[-1].ll_val), &(yyval.ll_val));	}
     break;
 
   case 85:
@@ -2166,71 +2190,71 @@ yyreduce:
     break;
 
   case 91:
-                                                                        {	sm_get_const(SM_CONST_PI, &(yyval.ld_val));		}
+                                                                        {	sm_get_const(yyget_extra(scanner), SM_CONST_PI, &(yyval.ld_val));		}
     break;
 
   case 92:
-                                                                        {	sm_get_const(SM_CONST_EXP, &(yyval.ld_val));	}
+                                                                        {	sm_get_const(yyget_extra(scanner), SM_CONST_EXP, &(yyval.ld_val));	}
     break;
 
   case 93:
-                                                                        { 	sm_get_const(SM_CONST_GAMMA, &(yyval.ld_val));	}
+                                                                        { 	sm_get_const(yyget_extra(scanner), SM_CONST_GAMMA, &(yyval.ld_val));	}
     break;
 
   case 94:
-                                                                        { 	sm_get_const(SM_CONST_PHI, &(yyval.ld_val));	}
+                                                                        { 	sm_get_const(yyget_extra(scanner), SM_CONST_PHI, &(yyval.ld_val));	}
     break;
 
   case 95:
-                                                        {	sm_calc_add_f((yyvsp[-2].ld_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_add_f(yyget_extra(scanner), (yyvsp[-2].ld_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));	}
     break;
 
   case 96:
-                                                        {	sm_calc_sub_f((yyvsp[-2].ld_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_sub_f(yyget_extra(scanner), (yyvsp[-2].ld_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));	}
     break;
 
   case 97:
-                                                        {	sm_calc_mul_f((yyvsp[-2].ld_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_mul_f(yyget_extra(scanner), (yyvsp[-2].ld_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));	}
     break;
 
   case 98:
-                                                        {	sm_calc_add_f((long double)(yyvsp[-2].ll_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_add_f(yyget_extra(scanner), (long double)(yyvsp[-2].ll_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
     break;
 
   case 99:
-                                                        {	sm_calc_sub_f((long double)(yyvsp[-2].ll_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_sub_f(yyget_extra(scanner), (long double)(yyvsp[-2].ll_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
     break;
 
   case 100:
-                                                        {	sm_calc_mul_f((long double)(yyvsp[-2].ll_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_mul_f(yyget_extra(scanner), (long double)(yyvsp[-2].ll_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
     break;
 
   case 101:
-                                                        {	sm_calc_add_f((yyvsp[-2].ld_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_add_f(yyget_extra(scanner), (yyvsp[-2].ld_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
     break;
 
   case 102:
-                                                        {	sm_calc_sub_f((yyvsp[-2].ld_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_sub_f(yyget_extra(scanner), (yyvsp[-2].ld_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
     break;
 
   case 103:
-                                                        {	sm_calc_mul_f((yyvsp[-2].ld_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_mul_f(yyget_extra(scanner), (yyvsp[-2].ld_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
     break;
 
   case 104:
-                                                        {	sm_calc_div((long double)(yyvsp[-2].ll_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_div(yyget_extra(scanner), (long double)(yyvsp[-2].ll_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));	}
     break;
 
   case 105:
-                                                        {	sm_calc_div((yyvsp[-2].ld_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));			}
+                                                        {	sm_calc_div(yyget_extra(scanner), (yyvsp[-2].ld_val), (long double)(yyvsp[0].ll_val), &(yyval.ld_val));			}
     break;
 
   case 106:
-                                                        {	sm_calc_div((long double)(yyvsp[-2].ll_val), (yyvsp[0].ld_val), &(yyval.ld_val));			}
+                                                        {	sm_calc_div(yyget_extra(scanner), (long double)(yyvsp[-2].ll_val), (yyvsp[0].ld_val), &(yyval.ld_val));			}
     break;
 
   case 107:
-                                                        {	sm_calc_div((yyvsp[-2].ld_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_div(yyget_extra(scanner), (yyvsp[-2].ld_val), (yyvsp[0].ld_val), &(yyval.ld_val));	}
     break;
 
   case 108:
@@ -2238,191 +2262,191 @@ yyreduce:
     break;
 
   case 109:
-                                                        {	sm_calc_sin((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_sin(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 110:
-                                                        {	sm_calc_cos((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_cos(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 111:
-                                                        {	sm_calc_tan((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_tan(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 112:
-                                                        {	sm_calc_asin((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_asin(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 113:
-                                                        {	sm_calc_acos((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_acos(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 114:
-                                                        {	sm_calc_atan((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_atan(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 115:
-                                                        {	sm_calc_sin((yyvsp[-1].ld_val), &(yyval.ld_val)); }
+                                                        {	sm_calc_sin(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val)); }
     break;
 
   case 116:
-                                                        {	sm_calc_cos((yyvsp[-1].ld_val), &(yyval.ld_val)); }
+                                                        {	sm_calc_cos(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val)); }
     break;
 
   case 117:
-                                                        {	sm_calc_tan((yyvsp[-1].ld_val), &(yyval.ld_val)); }
+                                                        {	sm_calc_tan(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val)); }
     break;
 
   case 118:
-                                                        {	sm_calc_asin((yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_asin(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 119:
-                                                        {	sm_calc_acos((yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_acos(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 120:
-                                                        {	sm_calc_atan((yyvsp[-1].ld_val), &(yyval.ld_val)); 	}
+                                                        {	sm_calc_atan(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val)); 	}
     break;
 
   case 121:
-                                                                {	sm_conv_grad_2_rad((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                                {	sm_conv_grad_2_rad(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 122:
-                                                                {	sm_conv_rad_2_grad((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                                {	sm_conv_rad_2_grad(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 123:
-                                                                {	sm_conv_rad_2_deg((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                                {	sm_conv_rad_2_deg(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 124:
-                                                                {	sm_conv_deg_2_rad((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                                {	sm_conv_deg_2_rad(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 125:
-                                                                {	sm_conv_grad_2_deg((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                                {	sm_conv_grad_2_deg(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 126:
-                                                                {	sm_conv_deg_2_grad((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                                {	sm_conv_deg_2_grad(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 127:
-                                                        {	sm_conv_grad_2_rad((long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_conv_grad_2_rad(yyget_extra(scanner), (long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 128:
-                                                        {	sm_conv_rad_2_grad((long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_conv_rad_2_grad(yyget_extra(scanner), (long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 129:
-                                                        {	sm_conv_rad_2_deg((long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_conv_rad_2_deg(yyget_extra(scanner), (long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 130:
-                                                        {	sm_conv_deg_2_rad((long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_conv_deg_2_rad(yyget_extra(scanner), (long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 131:
-                                                        {	sm_conv_grad_2_deg((long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_conv_grad_2_deg(yyget_extra(scanner), (long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 132:
-                                                        {	sm_conv_deg_2_grad((long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                        {	sm_conv_deg_2_grad(yyget_extra(scanner), (long double)(yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 133:
-                                                                                { sm_calc_power((yyvsp[-3].ld_val), (yyvsp[-1].ld_val), &(yyval.ld_val)); }
+                                                                                { sm_calc_power(yyget_extra(scanner), (yyvsp[-3].ld_val), (yyvsp[-1].ld_val), &(yyval.ld_val)); }
     break;
 
   case 134:
-                                                                                { sm_calc_power((long double)(yyvsp[-3].ll_val), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val)); }
+                                                                                { sm_calc_power(yyget_extra(scanner), (long double)(yyvsp[-3].ll_val), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val)); }
     break;
 
   case 135:
-                                                                                { sm_calc_power((yyvsp[-3].ld_val), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val)); }
+                                                                                { sm_calc_power(yyget_extra(scanner), (yyvsp[-3].ld_val), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val)); }
     break;
 
   case 136:
-                                                                                { sm_calc_power((long double)(yyvsp[-3].ll_val), (yyvsp[-1].ld_val), &(yyval.ld_val)); }
+                                                                                { sm_calc_power(yyget_extra(scanner), (long double)(yyvsp[-3].ll_val), (yyvsp[-1].ld_val), &(yyval.ld_val)); }
     break;
 
   case 137:
-                                                                {	sm_calc_power_d_2((yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                                {	sm_calc_power_d_2(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 138:
-                                                                        {	sm_calc_power_exp_d((yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                                        {	sm_calc_power_exp_d(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 139:
-                                                                {	sm_calc_power_exp_d((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                                {	sm_calc_power_exp_d(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 140:
-                                                                {	sm_calc_power_10_d((yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                                {	sm_calc_power_10_d(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 141:
-                                                                {	sm_calc_power_2_d((yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                                {	sm_calc_power_2_d(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 142:
-                                                        {	sm_calc_sqrt((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_sqrt(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 143:
-                                                        {	sm_calc_sqrt((yyvsp[-1].ld_val), &(yyval.ld_val));			}
+                                                        {	sm_calc_sqrt(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));			}
     break;
 
   case 144:
-                                                        {	sm_calc_ln((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_ln(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 145:
-                                                        {	sm_calc_ln((yyvsp[-1].ld_val), &(yyval.ld_val));			}
+                                                        {	sm_calc_ln(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));			}
     break;
 
   case 146:
-                                                        {	sm_calc_lg((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_lg(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 147:
-                                                        {	sm_calc_lg((yyvsp[-1].ld_val), &(yyval.ld_val));			}
+                                                        {	sm_calc_lg(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));			}
     break;
 
   case 148:
-                                                                        {	sm_calc_log((long double)(yyvsp[-3].ll_val), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                                        {	sm_calc_log(yyget_extra(scanner), (long double)(yyvsp[-3].ll_val), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 149:
-                                                                                {	sm_calc_log((yyvsp[-3].ld_val), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));		}
+                                                                                {	sm_calc_log(yyget_extra(scanner), (yyvsp[-3].ld_val), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));		}
     break;
 
   case 150:
-                                                                                {	sm_calc_log((long double)(yyvsp[-3].ll_val), (yyvsp[-1].ld_val), &(yyval.ld_val));		}
+                                                                                {	sm_calc_log(yyget_extra(scanner), (long double)(yyvsp[-3].ll_val), (yyvsp[-1].ld_val), &(yyval.ld_val));		}
     break;
 
   case 151:
-                                                                                        {	sm_calc_log((yyvsp[-3].ld_val), (yyvsp[-1].ld_val), &(yyval.ld_val));					}
+                                                                                        {	sm_calc_log(yyget_extra(scanner), (yyvsp[-3].ld_val), (yyvsp[-1].ld_val), &(yyval.ld_val));					}
     break;
 
   case 152:
-                                                        {	sm_calc_recip((long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
+                                                        {	sm_calc_recip(yyget_extra(scanner), (long double)(yyvsp[-1].ll_val), &(yyval.ld_val));	}
     break;
 
   case 153:
-                                                                {	sm_calc_recip((yyvsp[-1].ld_val), &(yyval.ld_val));					}
+                                                                {	sm_calc_recip(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));					}
     break;
 
   case 154:
-                                                                {	sm_calc_abs_f((yyvsp[-1].ld_val), &(yyval.ld_val));	}
+                                                                {	sm_calc_abs_f(yyget_extra(scanner), (yyvsp[-1].ld_val), &(yyval.ld_val));	}
     break;
 
   case 155:
-                        { sm_get_rand(&(yyval.ld_val));	}
+                        { sm_get_rand(yyget_extra(scanner), &(yyval.ld_val));	}
     break;
 
 
@@ -2475,7 +2499,7 @@ yyerrlab:
     {
       ++yynerrs;
 #if ! YYERROR_VERBOSE
-      yyerror (YY_("syntax error"));
+      yyerror (scanner, parser_callback, YY_("syntax error"));
 #else
 # define YYSYNTAX_ERROR yysyntax_error (&yymsg_alloc, &yymsg, \
                                         yyssp, yytoken)
@@ -2502,7 +2526,7 @@ yyerrlab:
                 yymsgp = yymsg;
               }
           }
-        yyerror (yymsgp);
+        yyerror (scanner, parser_callback, yymsgp);
         if (yysyntax_error_status == 2)
           goto yyexhaustedlab;
       }
@@ -2526,7 +2550,7 @@ yyerrlab:
       else
         {
           yydestruct ("Error: discarding",
-                      yytoken, &yylval);
+                      yytoken, &yylval, scanner, parser_callback);
           yychar = YYEMPTY;
         }
     }
@@ -2580,7 +2604,7 @@ yyerrlab1:
 
 
       yydestruct ("Error: popping",
-                  yystos[yystate], yyvsp);
+                  yystos[yystate], yyvsp, scanner, parser_callback);
       YYPOPSTACK (1);
       yystate = *yyssp;
       YY_STACK_PRINT (yyss, yyssp);
@@ -2619,7 +2643,7 @@ yyabortlab:
 | yyexhaustedlab -- memory exhaustion comes here.  |
 `-------------------------------------------------*/
 yyexhaustedlab:
-  yyerror (YY_("memory exhausted"));
+  yyerror (scanner, parser_callback, YY_("memory exhausted"));
   yyresult = 2;
   /* Fall through.  */
 #endif
@@ -2635,7 +2659,7 @@ yyreturn:
          user semantic actions for why this is necessary.  */
       yytoken = YYTRANSLATE (yychar);
       yydestruct ("Cleanup: discarding lookahead",
-                  yytoken, &yylval);
+                  yytoken, &yylval, scanner, parser_callback);
     }
   /* Do not reclaim the symbols of the rule whose action triggered
      this YYABORT or YYACCEPT.  */
@@ -2644,7 +2668,7 @@ yyreturn:
   while (yyssp != yyss)
     {
       yydestruct ("Cleanup: popping",
-                  yystos[*yyssp], yyvsp);
+                  yystos[*yyssp], yyvsp, scanner, parser_callback);
       YYPOPSTACK (1);
     }
 #ifndef yyoverflow

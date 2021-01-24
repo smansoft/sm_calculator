@@ -1,0 +1,486 @@
+22/01/2021 10:14:37.058 - <main> - main ---------------------------------------------------------------------- >>
+22/01/2021 10:14:37.058 - <main> - sm_calc_test_expr is started
+22/01/2021 10:14:37.058 - <main> - ------------------
+22/01/2021 10:14:37.058 - <sm_init_random> - random starting point has been initialized
+22/01/2021 10:14:37.058 - <sm_log_calc_params> - calc_params --------------- >>
+22/01/2021 10:14:37.058 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+22/01/2021 10:14:37.058 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 0
+22/01/2021 10:14:37.058 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+22/01/2021 10:14:37.058 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_help          = 0
+22/01/2021 10:14:37.059 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file_path = 
+22/01/2021 10:14:37.059 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file_path = 
+22/01/2021 10:14:37.059 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_expression = 
+22/01/2021 10:14:37.059 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file  = 0x0
+22/01/2021 10:14:37.059 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file = 0x0
+22/01/2021 10:14:37.059 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_trig_unit   = 0
+22/01/2021 10:14:37.059 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_f_precision = 10
+22/01/2021 10:14:37.059 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_i_format = 0
+22/01/2021 10:14:37.059 - <sm_log_calc_params> - calc_params --------------- <<
+22/01/2021 10:14:37.059 - <sm_calc_init_test> - test -------------------------------------- >>
+22/01/2021 10:14:37.059 - <sm_calc_init_test> - test sm_calc_init_test is started
+22/01/2021 10:14:37.060 - <sm_calc_init_test> - test sm_calc_init_test is finished: Ok
+22/01/2021 10:14:37.060 - <sm_calc_init_test> - test -------------------------------------- <<
+22/01/2021 10:14:37.060 - <sm_calc_equation_test> - test -------------------------------------- >>
+22/01/2021 10:14:37.060 - <sm_calc_equation_test> - test sm_calc_equation_test is started
+22/01/2021 10:14:37.060 - <sm_calc_equation_test> - opening the output file: sm_calc_test.out.expr.txt
+22/01/2021 10:14:37.060 - <sm_calc_equation_test> - test equation: pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+22/01/2021 10:14:37.060 - <sm_calc_equation_test> - calling the original entry point: sm_calc_main
+22/01/2021 10:14:37.060 - <sm_calc_equation_test> - arguments: argc = 2
+22/01/2021 10:14:37.060 - <sm_calc_equation_test> - arguments: argv[0] = sm_calc
+22/01/2021 10:14:37.060 - <sm_calc_equation_test> - arguments: argv[1] = sm_calc
+22/01/2021 10:14:37.060 - <sm_calc_log_version> - sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+22/01/2021 10:14:37.060 - <sm_calc_log_version> - SM Calculator, Re-Entrant Parser Core
+22/01/2021 10:14:37.060 - <sm_calc_show_log_info> - Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_expr.log
+22/01/2021 10:14:37.060 - <sm_init_random> - random starting point has been initialized
+22/01/2021 10:14:37.060 - <sm_calc_main> - opt_val == 'x' ('expression')
+22/01/2021 10:14:37.060 - <sm_init_f_prec_buf> - parser_ctx->m_calc_params.m_f_prec_buf = %.10Lf
+22/01/2021 10:14:37.060 - <sm_init_f_prec_buf> - Result = 0
+22/01/2021 10:14:37.060 - <sm_proc_params> - processing of parameters has been started
+22/01/2021 10:14:37.060 - <sm_proc_params> - length of parser_ctx->m_calc_params.m_in_file_path == 0
+22/01/2021 10:14:37.060 - <proc_help_fpath> - gcsm_help_fpath = *{SM_CALC_BIN}*..\share\smansoft\doc\HELP
+22/01/2021 10:14:37.060 - <proc_help_fpath> - gsm_help_fpath = G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\x64\share\smansoft\doc\HELP
+22/01/2021 10:14:37.060 - <proc_help_fpath> - Help fpath procressing: Result = 0
+22/01/2021 10:14:37.060 - <sm_proc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+22/01/2021 10:14:37.060 - <sm_proc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 1
+22/01/2021 10:14:37.060 - <sm_proc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+22/01/2021 10:14:37.060 - <sm_proc_params> - Result = 0
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - calc_params --------------- >>
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 1
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_help          = 0
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file_path = 
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file_path = 
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_expression = pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file  = 0x0
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file = 0x0
+22/01/2021 10:14:37.060 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_trig_unit   = 0
+22/01/2021 10:14:37.061 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_f_precision = 10
+22/01/2021 10:14:37.061 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_i_format = 0
+22/01/2021 10:14:37.061 - <sm_log_calc_params> - calc_params --------------- <<
+22/01/2021 10:14:37.061 - <sm_proc_calc> - Command line processing is started
+22/01/2021 10:14:37.061 - <sm_proc_calc> - expression  = pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+22/01/2021 10:14:37.061 - <sm_do_calc_expression> - Expression processing
+22/01/2021 10:14:37.061 - <sm_do_calc_expression> - Expression processing: gsm_calc_params.m_expression = pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+22/01/2021 10:14:37.061 - <sm_get_const> - in: const_idx = 0
+22/01/2021 10:14:37.061 - <sm_get_const> - out: const_value = 3.1415926536
+22/01/2021 10:14:37.061 - <sm_get_const> - result = 0
+22/01/2021 10:14:37.061 - <sm_conv_sz_2_i_dec> - in: i_format = 0 buf = 2 buf_len = 1024
+22/01/2021 10:14:37.061 - <sm_conv_sz_2_i_dec> - out: res = 2
+22/01/2021 10:14:37.061 - <sm_conv_sz_2_i_dec> - result = 0
+22/01/2021 10:14:37.061 - <sm_calc_div> - in: arg1 = 3.1415926536 arg2 = 2.0000000000
+22/01/2021 10:14:37.061 - <sm_calc_div> - out: res = 1.5707963268
+22/01/2021 10:14:37.061 - <sm_calc_div> - result = 0
+22/01/2021 10:14:37.061 - <sm_calc_sin> - in: arg = 1.5707963268
+22/01/2021 10:14:37.061 - <sm_conv_curr_2_rad> - in: arg = 1.5707963268
+22/01/2021 10:14:37.061 - <sm_conv_curr_2_rad> - parser_ctx->m_calc_params.m_trig_unit = 0
+22/01/2021 10:14:37.061 - <sm_conv_curr_2_rad> - out: res = 1.5707963268
+22/01/2021 10:14:37.061 - <sm_conv_curr_2_rad> - result = 0
+22/01/2021 10:14:37.061 - <sm_calc_sin> - out: res = 1.0000000000
+22/01/2021 10:14:37.061 - <sm_calc_sin> - result = 0
+22/01/2021 10:14:37.061 - <sm_calc_power_d_2> - in: arg = 1.0000000000
+22/01/2021 10:14:37.061 - <sm_calc_power_d_2> - out: res = 1.0000000000
+22/01/2021 10:14:37.061 - <sm_calc_power_d_2> - result = 0
+22/01/2021 10:14:37.061 - <sm_get_const> - in: const_idx = 0
+22/01/2021 10:14:37.061 - <sm_get_const> - out: const_value = 3.1415926536
+22/01/2021 10:14:37.061 - <sm_get_const> - result = 0
+22/01/2021 10:14:37.061 - <sm_conv_sz_2_i_dec> - in: i_format = 0 buf = 2 buf_len = 1024
+22/01/2021 10:14:37.061 - <sm_conv_sz_2_i_dec> - out: res = 2
+22/01/2021 10:14:37.061 - <sm_conv_sz_2_i_dec> - result = 0
+22/01/2021 10:14:37.061 - <sm_calc_div> - in: arg1 = 3.1415926536 arg2 = 2.0000000000
+22/01/2021 10:14:37.061 - <sm_calc_div> - out: res = 1.5707963268
+22/01/2021 10:14:37.062 - <sm_calc_div> - result = 0
+22/01/2021 10:14:37.062 - <sm_calc_cos> - in: arg = 1.5707963268
+22/01/2021 10:14:37.062 - <sm_conv_curr_2_rad> - in: arg = 1.5707963268
+22/01/2021 10:14:37.062 - <sm_conv_curr_2_rad> - parser_ctx->m_calc_params.m_trig_unit = 0
+22/01/2021 10:14:37.062 - <sm_conv_curr_2_rad> - out: res = 1.5707963268
+22/01/2021 10:14:37.062 - <sm_conv_curr_2_rad> - result = 0
+22/01/2021 10:14:37.062 - <sm_calc_cos> - out: res = 0.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_cos> - result = 0
+22/01/2021 10:14:37.062 - <sm_calc_power_d_2> - in: arg = 0.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_power_d_2> - out: res = 0.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_power_d_2> - result = 0
+22/01/2021 10:14:37.062 - <sm_calc_add_f> - in: arg1 = 1.0000000000 arg2 = 0.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_add_f> - out: res = 1.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_add_f> - result = 0
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_f_dec> - in: buf = 24. buf_len = 1024
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_f_dec> - out: res = 24.0000000000
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_f_dec> - result = 0
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_i_dec> - in: i_format = 0 buf = 2 buf_len = 1024
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_i_dec> - out: res = 2
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_i_dec> - result = 0
+22/01/2021 10:14:37.062 - <sm_calc_mul_f> - in: arg1 = 24.0000000000 arg2 = 2.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_mul_f> - out: res = 48.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_mul_f> - result = 0
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_f_dec> - in: buf = 12.0 buf_len = 1024
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_f_dec> - out: res = 12.0000000000
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_f_dec> - result = 0
+22/01/2021 10:14:37.062 - <sm_calc_div> - in: arg1 = 48.0000000000 arg2 = 12.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_div> - out: res = 4.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_div> - result = 0
+22/01/2021 10:14:37.062 - <sm_calc_add_f> - in: arg1 = 1.0000000000 arg2 = 4.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_add_f> - out: res = 5.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_add_f> - result = 0
+22/01/2021 10:14:37.062 - <sm_get_const> - in: const_idx = 1
+22/01/2021 10:14:37.062 - <sm_get_const> - out: const_value = 2.7182818285
+22/01/2021 10:14:37.062 - <sm_get_const> - result = 0
+22/01/2021 10:14:37.062 - <sm_calc_add_f> - in: arg1 = 5.0000000000 arg2 = 2.7182818285
+22/01/2021 10:14:37.062 - <sm_calc_add_f> - out: res = 7.7182818285
+22/01/2021 10:14:37.062 - <sm_calc_add_f> - result = 0
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_f_dec> - in: buf = 5.0 buf_len = 1024
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_f_dec> - out: res = 5.0000000000
+22/01/2021 10:14:37.062 - <sm_conv_sz_2_f_dec> - result = 0
+22/01/2021 10:14:37.062 - <sm_calc_sub_f> - in: arg1 = 7.7182818285 arg2 = 5.0000000000
+22/01/2021 10:14:37.062 - <sm_calc_sub_f> - out: res = 2.7182818285
+22/01/2021 10:14:37.062 - <sm_calc_sub_f> - result = 0
+22/01/2021 10:14:37.062 - <sm_print_ld> - in: arg = 2.7182818285
+22/01/2021 10:14:37.062 - <sm_print_ld> - print in format: parser_ctx->m_calc_params_proc.m_f_prec_buf = %.10Lf
+22/01/2021 10:14:37.062 - <sm_print_ld> - parser_ctx->m_calc_res.m_res = 0
+22/01/2021 10:14:37.062 - <sm_print_sz> - in: arg = 2.7182818285
+22/01/2021 10:14:37.062 - <sm_print_sz> - parser_ctx->m_calc_res.m_res = 0
+22/01/2021 10:14:37.063 - <sm_print_sz> - result = 0
+22/01/2021 10:14:37.063 - <sm_print_ld> - result = 0
+22/01/2021 10:14:37.063 - <sm_do_calc_expression> - Expression processing: yyparse res = 0
+22/01/2021 10:14:37.063 - <sm_do_calc_expression> - Expression processing: Result = 0
+22/01/2021 10:14:37.063 - <sm_proc_calc> - Command line processing: Result = Ok
+22/01/2021 10:14:37.063 - <sm_proc_calc> - Result = 0
+22/01/2021 10:14:37.063 - <sm_calc_equation_test> - sm_calc_main: res = 0
+22/01/2021 10:14:37.063 - <sm_calc_equation_test> - closing the output file: sm_calc_test.out.expr.txt
+22/01/2021 10:14:37.063 - <sm_calc_equation_test> - checking the result of processing the equation...
+22/01/2021 10:14:37.063 - <sm_get_const> - in: const_idx = 1
+22/01/2021 10:14:37.063 - <sm_get_const> - out: const_value = 2.7182818285
+22/01/2021 10:14:37.063 - <sm_get_const> - result = 0
+22/01/2021 10:14:37.063 - <sm_conv_sz_2_f_dec> - in: buf = 2.7182818285 buf_len = 12
+22/01/2021 10:14:37.063 - <sm_conv_sz_2_f_dec> - out: res = 2.7182818285
+22/01/2021 10:14:37.063 - <sm_conv_sz_2_f_dec> - result = 0
+22/01/2021 10:14:37.063 - <sm_calc_equation_test> - test sm_calc_equation_test is finished: Ok
+22/01/2021 10:14:37.063 - <sm_calc_equation_test> - test -------------------------------------- <<
+22/01/2021 10:14:37.063 - <main> - ------------------
+22/01/2021 10:14:37.063 - <main> - cmocka_run_group_tests: result = 0
+22/01/2021 10:14:37.063 - <main> - ------------------
+22/01/2021 10:14:37.063 - <main> - sm_calc_test_expr is finished
+22/01/2021 10:14:37.063 - <main> - main ---------------------------------------------------------------------- <<
+22/01/2021 11:40:05.451 - <main> - main ---------------------------------------------------------------------- >>
+22/01/2021 11:40:05.451 - <main> - sm_calc_test_expr is started
+22/01/2021 11:40:05.451 - <main> - ------------------
+22/01/2021 11:40:05.451 - <sm_init_random> - random starting point has been initialized
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - calc_params --------------- >>
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 0
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_help          = 0
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file_path = 
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file_path = 
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_expression = 
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file  = 0x0
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file = 0x0
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_trig_unit   = 0
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_f_precision = 10
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_i_format = 0
+22/01/2021 11:40:05.451 - <sm_log_calc_params> - calc_params --------------- <<
+22/01/2021 11:40:05.452 - <sm_calc_init_test> - test -------------------------------------- >>
+22/01/2021 11:40:05.452 - <sm_calc_init_test> - test sm_calc_init_test is started
+22/01/2021 11:40:05.452 - <sm_calc_init_test> - test sm_calc_init_test is finished: Ok
+22/01/2021 11:40:05.452 - <sm_calc_init_test> - test -------------------------------------- <<
+22/01/2021 11:40:05.452 - <sm_calc_equation_test> - test -------------------------------------- >>
+22/01/2021 11:40:05.452 - <sm_calc_equation_test> - test sm_calc_equation_test is started
+22/01/2021 11:40:05.452 - <sm_calc_equation_test> - opening the output file: sm_calc_test.out.expr.txt
+22/01/2021 11:40:05.452 - <sm_calc_equation_test> - test equation: pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+22/01/2021 11:40:05.452 - <sm_calc_equation_test> - calling the original entry point: sm_calc_main
+22/01/2021 11:40:05.452 - <sm_calc_equation_test> - arguments: argc = 2
+22/01/2021 11:40:05.452 - <sm_calc_equation_test> - arguments: argv[0] = sm_calc
+22/01/2021 11:40:05.452 - <sm_calc_equation_test> - arguments: argv[1] = sm_calc
+22/01/2021 11:40:05.452 - <sm_calc_log_version> - sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+22/01/2021 11:40:05.452 - <sm_calc_log_version> - SM Calculator, Re-Entrant Parser Core
+22/01/2021 11:40:05.452 - <sm_calc_show_log_info> - Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_expr.log
+22/01/2021 11:40:05.452 - <sm_init_random> - random starting point has been initialized
+22/01/2021 11:40:05.452 - <sm_calc_main> - opt_val == 'x' ('expression')
+22/01/2021 11:40:05.452 - <sm_init_f_prec_buf> - parser_ctx->m_calc_params.m_f_prec_buf = %.10Lf
+22/01/2021 11:40:05.452 - <sm_init_f_prec_buf> - Result = 0
+22/01/2021 11:40:05.452 - <sm_proc_params> - processing of parameters has been started
+22/01/2021 11:40:05.452 - <sm_proc_params> - length of parser_ctx->m_calc_params.m_in_file_path == 0
+22/01/2021 11:40:05.452 - <proc_help_fpath> - gcsm_help_fpath = *{SM_CALC_BIN}*..\share\smansoft\doc\HELP
+22/01/2021 11:40:05.452 - <proc_help_fpath> - gsm_help_fpath = G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\x64\share\smansoft\doc\HELP
+22/01/2021 11:40:05.452 - <proc_help_fpath> - Help fpath procressing: Result = 0
+22/01/2021 11:40:05.452 - <sm_proc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+22/01/2021 11:40:05.452 - <sm_proc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 1
+22/01/2021 11:40:05.452 - <sm_proc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+22/01/2021 11:40:05.452 - <sm_proc_params> - Result = 0
+22/01/2021 11:40:05.452 - <sm_log_calc_params> - calc_params --------------- >>
+22/01/2021 11:40:05.452 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+22/01/2021 11:40:05.452 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 1
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_help          = 0
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file_path = 
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file_path = 
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_expression = pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file  = 0x0
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file = 0x0
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_trig_unit   = 0
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_f_precision = 10
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_i_format = 0
+22/01/2021 11:40:05.453 - <sm_log_calc_params> - calc_params --------------- <<
+22/01/2021 11:40:05.453 - <sm_proc_calc> - Command line processing is started
+22/01/2021 11:40:05.453 - <sm_proc_calc> - expression  = pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+22/01/2021 11:40:05.453 - <sm_do_calc_expression> - Expression processing
+22/01/2021 11:40:05.453 - <sm_do_calc_expression> - Expression processing: gsm_calc_params.m_expression = pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+22/01/2021 11:40:05.453 - <sm_get_const> - in: const_idx = 0
+22/01/2021 11:40:05.453 - <sm_get_const> - out: const_value = 3.1415926536
+22/01/2021 11:40:05.453 - <sm_get_const> - result = 0
+22/01/2021 11:40:05.453 - <sm_conv_sz_2_i_dec> - in: i_format = 0 buf = 2 buf_len = 1024
+22/01/2021 11:40:05.453 - <sm_conv_sz_2_i_dec> - out: res = 2
+22/01/2021 11:40:05.453 - <sm_conv_sz_2_i_dec> - result = 0
+22/01/2021 11:40:05.453 - <sm_calc_div> - in: arg1 = 3.1415926536 arg2 = 2.0000000000
+22/01/2021 11:40:05.453 - <sm_calc_div> - out: res = 1.5707963268
+22/01/2021 11:40:05.453 - <sm_calc_div> - result = 0
+22/01/2021 11:40:05.453 - <sm_calc_sin> - in: arg = 1.5707963268
+22/01/2021 11:40:05.453 - <sm_conv_curr_2_rad> - in: arg = 1.5707963268
+22/01/2021 11:40:05.453 - <sm_conv_curr_2_rad> - parser_ctx->m_calc_params.m_trig_unit = 0
+22/01/2021 11:40:05.453 - <sm_conv_curr_2_rad> - out: res = 1.5707963268
+22/01/2021 11:40:05.453 - <sm_conv_curr_2_rad> - result = 0
+22/01/2021 11:40:05.453 - <sm_calc_sin> - out: res = 1.0000000000
+22/01/2021 11:40:05.453 - <sm_calc_sin> - result = 0
+22/01/2021 11:40:05.453 - <sm_calc_power_d_2> - in: arg = 1.0000000000
+22/01/2021 11:40:05.453 - <sm_calc_power_d_2> - out: res = 1.0000000000
+22/01/2021 11:40:05.453 - <sm_calc_power_d_2> - result = 0
+22/01/2021 11:40:05.453 - <sm_get_const> - in: const_idx = 0
+22/01/2021 11:40:05.453 - <sm_get_const> - out: const_value = 3.1415926536
+22/01/2021 11:40:05.453 - <sm_get_const> - result = 0
+22/01/2021 11:40:05.453 - <sm_conv_sz_2_i_dec> - in: i_format = 0 buf = 2 buf_len = 1024
+22/01/2021 11:40:05.453 - <sm_conv_sz_2_i_dec> - out: res = 2
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_i_dec> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_div> - in: arg1 = 3.1415926536 arg2 = 2.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_div> - out: res = 1.5707963268
+22/01/2021 11:40:05.454 - <sm_calc_div> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_cos> - in: arg = 1.5707963268
+22/01/2021 11:40:05.454 - <sm_conv_curr_2_rad> - in: arg = 1.5707963268
+22/01/2021 11:40:05.454 - <sm_conv_curr_2_rad> - parser_ctx->m_calc_params.m_trig_unit = 0
+22/01/2021 11:40:05.454 - <sm_conv_curr_2_rad> - out: res = 1.5707963268
+22/01/2021 11:40:05.454 - <sm_conv_curr_2_rad> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_cos> - out: res = 0.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_cos> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_power_d_2> - in: arg = 0.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_power_d_2> - out: res = 0.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_power_d_2> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_add_f> - in: arg1 = 1.0000000000 arg2 = 0.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_add_f> - out: res = 1.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_add_f> - result = 0
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_f_dec> - in: buf = 24. buf_len = 1024
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_f_dec> - out: res = 24.0000000000
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_f_dec> - result = 0
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_i_dec> - in: i_format = 0 buf = 2 buf_len = 1024
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_i_dec> - out: res = 2
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_i_dec> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_mul_f> - in: arg1 = 24.0000000000 arg2 = 2.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_mul_f> - out: res = 48.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_mul_f> - result = 0
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_f_dec> - in: buf = 12.0 buf_len = 1024
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_f_dec> - out: res = 12.0000000000
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_f_dec> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_div> - in: arg1 = 48.0000000000 arg2 = 12.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_div> - out: res = 4.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_div> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_add_f> - in: arg1 = 1.0000000000 arg2 = 4.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_add_f> - out: res = 5.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_add_f> - result = 0
+22/01/2021 11:40:05.454 - <sm_get_const> - in: const_idx = 1
+22/01/2021 11:40:05.454 - <sm_get_const> - out: const_value = 2.7182818285
+22/01/2021 11:40:05.454 - <sm_get_const> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_add_f> - in: arg1 = 5.0000000000 arg2 = 2.7182818285
+22/01/2021 11:40:05.454 - <sm_calc_add_f> - out: res = 7.7182818285
+22/01/2021 11:40:05.454 - <sm_calc_add_f> - result = 0
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_f_dec> - in: buf = 5.0 buf_len = 1024
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_f_dec> - out: res = 5.0000000000
+22/01/2021 11:40:05.454 - <sm_conv_sz_2_f_dec> - result = 0
+22/01/2021 11:40:05.454 - <sm_calc_sub_f> - in: arg1 = 7.7182818285 arg2 = 5.0000000000
+22/01/2021 11:40:05.454 - <sm_calc_sub_f> - out: res = 2.7182818285
+22/01/2021 11:40:05.454 - <sm_calc_sub_f> - result = 0
+22/01/2021 11:40:05.454 - <sm_print_ld> - in: arg = 2.7182818285
+22/01/2021 11:40:05.454 - <sm_print_ld> - print in format: parser_ctx->m_calc_params_proc.m_f_prec_buf = %.10Lf
+22/01/2021 11:40:05.454 - <sm_print_ld> - parser_ctx->m_calc_res.m_res = 0
+22/01/2021 11:40:05.454 - <sm_print_sz> - in: arg = 2.7182818285
+22/01/2021 11:40:05.454 - <sm_print_sz> - parser_ctx->m_calc_res.m_res = 0
+22/01/2021 11:40:05.455 - <sm_print_sz> - result = 0
+22/01/2021 11:40:05.455 - <sm_print_ld> - result = 0
+22/01/2021 11:40:05.455 - <sm_do_calc_expression> - Expression processing: yyparse res = 0
+22/01/2021 11:40:05.455 - <sm_do_calc_expression> - Expression processing: Result = 0
+22/01/2021 11:40:05.455 - <sm_proc_calc> - Command line processing: Result = Ok
+22/01/2021 11:40:05.455 - <sm_proc_calc> - Result = 0
+22/01/2021 11:40:05.455 - <sm_calc_equation_test> - sm_calc_main: res = 0
+22/01/2021 11:40:05.455 - <sm_calc_equation_test> - closing the output file: sm_calc_test.out.expr.txt
+22/01/2021 11:40:05.455 - <sm_calc_equation_test> - checking the result of processing the equation...
+22/01/2021 11:40:05.455 - <sm_get_const> - in: const_idx = 1
+22/01/2021 11:40:05.455 - <sm_get_const> - out: const_value = 2.7182818285
+22/01/2021 11:40:05.455 - <sm_get_const> - result = 0
+22/01/2021 11:40:05.455 - <sm_conv_sz_2_f_dec> - in: buf = 2.7182818285 buf_len = 12
+22/01/2021 11:40:05.455 - <sm_conv_sz_2_f_dec> - out: res = 2.7182818285
+22/01/2021 11:40:05.455 - <sm_conv_sz_2_f_dec> - result = 0
+22/01/2021 11:40:05.455 - <sm_calc_equation_test> - test sm_calc_equation_test is finished: Ok
+22/01/2021 11:40:05.455 - <sm_calc_equation_test> - test -------------------------------------- <<
+22/01/2021 11:40:05.455 - <main> - ------------------
+22/01/2021 11:40:05.455 - <main> - cmocka_run_group_tests: result = 0
+22/01/2021 11:40:05.455 - <main> - ------------------
+22/01/2021 11:40:05.455 - <main> - sm_calc_test_expr is finished
+22/01/2021 11:40:05.455 - <main> - main ---------------------------------------------------------------------- <<
+24/01/2021 17:33:25.854 - <main> - main ---------------------------------------------------------------------- >>
+24/01/2021 17:33:25.854 - <main> - sm_calc_test_expr is started
+24/01/2021 17:33:25.854 - <main> - ------------------
+24/01/2021 17:33:25.854 - <sm_init_random> - random starting point has been initialized
+24/01/2021 17:33:25.854 - <sm_log_calc_params> - calc_params --------------- >>
+24/01/2021 17:33:25.854 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+24/01/2021 17:33:25.854 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 0
+24/01/2021 17:33:25.854 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+24/01/2021 17:33:25.854 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_help          = 0
+24/01/2021 17:33:25.854 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file_path = 
+24/01/2021 17:33:25.854 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file_path = 
+24/01/2021 17:33:25.854 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_expression = 
+24/01/2021 17:33:25.854 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file  = 0x0
+24/01/2021 17:33:25.855 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file = 0x0
+24/01/2021 17:33:25.855 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_trig_unit   = 0
+24/01/2021 17:33:25.855 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_f_precision = 10
+24/01/2021 17:33:25.855 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_i_format = 0
+24/01/2021 17:33:25.855 - <sm_log_calc_params> - calc_params --------------- <<
+24/01/2021 17:33:25.855 - <sm_calc_init_test> - test -------------------------------------- >>
+24/01/2021 17:33:25.855 - <sm_calc_init_test> - test sm_calc_init_test is started
+24/01/2021 17:33:25.855 - <sm_calc_init_test> - test sm_calc_init_test is finished: Ok
+24/01/2021 17:33:25.855 - <sm_calc_init_test> - test -------------------------------------- <<
+24/01/2021 17:33:25.855 - <sm_calc_equation_test> - test -------------------------------------- >>
+24/01/2021 17:33:25.855 - <sm_calc_equation_test> - test sm_calc_equation_test is started
+24/01/2021 17:33:25.855 - <sm_calc_equation_test> - opening the output file: sm_calc_test.out.expr.txt
+24/01/2021 17:33:25.855 - <sm_calc_equation_test> - test equation: pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+24/01/2021 17:33:25.855 - <sm_calc_equation_test> - calling the original entry point: sm_calc_main
+24/01/2021 17:33:25.855 - <sm_calc_equation_test> - arguments: argc = 2
+24/01/2021 17:33:25.855 - <sm_calc_equation_test> - arguments: argv[0] = sm_calc
+24/01/2021 17:33:25.855 - <sm_calc_equation_test> - arguments: argv[1] = sm_calc
+24/01/2021 17:33:25.855 - <sm_calc_log_version> - sm_calc 0.2.0.4 Copyright (c) 2020-2021 SManSoft
+24/01/2021 17:33:25.856 - <sm_calc_log_version> - SM Calculator, Re-Entrant Parser Core
+24/01/2021 17:33:25.856 - <sm_calc_show_log_info> - Log has been started in the file: G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\tests\sm_calc_test_expr.log
+24/01/2021 17:33:25.856 - <sm_init_random> - random starting point has been initialized
+24/01/2021 17:33:25.856 - <sm_calc_main> - opt_val == 'x' ('expression')
+24/01/2021 17:33:25.856 - <sm_init_f_prec_buf> - parser_ctx->m_calc_params.m_f_prec_buf = %.10Lf
+24/01/2021 17:33:25.856 - <sm_init_f_prec_buf> - Result = 0
+24/01/2021 17:33:25.856 - <sm_proc_params> - processing of parameters has been started
+24/01/2021 17:33:25.856 - <sm_proc_params> - length of parser_ctx->m_calc_params.m_in_file_path == 0
+24/01/2021 17:33:25.856 - <proc_help_fpath> - gcsm_help_fpath = *{SM_CALC_BIN}*..\share\smansoft\doc\HELP
+24/01/2021 17:33:25.856 - <proc_help_fpath> - gsm_help_fpath = G:\sman\git.cur\w.sm_calculator\src\main\sm_calculator\x64\share\smansoft\doc\HELP
+24/01/2021 17:33:25.856 - <proc_help_fpath> - Help fpath procressing: Result = 0
+24/01/2021 17:33:25.856 - <sm_proc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+24/01/2021 17:33:25.856 - <sm_proc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 1
+24/01/2021 17:33:25.856 - <sm_proc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+24/01/2021 17:33:25.856 - <sm_proc_params> - Result = 0
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - calc_params --------------- >>
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_interact_proc = 0
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_cmd_line_proc = 1
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_file_proc     = 0
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_help          = 0
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file_path = 
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file_path = 
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_expression = pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_in_file  = 0x0
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_out_file = 0x0
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_trig_unit   = 0
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_f_precision = 10
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - parser_ctx->m_calc_params.m_i_format = 0
+24/01/2021 17:33:25.856 - <sm_log_calc_params> - calc_params --------------- <<
+24/01/2021 17:33:25.856 - <sm_proc_calc> - Command line processing is started
+24/01/2021 17:33:25.856 - <sm_proc_calc> - expression  = pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+24/01/2021 17:33:25.856 - <sm_do_calc_expression> - Expression processing
+24/01/2021 17:33:25.856 - <sm_do_calc_expression> - Expression processing: gsm_calc_params.m_expression = pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;
+24/01/2021 17:33:25.856 - <sm_get_const> - in: const_idx = 0
+24/01/2021 17:33:25.857 - <sm_get_const> - out: const_value = 3.1415926536
+24/01/2021 17:33:25.857 - <sm_get_const> - result = 0
+24/01/2021 17:33:25.857 - <sm_conv_sz_2_i_dec> - in: i_format = 0 buf = 2 buf_len = 1024
+24/01/2021 17:33:25.857 - <sm_conv_sz_2_i_dec> - out: res = 2
+24/01/2021 17:33:25.857 - <sm_conv_sz_2_i_dec> - result = 0
+24/01/2021 17:33:25.857 - <sm_calc_div> - in: arg1 = 3.1415926536 arg2 = 2.0000000000
+24/01/2021 17:33:25.857 - <sm_calc_div> - out: res = 1.5707963268
+24/01/2021 17:33:25.857 - <sm_calc_div> - result = 0
+24/01/2021 17:33:25.857 - <sm_calc_sin> - in: arg = 1.5707963268
+24/01/2021 17:33:25.857 - <sm_conv_curr_2_rad> - in: arg = 1.5707963268
+24/01/2021 17:33:25.857 - <sm_conv_curr_2_rad> - parser_ctx->m_calc_params.m_trig_unit = 0
+24/01/2021 17:33:25.857 - <sm_conv_curr_2_rad> - out: res = 1.5707963268
+24/01/2021 17:33:25.857 - <sm_conv_curr_2_rad> - result = 0
+24/01/2021 17:33:25.857 - <sm_calc_sin> - out: res = 1.0000000000
+24/01/2021 17:33:25.857 - <sm_calc_sin> - result = 0
+24/01/2021 17:33:25.857 - <sm_calc_power_d_2> - in: arg = 1.0000000000
+24/01/2021 17:33:25.857 - <sm_calc_power_d_2> - out: res = 1.0000000000
+24/01/2021 17:33:25.857 - <sm_calc_power_d_2> - result = 0
+24/01/2021 17:33:25.857 - <sm_get_const> - in: const_idx = 0
+24/01/2021 17:33:25.857 - <sm_get_const> - out: const_value = 3.1415926536
+24/01/2021 17:33:25.857 - <sm_get_const> - result = 0
+24/01/2021 17:33:25.857 - <sm_conv_sz_2_i_dec> - in: i_format = 0 buf = 2 buf_len = 1024
+24/01/2021 17:33:25.857 - <sm_conv_sz_2_i_dec> - out: res = 2
+24/01/2021 17:33:25.857 - <sm_conv_sz_2_i_dec> - result = 0
+24/01/2021 17:33:25.857 - <sm_calc_div> - in: arg1 = 3.1415926536 arg2 = 2.0000000000
+24/01/2021 17:33:25.857 - <sm_calc_div> - out: res = 1.5707963268
+24/01/2021 17:33:25.857 - <sm_calc_div> - result = 0
+24/01/2021 17:33:25.857 - <sm_calc_cos> - in: arg = 1.5707963268
+24/01/2021 17:33:25.857 - <sm_conv_curr_2_rad> - in: arg = 1.5707963268
+24/01/2021 17:33:25.857 - <sm_conv_curr_2_rad> - parser_ctx->m_calc_params.m_trig_unit = 0
+24/01/2021 17:33:25.857 - <sm_conv_curr_2_rad> - out: res = 1.5707963268
+24/01/2021 17:33:25.857 - <sm_conv_curr_2_rad> - result = 0
+24/01/2021 17:33:25.857 - <sm_calc_cos> - out: res = 0.0000000000
+24/01/2021 17:33:25.857 - <sm_calc_cos> - result = 0
+24/01/2021 17:33:25.857 - <sm_calc_power_d_2> - in: arg = 0.0000000000
+24/01/2021 17:33:25.857 - <sm_calc_power_d_2> - out: res = 0.0000000000
+24/01/2021 17:33:25.857 - <sm_calc_power_d_2> - result = 0
+24/01/2021 17:33:25.857 - <sm_calc_add_f> - in: arg1 = 1.0000000000 arg2 = 0.0000000000
+24/01/2021 17:33:25.858 - <sm_calc_add_f> - out: res = 1.0000000000
+24/01/2021 17:33:25.858 - <sm_calc_add_f> - result = 0
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_f_dec> - in: buf = 24. buf_len = 1024
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_f_dec> - out: res = 24.0000000000
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_f_dec> - result = 0
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_i_dec> - in: i_format = 0 buf = 2 buf_len = 1024
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_i_dec> - out: res = 2
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_i_dec> - result = 0
+24/01/2021 17:33:25.858 - <sm_calc_mul_f> - in: arg1 = 24.0000000000 arg2 = 2.0000000000
+24/01/2021 17:33:25.858 - <sm_calc_mul_f> - out: res = 48.0000000000
+24/01/2021 17:33:25.858 - <sm_calc_mul_f> - result = 0
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_f_dec> - in: buf = 12.0 buf_len = 1024
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_f_dec> - out: res = 12.0000000000
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_f_dec> - result = 0
+24/01/2021 17:33:25.858 - <sm_calc_div> - in: arg1 = 48.0000000000 arg2 = 12.0000000000
+24/01/2021 17:33:25.858 - <sm_calc_div> - out: res = 4.0000000000
+24/01/2021 17:33:25.858 - <sm_calc_div> - result = 0
+24/01/2021 17:33:25.858 - <sm_calc_add_f> - in: arg1 = 1.0000000000 arg2 = 4.0000000000
+24/01/2021 17:33:25.858 - <sm_calc_add_f> - out: res = 5.0000000000
+24/01/2021 17:33:25.858 - <sm_calc_add_f> - result = 0
+24/01/2021 17:33:25.858 - <sm_get_const> - in: const_idx = 1
+24/01/2021 17:33:25.858 - <sm_get_const> - out: const_value = 2.7182818285
+24/01/2021 17:33:25.858 - <sm_get_const> - result = 0
+24/01/2021 17:33:25.858 - <sm_calc_add_f> - in: arg1 = 5.0000000000 arg2 = 2.7182818285
+24/01/2021 17:33:25.858 - <sm_calc_add_f> - out: res = 7.7182818285
+24/01/2021 17:33:25.858 - <sm_calc_add_f> - result = 0
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_f_dec> - in: buf = 5.0 buf_len = 1024
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_f_dec> - out: res = 5.0000000000
+24/01/2021 17:33:25.858 - <sm_conv_sz_2_f_dec> - result = 0
+24/01/2021 17:33:25.858 - <sm_calc_sub_f> - in: arg1 = 7.7182818285 arg2 = 5.0000000000
+24/01/2021 17:33:25.858 - <sm_calc_sub_f> - out: res = 2.7182818285
+24/01/2021 17:33:25.858 - <sm_calc_sub_f> - result = 0
+24/01/2021 17:33:25.858 - <sm_print_ld> - in: arg = 2.7182818285
+24/01/2021 17:33:25.858 - <sm_print_ld> - print in format: parser_ctx->m_calc_params_proc.m_f_prec_buf = %.10Lf
+24/01/2021 17:33:25.858 - <sm_print_ld> - parser_ctx->m_calc_res.m_res = 0
+24/01/2021 17:33:25.858 - <sm_print_sz> - in: arg = 2.7182818285
+24/01/2021 17:33:25.858 - <sm_print_sz> - parser_ctx->m_calc_res.m_res = 0
+24/01/2021 17:33:25.858 - <sm_print_sz> - result = 0
+24/01/2021 17:33:25.858 - <sm_print_ld> - result = 0
+24/01/2021 17:33:25.858 - <sm_do_calc_expression> - Expression processing: yyparse res = 0
+24/01/2021 17:33:25.858 - <sm_do_calc_expression> - Expression processing: Result = 0
+24/01/2021 17:33:25.858 - <sm_proc_calc> - Command line processing: Result = Ok
+24/01/2021 17:33:25.858 - <sm_proc_calc> - Result = 0
+24/01/2021 17:33:25.858 - <sm_calc_equation_test> - sm_calc_main: res = 0
+24/01/2021 17:33:25.858 - <sm_calc_equation_test> - closing the output file: sm_calc_test.out.expr.txt
+24/01/2021 17:33:25.859 - <sm_calc_equation_test> - checking the result of processing the equation...
+24/01/2021 17:33:25.859 - <sm_get_const> - in: const_idx = 1
+24/01/2021 17:33:25.859 - <sm_get_const> - out: const_value = 2.7182818285
+24/01/2021 17:33:25.859 - <sm_get_const> - result = 0
+24/01/2021 17:33:25.859 - <sm_conv_sz_2_f_dec> - in: buf = 2.7182818285 buf_len = 12
+24/01/2021 17:33:25.859 - <sm_conv_sz_2_f_dec> - out: res = 2.7182818285
+24/01/2021 17:33:25.859 - <sm_conv_sz_2_f_dec> - result = 0
+24/01/2021 17:33:25.859 - <sm_calc_equation_test> - test sm_calc_equation_test is finished: Ok
+24/01/2021 17:33:25.859 - <sm_calc_equation_test> - test -------------------------------------- <<
+24/01/2021 17:33:25.859 - <main> - ------------------
+24/01/2021 17:33:25.859 - <main> - cmocka_run_group_tests: result = 0
+24/01/2021 17:33:25.859 - <main> - ------------------
+24/01/2021 17:33:25.859 - <main> - sm_calc_test_expr is finished
+24/01/2021 17:33:25.859 - <main> - main ---------------------------------------------------------------------- <<

@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+ *    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
  *    Sergey Manoylo <info@smansoft.com>
  */
 
@@ -21,19 +21,18 @@
 #include "sm_calc.h"
 #include "sm_calc_proc.h"
 
-extern FILE* yyin;		//	stream file, that is used by lexical analyzer for reading of parsed content
-extern FILE* yyout;		//	stream file, that is used by lexical analyzer for output of generated ontent
-
 static const float gcsm_f_test_epsilon = 1e-10f;	//	inaccuracy (margin) constant, that is used during comparing of float values in test functions
 													//	i.e. if (float a1 - float a2) < margin constant, float a1 == float a2
 
 static const char* const gsm_test_out = "sm_calc_test.out.expr.txt";	//	temporary file name/path, that contains execution result of sm_calc_test_expr unit test
 
-#define SM_LOG_DPATH		"."								//	default directory path, where log file will be created (current directory)
-#define SM_LOG_FNAME		"sm_calc_test_expr.log"			//	log file name
+#define SM_LOG_FPATH		"./sm_calc_test_expr.log"	//	log file path
 
 extern sm_log_config gsm_log_config;	//	global instance of main log support structure
 #define SM_LOG_CONFIG &gsm_log_config	//	just synonym: SM_LOG_CONFIG == &gsm_log_config - for usage in log api calls
+
+extern FILE* gsm_yyout;					//	stream file, that is used for temprorary saving the output stream (is used by unit tests)
+extern FILE* gsm_yyin;					//	stream file, that is used for temprorary saving the input stream (is used by unit tests)
 
 /*	initializing and starting the log output (SM_LOG_DPATH and SM_LOG_FNAME - init params)	*/
 errno_t	sm_init_log_test();
@@ -80,7 +79,7 @@ static void sm_calc_equation_test(void** state);
 		check_res_value		- checking/correct result value of processing
 								of command line expression
 */
-static void sm_calc_equation_check_res(const long double check_res_value);
+static void sm_calc_equation_check_res(sm_parser_ctx* const parser_ctx, const long double check_res_value);
 
 /*		Test functions		*/
 
@@ -95,7 +94,7 @@ static void sm_calc_equation_check_res(const long double check_res_value);
 		check_res_value		- checking/correct result value of processing
 								of command line expression
 */
-static void sm_calc_equation_check_res(const long double check_res_value)
+static void sm_calc_equation_check_res(sm_parser_ctx* const parser_ctx, const long double check_res_value)
 {
 	errno_t err = SM_RES_OK;
 
@@ -130,7 +129,7 @@ static void sm_calc_equation_check_res(const long double check_res_value)
 				subs_str = safe_strtok(NULL, &len, " ;\n", &ptr);
 				if (count == 2) {
 					len = safe_strnlen(subs_str, SM_L_BUFF_SIZE);
-					err = sm_conv_sz_2_f_dec(subs_str, len, &res_value_d);
+					err = sm_conv_sz_2_f_dec(parser_ctx, subs_str, len, &res_value_d);
 					assert_int_equal(err, SAFE_RES_OK);
 					break;
 				}
@@ -155,11 +154,14 @@ static void sm_calc_init_test(void** state)
 
 	(void)state;
 
-	sm_set_def_calc_params();
+	sm_parser_ctx parser_ctx_o;
+	sm_parser_ctx* parser_ctx = &parser_ctx_o;
 
-	assert_int_equal(gsm_calc_params.m_f_precision, SM_PREC_DEF);
-	assert_int_equal(gsm_calc_params.m_i_format, SM_I_FORMAT_DEF);
-	assert_int_equal(gsm_calc_params.m_trig_unit, SM_TRIG_UNIT_DEF);
+	sm_init_parser_ctx(&parser_ctx_o);
+
+	assert_int_equal(parser_ctx->m_calc_params.m_f_precision, SM_PREC_DEF);
+	assert_int_equal(parser_ctx->m_calc_params.m_i_format, SM_I_FORMAT_DEF);
+	assert_int_equal(parser_ctx->m_calc_params.m_trig_unit, SM_TRIG_UNIT_DEF);
 
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
@@ -197,11 +199,18 @@ static void sm_calc_equation_test(void** state)
 
 	(void)state;
 
+	sm_parser_ctx parser_ctx_o;
+	sm_parser_ctx* parser_ctx = &parser_ctx_o;
+
+	sm_init_parser_ctx(&parser_ctx_o);
+
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "opening the output file: %s", gsm_test_out);
 
-	err = safe_fopen(&yyout, gsm_test_out, "w", SM_SFOPEN_NSHARED_TYPE);
+	gsm_yyin = stdin;
+
+	err = safe_fopen(&gsm_yyout, gsm_test_out, "w", SM_SFOPEN_NSHARED_TYPE);
 	assert_int_equal(err, SAFE_RES_OK);
-	assert_true(yyout != NULL);
+	assert_true(gsm_yyout != NULL);
 
 	const char* const equation = "pow_^2(sin(pi/2))+pow_^2(cos(pi/2))+24.*2/12.0+exp-5.0;";
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "test equation: %s", equation);
@@ -221,16 +230,16 @@ static void sm_calc_equation_test(void** state)
 	assert_int_equal(res, 0);
 
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "closing the output file: %s", gsm_test_out);
-	fclose(yyout);
+	fclose(gsm_yyout);
 
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "checking the result of processing the equation...");
 
 	long double exp_value;
 
-	err = sm_get_const(SM_CONST_EXP, &exp_value);
+	err = sm_get_const(parser_ctx, SM_CONST_EXP, &exp_value);
 	assert_int_equal(err, SAFE_RES_OK);
 
-	sm_calc_equation_check_res(exp_value);
+	sm_calc_equation_check_res(parser_ctx, exp_value);
 
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s %s", "test", __FUNCTION__, "is finished: Ok");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "test -------------------------------------- <<");
@@ -248,15 +257,20 @@ int main(int argc, char* argv[])
 		cmocka_unit_test(sm_calc_equation_test),
 	};
 
+	sm_parser_ctx parser_ctx_o;
+	sm_parser_ctx* parser_ctx = &parser_ctx_o;
+
+	sm_init_parser_ctx(&parser_ctx_o);
+
 	sm_init_log_test();			//	initializing and starting the log output (file path, defined by SM_LOG_DPATH and SM_LOG_FNAME is used)
 
 	sm_log_printf(SM_LOG_CONFIG, __FUNCTION__, "%s %s", __FUNCTION__, "---------------------------------------------------------------------- >>");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "sm_calc_test_expr is started");
 	sm_log_print(SM_LOG_CONFIG, __FUNCTION__, "------------------");
 
-	sm_init_random();			//	initializing the random seed (for 'rand[;]' command)
-	sm_set_def_calc_params();	//	initializing the global sm_calc_params object
-	sm_log_calc_params();		//	provides log out (in log file) the sm_calc_params gsm_calc_params, current state of sm_calculator configuration
+	sm_init_random();					//	initializing the random seed (for 'rand[;]' command)
+	sm_set_def_calc_params(parser_ctx);	//	initializing the global sm_calc_params object
+	sm_log_calc_params(parser_ctx);		//	provides log out (in log file) the sm_calc_params gsm_calc_params, current state of sm_calculator configuration
 
 	int res = cmocka_run_group_tests(tests, NULL, NULL);	//	execution of unit tests (array of void (*CMUnitTestFunction)(void **state) functions)
 															//	the function cmocka_run_group_tests returns: total_failed + total_errors
@@ -277,7 +291,7 @@ int main(int argc, char* argv[])
 errno_t	sm_init_log_test()
 {
 	errno_t err = SM_RES_OK;
-	err = sm_log_init_dpath_fname(SM_LOG_CONFIG, SM_LOG_DPATH, SM_LOG_FNAME);
+	err = sm_log_init_fpath(SM_LOG_CONFIG, SM_LOG_FPATH);
 	if (err == SM_RES_OK)
 		err = sm_log_start(SM_LOG_CONFIG);
 	return err;

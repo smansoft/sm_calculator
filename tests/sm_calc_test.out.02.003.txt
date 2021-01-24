@@ -1,0 +1,57 @@
+-------------------------------------------------;
+15;
+f_precision = ;15;
+Current Configuration :
+---------------------------------------------
+Current double precision          : 15;
+Current output format of integers : dec;
+Unit of measurement of an angle   : rad;
+--------------------;
+3.141592653589793;
+3.141592653589793;
+3.141592653589793;
+3.141592653589793;
+
+2.718281828459045;
+0.577215664901533;
+1.618033988749895;
+-------------------------------------------------;
+5;
+f_precision = ;5;
+Current Configuration :
+---------------------------------------------
+Current double precision          : 5;
+Current output format of integers : dec;
+Unit of measurement of an angle   : rad;
+--------------------;
+3.14159;
+2.71828;
+0.57722;
+1.61803;
+-------------------------------------------------;
+10;
+f_precision = ;10;
+Current Configuration :
+---------------------------------------------
+Current double precision          : 10;
+Current output format of integers : dec;
+Unit of measurement of an angle   : rad;
+--------------------;
+3.1415926536;
+2.7182818285;
+0.5772156649;
+1.6180339887;
+-------------------------------------------------;
+f_precision = ;15;
+Current Configuration :
+---------------------------------------------
+Current double precision          : 15;
+Current output format of integers : dec;
+Unit of measurement of an angle   : rad;
+--------------------;
+3.141592653589793;
+2.718281828459045;
+0.577215664901533;
+1.618033988749895;
+-------------------------------------------------;
+

@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+ *    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
  *    Sergey Manoylo <info@smansoft.com>
  */
 
@@ -28,7 +28,7 @@
 #include <errno.h>
 #include <dirent.h>
 #if defined SM_SYNC_LOG
-#include <threads.h>
+#include <pthread.h>
 #endif
 #endif
 

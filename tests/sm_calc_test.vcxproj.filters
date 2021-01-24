@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sm_calc_test.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\sm_calc\sm_calc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -28,6 +25,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\sm_calc\sm_calc_y.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sm_calc_test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -48,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\sm_calc\sm_calc_y.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sm_calc\sm_calc_l.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

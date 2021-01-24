@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2020 SManSoft <http://www.smansoft.com/>
+ *    Copyright (c) 2020-2021 SManSoft <http://www.smansoft.com/>
  *    Sergey Manoylo <info@smansoft.com>
  */
 
@@ -23,13 +23,23 @@ extern "C" {
 #endif
 
 	/*	launching the lexical analyzer;	provides scanning the buffer or scanning the stream file (stdin or some open input file)	*/
-	int	yylex(void);
 
-	/*	launching the syntax parser	*/
-	int	yyparse(void);
+	/* returns internal data from YY_CURRENT_BUFFER */
+	errno_t sm_get_buff_info(yyscan_t scanner, sm_l_buff_info* l_buff_info);
 
-	/*	error processor; this function is called by the syntax parser	*/
-	int	yyerror(char* error);
+	/*
+		callback function (for the parser);
+
+		in args:
+			parser_ctx		- current parser context
+			param			- argument
+		out args:
+			res				- result
+
+		the function can be used for returning the result from the parser;
+		this function just defined, but is not called in this implementing;
+	*/
+	int parser_callback(sm_parser_ctx* const parser_ctx, void* arg);
 
 	/*
 		the function gets long long argument, converts it into string, according to
@@ -37,7 +47,7 @@ extern "C" {
 		binary formats) (from the current state of sm_calculator configuration)
 		and prints out it in yyout stream device
 	*/
-	errno_t sm_print_ll(const long long arg);
+	errno_t sm_print_ll(sm_parser_ctx* const parser_ctx, const long long arg);
 
 	/*
 		the function gets long double argument and prints out it in yyout stream device,
@@ -46,28 +56,28 @@ extern "C" {
 		m_f_prec_buf is updated, (using function sm_init_f_prec_buf()) after every updating
 		the current precision of float values
 	*/
-	errno_t sm_print_ld(const long double arg);
+	errno_t sm_print_ld(sm_parser_ctx* const parser_ctx, const long double arg);
 
 	/*	the function, that prints string (ascii) message (arg) into yyout stream device	*/
-	errno_t sm_print_sz(const char* const arg);
+	errno_t sm_print_sz(sm_parser_ctx* const parser_ctx, const char* const arg);
 
 	/*	the function, that prints '\n' (end of line) symbol into yyout stream device	*/
-	errno_t sm_print_nl();
+	errno_t sm_print_nl(sm_parser_ctx* const parser_ctx);
 
 	/*	the function, that prints error into yyout stream device	*/
-	errno_t sm_print_error(const char* const err_message);
+	errno_t sm_print_error(sm_parser_ctx* const parser_ctx, const char* const err_message);
 
 	/*	the function, that prints error into yyout stream device;
 		additional error info is used (from internal lexem/syntax data structures)
 	*/
-	errno_t sm_print_error_ext(const char* const err_message);
+	errno_t sm_print_error_ext(sm_parser_ctx* const parser_ctx, parser_callback_t parser_callback, const char* const err_message);
 
 	/*
 		this function reads file from gcsm_gelp_fpath path and print out
 		content of this file into stdout device;
 		gsm_gelp_fpath is read
 	*/
-	errno_t sm_print_help();
+	errno_t sm_print_help(sm_parser_ctx* const parser_ctx);
 
 	/*
 		exit from the application;
@@ -78,7 +88,7 @@ extern "C" {
 
 		this function is called, when user enters commands 'exit[;]' or 'quit[;]'
 	*/
-	void sm_do_exit();
+	void sm_do_exit(sm_parser_ctx* const parser_ctx);
 
 	/*
 		just copying buffer;
@@ -91,7 +101,7 @@ extern "C" {
 
 		this function is called, when user enters sting in command prompt:  "string_value" | 'string_value'
 	*/
-	errno_t sm_copy_buf(const char* const in_buf, char* const out_buf, const size_t out_buf_len);
+	errno_t sm_copy_buf(sm_parser_ctx* const parser_ctx, const char* const in_buf, char* const out_buf, const size_t out_buf_len);
 
 	/*
 		copying current configuration into buffer in format:
@@ -110,7 +120,7 @@ extern "C" {
 
 		this function is called, when user enters command 'config[;]'
 	*/
-	errno_t	sm_get_config(char* const buf, const size_t buf_len);
+	errno_t	sm_get_config(sm_parser_ctx* const parser_ctx, char* const buf, const size_t buf_len);
 
 	/*
 		copying current entering and output formats of integers (decimal, octal, hexadecimal, binary formats)
@@ -130,7 +140,7 @@ extern "C" {
 			hex[;]
 			bin[;]
 	*/
-	errno_t	sm_get_i_format(char* const buf, const size_t buf_len);
+	errno_t	sm_get_i_format(sm_parser_ctx* const parser_ctx, char* const buf, const size_t buf_len);
 
 	/*
 		setup current entering and output formats of integers (decimal, octal, hexadecimal, binary formats)
@@ -147,7 +157,7 @@ extern "C" {
 			hex[;]
 			bin[;]
 	*/
-	errno_t sm_set_i_format(const sm_i_format i_format);
+	errno_t sm_set_i_format(sm_parser_ctx* const parser_ctx, const sm_i_format i_format);
 
 	/*
 		copying current unit for measuring of angles (radians, degrees, gradians), which are used
@@ -166,7 +176,7 @@ extern "C" {
 			rad[;]
 			grad[;]
 	*/
-	errno_t	sm_get_a_unit(char* const buf, const size_t buf_len);
+	errno_t	sm_get_a_unit(sm_parser_ctx* const parser_ctx, char* const buf, const size_t buf_len);
 
 	/*
 		setup current unit for measuring of angles (radians, degrees, gradians), which are used
@@ -182,7 +192,7 @@ extern "C" {
 			rad[;]
 			grad[;]
 	*/
-	errno_t sm_set_a_unit(const sm_trig_unit trig_unit);
+	errno_t sm_set_a_unit(sm_parser_ctx* const parser_ctx, const sm_trig_unit trig_unit);
 
 	/*
 		function returns long double constant value by constant index:
@@ -216,7 +226,7 @@ extern "C" {
 		also this function is called in functions, which provide converting of
 		unit for measuring of angles
 	*/
-	errno_t	sm_get_const(const sm_const_idx const_idx, long double* const const_value);
+	errno_t	sm_get_const(sm_parser_ctx* const parser_ctx, const sm_const_idx const_idx, long double* const const_value);
 
 	/*
 		function retuns integer (long long) result of sum of integer (long long) arguments;
@@ -229,7 +239,7 @@ extern "C" {
 
 		the function is called, when user uses operator '+' in expression(s)
 	*/
-	errno_t	sm_calc_add_i(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_add_i(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		function retuns integer (long long) result of subtraction of integer (long long) arguments;
@@ -242,7 +252,7 @@ extern "C" {
 
 		the function is called, when user uses operator '-' in expression(s)
 	*/
-	errno_t	sm_calc_sub_i(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_sub_i(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		function retuns integer (long long) result of multiplication of integer (long long) arguments;
@@ -255,7 +265,7 @@ extern "C" {
 
 		the function is called, when user uses operator '*' in expression(s)
 	*/
-	errno_t	sm_calc_mul_i(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_mul_i(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		function retuns float (long double) result of sum of float (long double) arguments;
@@ -268,7 +278,7 @@ extern "C" {
 
 		the function is called, when user uses operator '+' in expression(s)
 	*/
-	errno_t	sm_calc_add_f(const long double arg1, const long double arg2, long double* const res);
+	errno_t	sm_calc_add_f(sm_parser_ctx* const parser_ctx, const long double arg1, const long double arg2, long double* const res);
 
 	/*
 		function retuns float (long double) result of subtraction of float (long double) arguments;
@@ -281,7 +291,7 @@ extern "C" {
 
 		the function is called, when user uses operator '-' in expression(s)
 	*/
-	errno_t	sm_calc_sub_f(const long double arg1, const long double arg2, long double* const res);
+	errno_t	sm_calc_sub_f(sm_parser_ctx* const parser_ctx, const long double arg1, const long double arg2, long double* const res);
 
 	/*
 		function retuns float (long double) result of multiplication of float (long double) arguments;
@@ -294,7 +304,7 @@ extern "C" {
 
 		the function is called, when user uses operator '*' in expression(s)
 	*/
-	errno_t	sm_calc_mul_f(const long double arg1, const long double arg2, long double* const res);
+	errno_t	sm_calc_mul_f(sm_parser_ctx* const parser_ctx, const long double arg1, const long double arg2, long double* const res);
 
 	/*
 		function retuns float (long double) result of division of float (long double) arguments;
@@ -307,7 +317,7 @@ extern "C" {
 
 		the function is called, when user uses operator '/' in expression(s)
 	*/
-	errno_t	sm_calc_div(const long double arg1, const long double arg2, long double* const res);
+	errno_t	sm_calc_div(sm_parser_ctx* const parser_ctx, const long double arg1, const long double arg2, long double* const res);
 
 	/*
 		trigonometric function retuns float (long double) result of sine of float (long double) argument;
@@ -320,7 +330,7 @@ extern "C" {
 		argument should be defined as value of current unit for measuring of angles(deg|rad|grad);
 		the function is called, when user uses function 'sin' in expression(s)
 	*/
-	errno_t	sm_calc_sin(const long double arg, long double* const res);
+	errno_t	sm_calc_sin(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		trigonometric function retuns float (long double) result of cosine of float (long double) argument;
@@ -333,7 +343,7 @@ extern "C" {
 		argument should be defined as value of current unit for measuring of angles(deg|rad|grad);
 		the function is called, when user uses function 'cos' in expression(s)
 	*/
-	errno_t	sm_calc_cos(const long double arg, long double* const res);
+	errno_t	sm_calc_cos(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		trigonometric function retuns float (long double) result of tangent of float (long double) argument;
@@ -346,7 +356,7 @@ extern "C" {
 		argument should be defined as value of current unit for measuring of angles(deg|rad|grad);
 		the function is called, when user uses function 'tan' in expression(s)
 	*/
-	errno_t	sm_calc_tan(const long double arg, long double* const res);
+	errno_t	sm_calc_tan(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		trigonometric function retuns float (long double) result of arcsine of float (long double) argument;
@@ -359,7 +369,7 @@ extern "C" {
 		result of this function is defined as value of current unit for measuring of angles(deg|rad|grad);
 		the function is called, when user uses function 'asin' in expression(s)
 	*/
-	errno_t	sm_calc_asin(const long double arg, long double* const res);
+	errno_t	sm_calc_asin(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		trigonometric function retuns float (long double) result of arccosine of float (long double) argument;
@@ -372,7 +382,7 @@ extern "C" {
 		result of this function is defined as value of current unit for measuring of angles(deg|rad|grad);
 		the function is called, when user uses function 'acos' in expression(s)
 	*/
-	errno_t	sm_calc_acos(const long double arg, long double* const res);
+	errno_t	sm_calc_acos(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		trigonometric function retuns float (long double) result of arctangent of float (long double) argument;
@@ -385,7 +395,7 @@ extern "C" {
 		result of this function is defined as value of current unit for measuring of angles(deg|rad|grad);
 		the function is called, when user uses function 'atan' in expression(s)
 	*/
-	errno_t	sm_calc_atan(const long double arg, long double* const res);
+	errno_t	sm_calc_atan(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		function retuns integer (long long) result of factorial of integer (long long) argument;
@@ -404,7 +414,7 @@ extern "C" {
 			In  >> 5!
 			Out >> 120;
 	*/
-	errno_t sm_calc_factorial(const long long arg, long long* const res);
+	errno_t sm_calc_factorial(sm_parser_ctx* const parser_ctx, const long long arg, long long* const res);
 
 	/*
 		the function returns float (long double) result: arg1 (long double) raised to the power
@@ -426,7 +436,7 @@ extern "C" {
 
 		the function is called, when user uses function 'pow' in expression(s)
 	*/
-	errno_t	sm_calc_power(const long double arg1, const long double arg2, long double* const res);
+	errno_t	sm_calc_power(sm_parser_ctx* const parser_ctx, const long double arg1, const long double arg2, long double* const res);
 
 	/*
 		the function, that calculates and returns '2' raised to the power of arg;
@@ -446,7 +456,7 @@ extern "C" {
 
 		the function is called, when user uses function 'pow_2^' in expression(s)
 	*/
-	errno_t sm_calc_power_2_i(const long long arg, long long* const res);			// 2^i
+	errno_t sm_calc_power_2_i(sm_parser_ctx* const parser_ctx, const long long arg, long long* const res);			// 2^i
 
 	/*
 		the function, that calculates and returns '10' raised to the power of arg;
@@ -466,7 +476,7 @@ extern "C" {
 
 		the function is called, when user uses function 'pow_10^' in expression(s)
 	*/
-	errno_t sm_calc_power_10_i(const long long arg, long long* const res);		// 10^i
+	errno_t sm_calc_power_10_i(sm_parser_ctx* const parser_ctx, const long long arg, long long* const res);		// 10^i
 
 	/*
 		the function, that calculates and returns argument raised to the power of '2';
@@ -486,7 +496,7 @@ extern "C" {
 
 		the function is called, when user uses function 'pow_^2' in expression(s)
 	*/
-	errno_t sm_calc_power_i_2(const long long arg, long long* const res);			// i^2
+	errno_t sm_calc_power_i_2(sm_parser_ctx* const parser_ctx, const long long arg, long long* const res);			// i^2
 
 	/*
 		the function, that calculates and returns '2' raised to the power of arg;
@@ -506,7 +516,7 @@ extern "C" {
 
 		the function is called, when user uses function 'pow_2^' in expression(s)
 	*/
-	errno_t	sm_calc_power_2_d(const long double arg, long double* const res);		// 2^d
+	errno_t	sm_calc_power_2_d(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);		// 2^d
 
 	/*
 		the function, that calculates and returns '10' raised to the power of arg;
@@ -526,7 +536,7 @@ extern "C" {
 
 		the function is called, when user uses function 'pow_10^' in expression(s)
 	*/
-	errno_t	sm_calc_power_10_d(const long double arg, long double* const res);	// 10^d
+	errno_t	sm_calc_power_10_d(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);	// 10^d
 
 	/*
 		the function, that calculates and returns 'exp' (2.71828182845904523536L)
@@ -547,7 +557,7 @@ extern "C" {
 
 		the function is called, when user uses function 'pow_exp^' in expression(s)
 	*/
-	errno_t	sm_calc_power_exp_d(const long double arg, long double* const res);	// exp^d
+	errno_t	sm_calc_power_exp_d(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);	// exp^d
 
 	/*
 		the function, that calculates and returns arg raised to the power of '2';
@@ -567,7 +577,7 @@ extern "C" {
 
 		the function is called, when user uses function 'pow_^2' in expression(s)
 	*/
-	errno_t sm_calc_power_d_2(const long double, long double* const res);			// d^2
+	errno_t sm_calc_power_d_2(sm_parser_ctx* const parser_ctx, const long double, long double* const res);			// d^2
 
 	/*
 		the function, that calculates and returns left arithmetic shift of argument;
@@ -586,7 +596,7 @@ extern "C" {
 
 		the function is called, when user uses operator '<a<' in expression(s)
 	*/
-	errno_t	sm_calc_l_ashift(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_l_ashift(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function, that calculates and returns right arithmetic shift of argument;
@@ -603,7 +613,7 @@ extern "C" {
 
 		the function is called, when user uses operator '>a>' in expression(s)
 	*/
-	errno_t	sm_calc_r_ashift(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_r_ashift(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function, that calculates and returns left logical shift of argument;
@@ -620,7 +630,7 @@ extern "C" {
 
 		the function is called, when user uses operator '>l>' in expression(s)
 	*/
-	errno_t	sm_calc_l_lshift(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_l_lshift(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function, that calculates and returns right logical shift of argument;
@@ -639,7 +649,7 @@ extern "C" {
 
 		the function is called, when user uses operator '>l>' in expression(s)
 	*/
-	errno_t	sm_calc_r_lshift(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_r_lshift(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function, that calculates and returns left circular shift of argument;
@@ -665,7 +675,7 @@ extern "C" {
 
 		the function is called, when user uses operator '>c>' in expression(s)
 	*/
-	errno_t	sm_calc_l_cshift(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_l_cshift(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function, that calculates and returns right circular shift of argument;
@@ -690,7 +700,7 @@ extern "C" {
 
 		the function is called, when user uses operator '<c<' in expression(s)
 	*/
-	errno_t	sm_calc_r_cshift(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_r_cshift(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function, that calculates and returns inverse square root of argument;
@@ -705,7 +715,7 @@ extern "C" {
 
 		the function is called, when user uses function 'sqrt' in expression(s)
 	*/
-	errno_t sm_calc_sqrt(const long double arg, long double* const res);
+	errno_t sm_calc_sqrt(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		the function, that calculates and returns the natural logarithm (base of the exp) of argument (float long double);
@@ -720,7 +730,7 @@ extern "C" {
 
 		the function is called, when user uses function 'ln' in expression(s)
 	*/
-	errno_t sm_calc_ln(const long double arg, long double* const res);
+	errno_t sm_calc_ln(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		the function, that calculates and returns the common logarithm (base of the 10) of argument (float long double);
@@ -735,7 +745,7 @@ extern "C" {
 
 		the function is called, when user uses function 'ln' in expression(s)
 	*/
-	errno_t sm_calc_lg(const long double arg, long double* const res);
+	errno_t sm_calc_lg(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		the function, that calculates and returns the logarithm (base, defied as parameter) of argument (float long double);
@@ -752,7 +762,7 @@ extern "C" {
 
 		the function is called, when user uses function 'log' in expression(s)
 	*/
-	errno_t sm_calc_log(const long double base, const long double arg, long double* const res);
+	errno_t sm_calc_log(sm_parser_ctx* const parser_ctx, const long double base, const long double arg, long double* const res);
 
 	/*
 		the function, that calculates and returns absolute value of argument;
@@ -768,7 +778,7 @@ extern "C" {
 		the function is called, when user uses function 'abs' in expression(s), but argument
 		of 'abs' function is a integer value, defined by lexical analyzer
 	*/
-	errno_t sm_calc_abs_i(const long long arg, long long* const res);
+	errno_t sm_calc_abs_i(sm_parser_ctx* const parser_ctx, const long long arg, long long* const res);
 
 	/*
 		the function, that calculates and returns absolute value of argument;
@@ -784,7 +794,7 @@ extern "C" {
 		the function is called, when user uses function 'abs' in expression(s), but argument
 		of 'abs' function is a float value, defined by lexical analyzer
 	*/
-	errno_t sm_calc_abs_f(const long double arg, long double* const res);
+	errno_t sm_calc_abs_f(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		the function, that calculates and returns remainder value of division arg1 / arg2
@@ -804,7 +814,7 @@ extern "C" {
 
 		the function is called, when user uses functions 'mod' and 'mod2' in expression(s)
 	*/
-	errno_t sm_calc_mod(const long long arg1, const long long arg2, long long* const res);
+	errno_t sm_calc_mod(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function, that calculates and returns inverse value (1/x) of argument;
@@ -819,7 +829,7 @@ extern "C" {
 
 		the function is called, when user uses function 'inv' in expression(s)
 	*/
-	errno_t	sm_calc_recip(const long double arg, long double* const res);
+	errno_t	sm_calc_recip(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		the function, that returns pseudo-random value [0,1];
@@ -829,7 +839,7 @@ extern "C" {
 
 		the function is called, when user uses command 'rand[;]' in expression(s)
 	*/
-	errno_t	sm_get_rand(long double* const res);
+	errno_t	sm_get_rand(sm_parser_ctx* const parser_ctx, long double* const res);
 
 	/*
 		the function (bitwise function), that calculates bitwise multiplication of arguments ( arg1 && arg2 );
@@ -845,7 +855,7 @@ extern "C" {
 
 		the function is called, when user uses function 'and' in expression(s)
 	*/
-	errno_t	sm_calc_and(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_and(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function (bitwise function), that calculates bitwise addition of arguments ( arg1 && arg2 );
@@ -861,7 +871,7 @@ extern "C" {
 
 		the function is called, when user uses function 'or' in expression(s)
 	*/
-	errno_t	sm_calc_or(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_or(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function (bitwise function), that calculates bitwise negation of argument ( !arg );
@@ -876,7 +886,7 @@ extern "C" {
 
 		the function is called, when user uses function 'not' in expression(s)
 	*/
-	errno_t	sm_calc_not(const long long arg, long long* const res);
+	errno_t	sm_calc_not(sm_parser_ctx* const parser_ctx, const long long arg, long long* const res);
 
 	/*
 		the function (bitwise function), that calculates bitwise negation of bitwise multiplication of arguments ( !(arg1 && arg2) );
@@ -892,7 +902,7 @@ extern "C" {
 
 		the function is called, when user uses function 'nand' in expression(s)
 	*/
-	errno_t	sm_calc_nand(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_nand(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function (bitwise function), that calculates bitwise negation of bitwise addition
@@ -909,7 +919,7 @@ extern "C" {
 
 		the function is called, when user uses function 'nor' in expression(s)
 	*/
-	errno_t	sm_calc_nor(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_nor(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function (bitwise function), that calculates bitwise 'exclusive or' or 'exclusive disjunction'
@@ -926,7 +936,7 @@ extern "C" {
 
 		the function is called, when user uses function 'xor' in expression(s)
 	*/
-	errno_t	sm_calc_xor(const long long arg1, const long long arg2, long long* const res);
+	errno_t	sm_calc_xor(sm_parser_ctx* const parser_ctx, const long long arg1, const long long arg2, long long* const res);
 
 	/*
 		the function that setup and returns current precision of float values;
@@ -941,14 +951,14 @@ extern "C" {
 
 		the function is called, when user calls command 'f_precision = N[;]'
 	*/
-	errno_t sm_set_f_precision(const long long precision, long long* const res);
+	errno_t sm_set_f_precision(sm_parser_ctx* const parser_ctx, const long long precision, long long* const res);
 
 	/*
 		the function that setup current precision of float values as 'exp' (-1);
 
 		the function is called, when user calls command 'f_precision = exp[;]'
 	*/
-	errno_t sm_set_f_exp_precision();
+	errno_t sm_set_f_exp_precision(sm_parser_ctx* const parser_ctx);
 
 	/*
 		the function that returns current precision of float values and copying precision
@@ -963,7 +973,7 @@ extern "C" {
 
 		the function is called, when user calls commands 'f_precision = exp[;]' or 'f_precision[;]'
 	*/
-	errno_t	sm_get_f_precision(char* buf, const size_t buf_len);
+	errno_t	sm_get_f_precision(sm_parser_ctx* const parser_ctx, char* buf, const size_t buf_len);
 
 	/*
 		the function removes symbols ' and " (quotation marks) from input buffer and copies result
@@ -985,7 +995,7 @@ extern "C" {
 			in_buf == "111" '222' "333"
 			out_buf == 111 222 333
 	*/
-	errno_t	sm_conv_quot_sz_2_sz(char* const in_buf, char* const out_buf, const size_t out_buf_len);
+	errno_t	sm_conv_quot_sz_2_sz(sm_parser_ctx* const parser_ctx, char* const in_buf, char* const out_buf, const size_t out_buf_len);
 
 	/*
 		converting of long long value to char sz array:
@@ -1003,7 +1013,7 @@ extern "C" {
 				i_format==SM_I_2
 					buf contains "b00010110010000011111";
 	*/
-	errno_t	sm_conv_i_dec_2_sz(const sm_i_format i_format, const long long arg, char* const buf, const size_t buf_len);
+	errno_t	sm_conv_i_dec_2_sz(sm_parser_ctx* const parser_ctx, const sm_i_format i_format, const long long arg, char* const buf, const size_t buf_len);
 
 	/*
 		converting of char sz array to long long value:
@@ -1021,7 +1031,7 @@ extern "C" {
 			out:
 				arg == 91167
 	*/
-	errno_t	sm_conv_sz_2_i_dec(const sm_i_format i_format, const unsigned char* const buf, const size_t buf_len, long long* const res);
+	errno_t	sm_conv_sz_2_i_dec(sm_parser_ctx* const parser_ctx, const sm_i_format i_format, const unsigned char* const buf, const size_t buf_len, long long* const res);
 
 	/*
 		converting of sm_bin (native unsigned char format) to char sz array:
@@ -1032,7 +1042,7 @@ extern "C" {
 			out:
 				"00010101"
 	*/
-	errno_t sm_conv_bin_2_bin_sz(const sm_bin* const in_bin, char* const out_buf, const size_t out_buf_len);
+	errno_t sm_conv_bin_2_bin_sz(sm_parser_ctx* const parser_ctx, const sm_bin* const in_bin, char* const out_buf, const size_t out_buf_len);
 
 
 	/*
@@ -1044,7 +1054,7 @@ extern "C" {
 			out:
 				10101
 	*/
-	errno_t sm_conv_bin_sz_2_bin(const char* const in_buf, const size_t in_buf_len, sm_bin* const out_bin);
+	errno_t sm_conv_bin_sz_2_bin(sm_parser_ctx* const parser_ctx, const char* const in_buf, const size_t in_buf_len, sm_bin* const out_bin);
 
 	/*
 		converting of value (long long arg) to sm_bin (native unsigned char format):
@@ -1060,7 +1070,7 @@ extern "C" {
 		out:
 			sm_bin (native unsigned char format)
 	*/
-	errno_t sm_conv_i_dec_2_bin(const long long arg, sm_bin* const out_bin);
+	errno_t sm_conv_i_dec_2_bin(sm_parser_ctx* const parser_ctx, const long long arg, sm_bin* const out_bin);
 
 	/*
 		converting of sm_bin (native unsigned char format) to long long value:
@@ -1076,7 +1086,7 @@ extern "C" {
 		out:
 			long long variable
 	*/
-	errno_t sm_conv_bin_2_i_dec(const sm_bin* const in_bin, long long* const res);
+	errno_t sm_conv_bin_2_i_dec(sm_parser_ctx* const parser_ctx, const sm_bin* const in_bin, long long* const res);
 
 	/*
 		converting of char sz array (ascii char format) to long double value:
@@ -1087,7 +1097,7 @@ extern "C" {
 		out:
 			long double	- result variable
 	*/
-	errno_t	sm_conv_sz_2_f_dec(char* const buf, const size_t buf_len, long double* const res);
+	errno_t	sm_conv_sz_2_f_dec(sm_parser_ctx* const parser_ctx, char* const buf, const size_t buf_len, long double* const res);
 
 	/*
 		converting of long double value to char sz array (ascii char format):
@@ -1098,7 +1108,7 @@ extern "C" {
 			buf		- output char sz array (for example: "3.14159265358979323846", "1.2e-5")
 			buf_len - size of input char sz array
 	*/
-	errno_t	sm_conv_f_dec_2_sz(long double arg, char* const buf, const size_t buf_len);
+	errno_t	sm_conv_f_dec_2_sz(sm_parser_ctx* const parser_ctx, const long double arg, char* const buf, const size_t buf_len);
 
 	/*
 		the function, that calculates and returns converting value of
@@ -1113,7 +1123,7 @@ extern "C" {
 		current unit for measuring of angles is read from the current state of sm_calculator configuration;
 		res - float value (long double); result is a value of unit for measuring of angles == radians ('rad');
 	*/
-	errno_t	sm_conv_curr_2_rad(const long double arg, long double* const res);
+	errno_t	sm_conv_curr_2_rad(sm_parser_ctx* const parser_ctx, const long double arg, long double* const res);
 
 	/*
 		the function, that calculates and returns converting of value of current unit for measuring of angles;
@@ -1129,7 +1139,7 @@ extern "C" {
 		res - float value (long double); result is a value of current unit for measuring of angles;
 		current unit for measuring of angles is read from the current state of sm_calculator configuration;
 	*/
-	errno_t	sm_conv_rad_2_curr(const long double rad, long double* const res);
+	errno_t	sm_conv_rad_2_curr(sm_parser_ctx* const parser_ctx, const long double rad, long double* const res);
 
 	/*
 		the function, that calculates and returns converting of value of unit for measuring of
@@ -1145,7 +1155,7 @@ extern "C" {
 		res - float value (long double); result is a value of unit for measuring of
 		angles == radians ('rad');
 	*/
-	errno_t	sm_conv_grad_2_rad(const long double grad, long double* const res);
+	errno_t	sm_conv_grad_2_rad(sm_parser_ctx* const parser_ctx, const long double grad, long double* const res);
 
 	/*
 		the function, that calculates and returns converting of value of unit for measuring of
@@ -1161,7 +1171,7 @@ extern "C" {
 		res - float value (long double); result is a value of unit for measuring of
 		angles == gradians ('grad');
 	*/
-	errno_t	sm_conv_rad_2_grad(const long double rad, long double* const res);
+	errno_t	sm_conv_rad_2_grad(sm_parser_ctx* const parser_ctx, const long double rad, long double* const res);
 
 	/*
 		the function, that calculates and returns converting of value of unit for measuring of
@@ -1177,7 +1187,7 @@ extern "C" {
 		res - float value (long double); result is a value of unit for measuring of
 		angles == degrees ('deg');
 	*/
-	errno_t	sm_conv_rad_2_deg(const long double rad, long double* const res);
+	errno_t	sm_conv_rad_2_deg(sm_parser_ctx* const parser_ctx, const long double rad, long double* const res);
 
 	/*
 		the function, that calculates and returns converting of value of unit for measuring of
@@ -1193,7 +1203,7 @@ extern "C" {
 		res - float value (long double); result is a value of unit for measuring of
 		angles == radians ('rad');
 	*/
-	errno_t	sm_conv_deg_2_rad(const long double deg, long double* const res);
+	errno_t	sm_conv_deg_2_rad(sm_parser_ctx* const parser_ctx, const long double deg, long double* const res);
 
 	/*
 		the function, that calculates and returns converting of value of unit for measuring of
@@ -1209,7 +1219,7 @@ extern "C" {
 		res - float value (long double); result is a value of unit for measuring of
 		angles == degrees ('deg');
 	*/
-	errno_t	sm_conv_grad_2_deg(const long double grad, long double* const res);
+	errno_t	sm_conv_grad_2_deg(sm_parser_ctx* const parser_ctx, const long double grad, long double* const res);
 
 	/*
 		the function, that calculates and returns converting of value of unit for measuring of
@@ -1225,14 +1235,15 @@ extern "C" {
 		res - float value (long double); result is a value of unit for measuring of
 		angles == gradians ('grad');
 	*/
-	errno_t	sm_conv_deg_2_grad(const long double deg, long double* const res);
+	errno_t	sm_conv_deg_2_grad(sm_parser_ctx* const parser_ctx, const long double deg, long double* const res);
 
 	/*
 		Macros, that setup SM_RES_OK in the global
 		sm_calc_res gsm_calc_res	- global instance of definition the current result of calculations
 	*/
-#define SM_SET_CALC_RES_OK	{	gsm_calc_res.m_res = SM_RES_OK;	\
-								gsm_calc_res.m_sz_message[0] = '\0'; }
+#define SM_SET_CALC_RES_OK	{	SM_PARSER_CTX->m_calc_res.m_res = SM_RES_OK;	\
+								SM_PARSER_CTX->m_calc_res.m_sz_message[0] = '\0'; }
+
 
 	/*
 		Macros, that setup SM_RES_ERROR and saves error message
@@ -1240,31 +1251,17 @@ extern "C" {
 
 		gsm_calc_res.m_sz_message is used during printing the result of last command/function/operator execution
 	*/
-#define SM_SET_CALC_RES_ERROR(message)	{	gsm_calc_res.m_res = SM_RES_ERROR;	\
-											safe_strcpy(gsm_calc_res.m_sz_message, SM_ARRAY_SIZE(gsm_calc_res.m_sz_message), message);	}
+#define SM_SET_CALC_RES_ERROR(message)	{	SM_PARSER_CTX->m_calc_res.m_res = SM_RES_ERROR;	\
+											safe_strcpy(SM_PARSER_CTX->m_calc_res.m_sz_message, SM_ARRAY_SIZE(SM_PARSER_CTX->m_calc_res.m_sz_message), message);	}
 
-	extern	int				gsm_exit;			//	flag (if gsm_exit != 0), that precessing cycle:
-												//	taking expression(s) :
-												//	In >>
-												//	, printing result(s) :
-												//	Out >>
-												//	should be finished and application should exit
+	extern const long double	gcsm_consts[];							//	array of long double constants, defined in
+																		//	enum _sm_const_idx
+																		//	sm_const_idx
 
-	extern	sm_calc_params	gsm_calc_params;	//	global instance of definition the current state of sm_calculator configuration
-	extern	sm_calc_res		gsm_calc_res;		//	global instance of definition the current result of calculations
-
-	extern const long double	gcsm_consts[];	//	array of long double constants, defined in
-												//	enum _sm_const_idx
-												//	sm_const_idx
-
-	extern const char* const	gcsm_trig_units[];		//	string description of unit for measuring of angles (radians, degrees, gradians) 
-	extern const char* const	gcsm_exp_precision;		//	contsins exponential constant string ('exp')
+	extern const char* const	gcsm_trig_units[];						//	string description of unit for measuring of angles (radians, degrees, gradians) 
+	extern const char* const	gcsm_exp_precision;						//	contsins exponential constant string ('exp')
 
 	extern const char* const	gcsm_f_scanf_formats;					//	scan format of float value (same for any output precision)
-	extern char					gsm_f_print_formats[][SM_S_BUFF_SIZE];	//	current precision of float value output formats
-																		//	gsm_f_print_formats[0] is used, when current precision value == 'exp' (SM_PREC_EXP)
-																		//	gsm_f_print_formats[1] is used, when current precision value == [0,20]
-																		//	gsm_f_print_formats[1] contains current print format string %.[0,20]Lf"
 
 	extern const char* const	gcsm_i_formats[];						//	string description of output formats of integers (decimal, octal, hexadecimal, binary formats)
 
@@ -1273,36 +1270,6 @@ extern "C" {
 
 	extern const char* const	gcsm_s_format;							// contains format for string output/print
 	extern const char* const	gcsm_nl;								// contains format for new line output/print
-
-	/*	contains internal data from YY_CURRENT_BUFFER	*/
-	typedef struct _sm_l_buff_info
-	{
-		char* yy_ch_buf;		/* input buffer */
-		char* yy_buf_pos;		/* current position in input buffer */
-
-		/* Size of input buffer in bytes, not including room for EOB
-		 * characters.
-		 */
-		int yy_buf_size;
-
-		/* Number of characters read into yy_ch_buf, not including EOB
-		 * characters.
-		 */
-		int yy_n_chars;
-	} sm_l_buff_info, * psm_l_buff_info;
-
-	/* returns internal data from YY_CURRENT_BUFFER */
-	errno_t sm_get_buff_info(sm_l_buff_info* l_buff_info);
-
-	char* yyget_text(void);
-	int yyget_leng(void);
-
-	extern FILE* yyin;		// file input stream, that is used by lexical analyzer;
-							// this device is used for read data
-
-	extern FILE* yyout;		//	file output stream, that is used by lexical analyzer;
-							//	same file output stream is used for output of 
-							//	results, floats values, integer values, strings 
 
 #if defined __cplusplus
 }
